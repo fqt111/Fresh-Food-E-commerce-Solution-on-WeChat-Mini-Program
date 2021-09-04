@@ -1,0 +1,73 @@
+<!--pages/list/list.wxml-->
+<view class='foot-view'>
+  <view class="swiper-tab">
+    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">常温</view>
+    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">冷藏</view>
+  </view>
+  <view class='diviline'></view>
+  <swiper class="swiper" current="{{currentTab}}" duration="300" bindchange="bindChange">
+    <swiper-item>
+      <view class='tab1'>
+        <view class="tab1-categroy-left">
+          <view wx:for="{{category}}" wx:key="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchTab" class="cate-list {{curIndex === index?'on2':''}}">{{item.name}}</view>
+        </view>
+        <scroll-view class='scroll-view-right' scroll-y="{{isScroll}}" enable-back-to-top="true" scroll-into-view="{{toView}}" scroll-with-animation="true">
+          <navigator url="../logs/logs">
+            <image class='today-image' src="{{todayImg}}"></image>
+          </navigator>
+          <block wx:for="{{category_type1}}" wx:for-index="father_index" wx:key="index" wx:for-item="father_item">
+            <view id='{{father_item.id}}' class="list-block">
+              <text class='product-title'>{{father_item.name}}</text>
+              <view class="list-product" wx:for="{{father_item.product}}" wx:for-index wx:key="index" wx:for-item="son_item">
+                <view class='product'>
+                  <view class='product-left'>
+                    <image src="{{son_item.imgUrl}}"></image>
+                  </view>
+                  <view class='product-right'>
+                    <text class='name'>{{son_item.name}}</text>
+                    <text class='stock'>剩余{{son_item.stock}}件</text>
+                    <view class='empty'></view>
+                    <view class='add'>
+                      <text class='price'>￥{{son_item.price}}</text>
+                      <image class="{{son_item.saleNumber>0?'icon-add':'icon-add-hidden'}}" src="../../image2/icon_reduce.png" id="{{index}}" data-parent-id="{{father_index}}" bindtap="reduceProduct"></image>
+                      <text>{{son_item.saleNumber>0?son_item.saleNumber:''}}</text>
+                      <image class='icon-add' src="../../image2/icon_add.png" id="{{index}}" data-parent-id="{{father_index}}" bindtap="addProduct">
+                      </image>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class='scroll-view-root'></view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='tab1'>
+        <view class="tab1-categroy-left">
+          <view wx:for="{{category}}" wx:key="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchTab" class="cate-list {{curIndex === index?'on2':''}}">{{item.name}}</view>
+        </view>
+
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class='root-view'>
+    <view class='root-view-left'>
+      <view class='icon-shopping-view'>
+        <image class='icon-shopping' src="../../image2/icon_shopping.png"></image>
+        <view wx:if="{{buynumber>0}}" class='shopping-number-background' style="background-image: url('../../image2/icon_circular.png')">
+          <text class='shopping-number'>{{buynumber}}</text>
+        </view>
+      </view>
+      <view class='icon-shopping-view-unselect'>
+        <text class='select-goods-price'>{{goodsPrice>0?'总计￥':''}}{{goodsPrice>0?goodsPrice:'未选购商品'}}</text>
+         <text wx:if="{{buynumber>0}}" class="select-good-coupon-price">优惠0.9</text>
+      </view>
+    </view>
+    <view class=".root-view-right{{buynumber>0?'2':''}}" bindtap="actionPay">
+      <text class='root-view-right-text'>去结算</text>
+      <image class='root-view-right-image' src="../../image2/icon_arrow.png"></image>
+    </view>
+  </view>
+</view>

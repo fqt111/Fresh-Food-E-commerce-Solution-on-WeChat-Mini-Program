@@ -1,0 +1,42 @@
+<!--pages/order/order.wxml-->
+<view class='decor-view'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-item{{currentTab==0?'on':''}}" data-current="0" bindtap="swichNav">
+      商品订单
+    </view>
+    <view class='diviline-co'>|</view>
+    <view class="swiper-tab-item{{currentTab==1?'on':''}}" data-current="1" bindtap="swichNav">
+      早餐订单
+    </view>
+  </view>
+  <swiper class='swiper' current="{{currentTab}}" duration="300" bindchange="bindChange">
+    <swiper-item>
+      <scroll-view class='scroll-view' scroll-y="true" scroll-into-view="{{}}">
+        <view wx:for="{{order}}" class='order' wx:for-index wx:key="fatherIndex" wx:for-item="fatherItem">
+          <view class='order-item-title'>
+            <text>{{fatherItem.createTime}}</text>
+            <text>{{fatherItem.orderStatus}}</text>
+          </view>
+          <view class='order-item-center'>
+            <view class="order-item-center-for-view" wx:for="{{fatherItem.orderThum}}" wx:for-index wx:key="sonIndex" wx:for-item="sonItem">
+              <view class="order-item-center-img">
+                <image src="{{sonItem.orderImage}}"></image>
+              </view>
+            </view>
+          </view>
+
+          <view class='order-item-root-view'>
+            <text>共{{fatherItem.orderThum.length}}件商品，实付<text style="color:black;font-size:36rpx;"> ￥ {{fatherItem.orderPrice}}</text>
+            </text>
+            <text class="order-item-again">再来一单</text>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <view>tab2</view>
+    </swiper-item>
+  </swiper>
+
+
+</view>

@@ -1,0 +1,97 @@
+<!--pages/peoson/person.wxml-->
+
+<view class="container">
+<!-- 个人信息 -->
+    <view class="userinfo">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" />
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+    <!-- 杂项 -->
+    <view class="foodState">
+        <view class="states">
+            <image src="../../assets/icons/waitpay.png" />
+            <text>待付款</text>
+        </view>
+        <view class="states">
+              <image src="../../assets/icons/waitpublish.png" />
+            <text>待配送</text>
+        </view>
+        <view class="states">
+              <image src="../../assets/icons/gotoyourhome.png" />
+            <text>配送中</text>
+        </view>
+        <view class="states">
+              <image src="../../assets/icons/waitcompent.png" />
+            <text>待评价</text>
+        </view>
+        <view class="states">
+             <image src="../../assets/icons/allorder.png" />
+            <text>全部订单</text>
+        </view>
+    </view>
+    <!-- 功能列表 -->
+    <view class="info_list">
+        <view class="weui-cells">
+            <block wx:for="{{userInfoList.first}}" wx:key = "index">
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <image src="{{item.icon}}" />
+
+                    </view>
+                    <view class="weui-cell__bd">
+                        {{item.text}}
+                    </view>
+                    <view class="weui-cell__ft">
+                        <view class="weui-badge" wx:if="{{item.alreadRead}}">
+                            {{item.unreadNum}}
+                        </view>
+                        {{item.mes}}
+
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="weui-cells">
+            <block wx:for="{{userInfoList.second}}" wx:key = "index">
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <image src="{{item.icon}}" />
+
+                    </view>
+                    <view class="weui-cell__bd">
+                        {{item.text}}
+                    </view>
+                    <view class="weui-cell__ft">
+                        {{item.mes}}
+                        <view class="weui-badge" wx:if="{{item.alreadRead}}">
+                            {{item.unreadNum}}
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="weui-cells">
+            <block wx:for="{{userInfoList.third}}" wx:key = "index">
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <image src="{{item.icon}}" />
+
+                    </view>
+                    <view class="weui-cell__bd">
+                        {{item.text}}
+                    </view>
+                    <view class="weui-cell__ft">
+                        {{item.mes}}
+                        <view class="weui-badge" wx:if="{{item.alreadRead}}">
+                            {{item.unreadNum}}
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+
+
+
+    </view>
+
+</view>

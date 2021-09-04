@@ -1,0 +1,28 @@
+<!--pages/user/user.wxml-->
+<view class="root-view">
+  <view class="root-view-tilte">
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <view class="block-view">
+          <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          <text class="userinfo-nickname">{{userInfo.nickName}}
+          <text class="userinfo-nickname">{{userInfo.city}}</text></text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="setting-for">
+    <view class="setting-item-view" wx:for="{{settingModule}}" wx:for-index wx:key="index" wx:for-item="settingItem" >
+      <view class="setting-item" id="{{index}}" bindtap="onclickItem">
+        <text style="font-size:30rpx">{{settingItem.name}} </text>
+        <text style="color:gray">></text>
+      </view>
+      <block wx:if="{{index===2||index===4}}">
+        <view class="empty-block">
+        </view>
+      </block>
+    </view>
+
+  </view>
+</view>
