@@ -1,0 +1,85 @@
+.order_deatail{
+  display: flex;
+  width: 96%;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  background-color: #fff;
+  height: 200rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+.order_deatail_1{
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+.order_deatail_2{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.order_deatail_3{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.order{
+  display: flex;
+  width: 96%;
+  height: 200rpx;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+
+
+.order_1{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+  height: 70rpx;
+}
+
+.order_2{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 230rpx;
+  align-items: center;
+}
+
+.order_3{
+  display: flex;
+  height: 100rpx;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 50rpx;
+}
+
+.order_message{
+  width: 96%;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+}

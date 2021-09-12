@@ -1,0 +1,64 @@
+/* pages/product_fenlei/product_fenlei.wxss */
+.line{
+  width: 5rpx;
+  height: 100vh;
+  background-color: rgb(209, 213, 216);
+}
+.line_row{
+  width: 95%;
+  height: 5rpx;
+  background-color: lightgray;
+}
+
+.fenlei{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+}
+.fenlei_left{
+  display: flex;
+  width: 26%;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+.fenlei_left_1{
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  height: 100rpx;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+}
+
+
+/* 商品 */
+.fenlei_right{
+  display: flex;
+  width: 69%;
+  height: 100vh;
+}
+
+.fenlei_right_1{
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  align-self: center;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  margin-top: 10rpx;
+}
+.fenlei_right_2{
+  display: flex;
+  flex-direction: row;
+  width: 55%;
+  align-self: center;
+  align-items: center;
+}

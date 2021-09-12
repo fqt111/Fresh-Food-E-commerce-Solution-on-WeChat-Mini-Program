@@ -1,0 +1,56 @@
+/* 商品 */
+.product{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  align-items: center; 
+  background-color: snow;
+}
+.product_1{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.img{
+  width: 350rpx;
+  height: 350rpx;
+  border-radius: 20rpx;
+}
+.product_2{
+  display: flex;
+  flex-direction: row;
+  height: 60rpx;
+  border: 1px solid silver;
+  width: 80%;
+  background-color: rgb(245, 239, 239);
+  border-radius: 10rpx;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.xuanze{
+  display: flex;
+  flex-direction: row;
+  width: 96%;
+  height: 80rpx;
+  font-size: 20px;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.xuanze_1{
+  display: flex;
+  width: 30%;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}

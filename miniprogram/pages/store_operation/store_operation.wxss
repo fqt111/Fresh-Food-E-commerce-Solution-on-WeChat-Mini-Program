@@ -1,0 +1,19 @@
+/* pages/store_operation/store_operation.wxss */
+.operation{
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+.operation_1{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 180rpx;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,140 @@
+Page{
+  background-color: #ff6801;
+}
+
+/* 搜索框 */
+
+.search{
+  width: 80%;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(228, 235, 241);
+  border-radius: 50rpx;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+/* 搜索列表 */
+.list{
+  width: 88%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  height: 300rpx;
+  align-self: center;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+}
+.list_1{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 轮播图 */
+.banner{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin-top: 20rpx;
+  width: 100%;
+  height: 400rpx;
+}
+.banner_1{
+  width: 100%;
+  height: 400rpx;
+  overflow: hidden;
+}
+
+/* 分类模块 */
+.fenlei{
+  width: 95%;
+  height: 170rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #fff;
+  justify-content: space-between;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.fenlei_1{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  border: 1rpx solid silver;
+}
+.fenlei_2{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+.line{
+  width: 100%;
+  height: 5rpx;
+  background-color: rgb(136, 135, 135);
+  margin-bottom: 30rpx;
+
+}
+
+/* 商品 */
+.floor {
+  /* padding: 10rpx 0; */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:aqua;
+  border-radius: 15rpx;
+  color: #666;
+  font-size: 40rpx;
+}
+.product{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  align-items: center; 
+  background-color: snow;
+}
+.product_1{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.img{
+  width: 90%;
+  border-radius: 20rpx;
+}
+.product_2{
+  display: flex;
+  flex-direction: row;
+  height: 60rpx;
+  border: 1px solid silver;
+  width: 90%;
+  background-color: rgb(245, 239, 239);
+  border-radius: 10rpx;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}

@@ -1,0 +1,24 @@
+
+<!-- 选择栏 -->
+<view class="xuanze">
+  <view class="xuanze_1" bindtap="xuanze" data-state="送货中">送货中</view>
+  <view class="xuanze_1" bindtap="xuanze" data-state="已送达">已送达</view>
+</view> 
+
+
+<!-- 订单栏 -->
+<block wx:for="{{order}}" wx:key="_id">
+  <navigator url="../store_operation_order_detail/store_operation_order_detail?id={{item._id}}" class="order">
+    <view class="order_1">
+      <view>{{item.time}}</view>
+      <view>{{item.product_state}}</view>
+    </view> 
+    <view class="order_2">
+      <image src="{{item.product[0].product_src}}" style="width:150rpx;height:150rpx"></image>
+      <view class="order_3">
+        <view>{{item.product[0].product_name}}</view>
+        <view>商品:{{item.product.length}}件-共{{item.money}}元</view>
+      </view>
+    </view>
+  </navigator>
+</block>

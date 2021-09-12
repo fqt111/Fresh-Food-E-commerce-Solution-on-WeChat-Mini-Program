@@ -1,0 +1,71 @@
+<!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
+<view class="aa">
+  <view class="cc">
+    <open-data type="userAvatarUrl"></open-data>
+  </view> 
+  <!-- 用户信息 -->
+  <view>
+    <view class="ac">
+        <open-data type="userNickName" lang="zh_CN" ></open-data>
+    </view>
+    <view class="cv">
+      <open-data type="userCountry" lang="zh_CN" ></open-data>
+      <open-data type="userProvince" lang="zh_CN" ></open-data>
+      <open-data type="userCity" lang="zh_CN" ></open-data>
+    </view>
+  </view>
+</view>
+
+<!-- 联系客服 -->
+<view class="aq">
+  <view class="al">
+    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/order.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+    <view>联系客服</view>
+  </view>
+  <view>{{tele}}</view>
+</view>
+
+
+<!-- 我的订单 -->
+<navigator url="../my_record/my_record">
+  <view class="aq">
+    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/order.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+    <view>我的订单</view>
+    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
+  </view>
+</navigator>
+
+
+
+<!-- 收货地址 -->
+
+
+<view class="aq" bindtap="address">
+  <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/adress.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+  <view>收货地址</view>
+  <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
+</view>
+
+
+<!-- 商户平台 -->
+<navigator url="../store_login/store_login">
+  <view class="aq">
+    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/sj.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+    <view>商家平台</view>
+    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
+  </view>
+</navigator>
+
+<!-- 骑手平台 -->
+<navigator url="../store_login/store_login">
+  <view class="aq">
+    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/sj.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+    <view>骑手平台</view>
+    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
+  </view>
+</navigator>
+
+<view class="anniu">
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" type="primary" plain='true' style="margin-top: 100rpx;width:300rpx">授权登录</button>
+  <view wx:else>请升级微信版本</view>
+</view>

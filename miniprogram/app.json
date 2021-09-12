@@ -1,0 +1,54 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/product_detail/product_detail",
+    "pages/product_fenlei/product_fenlei",
+    "pages/shopping_cart/shopping_cart",
+    "pages/my/my",
+    "pages/pay/pay",
+    "pages/fenlei/fenlei",
+    "pages/my_record/my_record",
+    "pages/my_record_detail/my_record_detail",
+    "pages/store_login/store_login",
+    "pages/store_operation/store_operation",
+    "pages/store_operation_up/store_operation_up",
+    "pages/store_operation_order/store_operation_order",
+    "pages/store_operation_order_detail/store_operation_order_detail",
+    "pages/store_operation_gl/store_operation_gl",
+    "pages/store_operation_update/store_operation_update"
+
+  ],
+  "window": {
+    "backgroundColor": "#ff6801",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff6801",
+    "navigationBarTitleText": "初处理生鲜食物平台",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"./pages/img/sy_1.png",
+        "selectedIconPath":"./pages/img/sy_2.png"
+      },
+      
+      {
+        "pagePath": "pages/shopping_cart/shopping_cart",
+        "text": "购物车",
+        "iconPath":"./pages/img/sc_1.png",
+        "selectedIconPath":"./pages/img/sc_2.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath":"./pages/img/my_1.png",
+        "selectedIconPath":"./pages/img/my_2.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

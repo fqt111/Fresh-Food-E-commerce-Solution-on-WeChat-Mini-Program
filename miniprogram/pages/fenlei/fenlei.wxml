@@ -1,0 +1,22 @@
+<!-- 筛选条件 -->
+<view class="xuanze">
+  <view class="xuanze_1" bindtap="xuanze" data-xuanze="" >全部</view>
+  <view class="xuanze_1" bindtap="xuanze" data-xuanze="num" >销量</view>
+  <view class="xuanze_1" bindtap="xuanze" data-xuanze="price" >价格</view>
+</view>
+
+
+
+<!-- 产品列表 -->
+<view class="product">
+<view class="line"></view>
+  <block wx:for="{{product}}" wx:key="_id">
+  <navigator class="product_1" url="../product_detail/product_detail?id={{item._id}}">
+    <image src="{{item.src[0]}}" class="img"></image>
+    <view class="product_2">
+      <text style="font-size:12px;">{{item.name}}：￥{{item.price}}</text>
+      <text style="font-size:12px;font-weight: 200;">销量：{{item.num}}</text>
+    </view>
+  </navigator>
+  </block>
+</view>

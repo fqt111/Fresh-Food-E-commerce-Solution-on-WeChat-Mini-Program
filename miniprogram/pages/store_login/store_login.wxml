@@ -1,0 +1,16 @@
+<view class="tongyi">
+  <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/logo.png" style="width:400rpx;height:400rpx;margin-right: 20rpx;"></image>
+  <form class="login" bindsubmit="formsubmit">
+    <view class="login_1">
+      <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/login_zh.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+      <input name="zhanghu" placeholder="请输入账号"></input>
+    </view>
+    <view class="line"></view>
+    <view class="login_1">
+      <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/login_mima.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+      <input name="pwd" placeholder="请输入密码" password="true"></input>
+    </view>
+    <view class="line"></view>
+    <button form-type="submit" style="background-color: #ff6801;color: #fff;margin-top: 80rpx;">登陆</button>
+  </form>
+</view>

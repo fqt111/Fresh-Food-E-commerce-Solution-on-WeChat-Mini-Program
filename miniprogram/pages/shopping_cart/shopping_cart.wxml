@@ -1,0 +1,39 @@
+
+<block wx:for="{{product}}" wx:key="_id">
+<!-- 商品信息模块 -->
+<view class="product_list">
+  <view class="product_list_1">
+    <!-- 选择框 负责传递商品id -->
+    <checkbox-group bindchange="xuanze" data-id="{{item._id}}" >
+      <checkbox value="{{item._id}}" checked="{{item.product_checked}}"></checkbox>
+    </checkbox-group>
+    <view class="product_list_3">
+      <image src="{{item.product_src}}" style="width:100rpx;height:100rpx"></image>
+      <view class="product_list_2">
+        <view style="font-size:20px">{{item.product_name}}</view>
+        <view style="color:red">￥:{{item.product_price}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品数量功能模块 -->
+  <view class="product_list_4">
+    <image data-id="{{item._id}}" bindtap="product_jian" src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/减.png" style="width:40rpx;height:40rpx" data-product_num="{{item.product_num}}"></image>
+    <view>{{item.product_num}}</view>
+    <image data-id="{{item._id}}" bindtap="product_jia" src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/加.png" style="width:40rpx;height:40rpx"></image>
+  </view>
+</view>
+<view class="line"></view>
+</block>
+
+
+
+<!-- 按钮模块 -->
+<view class="anniu">
+  <button bindtap="delete" size="mini" type="warn" plain="true">删除</button>
+  <button open-type="contact" size="mini"  type="primary">联系客服</button>
+  <view class="pay" bindtap="pay">
+    <view>结算</view>
+    <view>（{{money}}）</view>
+  </view>
+</view>

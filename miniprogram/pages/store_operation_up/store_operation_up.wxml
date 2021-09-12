@@ -1,0 +1,54 @@
+<form bindsubmit="submit">
+  <view class="up">
+    <view class="upload">
+      <view class="upload_1">
+        <view>商品名：</view>
+        <input placeholder="请输入商品名" name="name"></input>
+      </view>
+
+      <view class="line"></view>
+
+      <view class="upload_1">
+        <view>商品价格：</view>
+        <input placeholder="请输入商品价格" name="price"></input>
+      </view>
+
+      <view class="line"></view>
+
+      <view class="upload_1">
+        <radio-group name="fenlei">
+          <block wx:for="{{fenlei}}" wx:key="_id">
+            <radio value="{{item.name}}">{{item.name}}</radio>
+          </block>
+        </radio-group>
+      </view>
+      <view class="line"></view>
+      <view class="upload_1">
+        <view>分类：</view>
+        <input placeholder="请输入具体分类" name="belong"></input>
+      </view>
+      <view class="line"></view>
+    </view>
+
+
+    <view class="upload">
+      <view>商品简介：</view>
+      <textarea placeholder="请输入商品简介（80字）" maxlength="80" name="detail"></textarea>
+    </view>
+
+
+    <scroll-view class="img" scroll-y="true">
+      <block wx:for="{{img}}">
+        <image src="{{item}}" style="width:80rpx;height:80rpx"></image>
+        <button size="mini" type="warn" plain="true" bindtap="delete" data-id="{{index}}"
+          data-src="{{item}}">删除图片</button>
+      </block>
+      <view class="anniu">
+        <button size="mini" type="primary" bindtap="upload_img">添加图片</button>
+      </view>
+    </scroll-view>
+  </view>
+
+  <button form-type="submit" type="primary">提交</button>
+
+</form>
