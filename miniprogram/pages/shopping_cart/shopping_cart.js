@@ -77,17 +77,25 @@ Page({
     },
   // 商品删除(没有实现删除)
   delete:function(){
-    let that = this
-    wx.cloud.callFunction({
-      name:"product_delet",
-      success:function(res){
-        console.log('删除商品成功',res)
-        that.onLoad()
-      },fail:function(res){
-        console.log('删除商品失败',res)
-      }
-    })
-  },
+        let that = this
+        var app=getApp();
+        console.log(app.globalData.openid)
+        wx.cloud.database().collection('shopping_cart').where({
+          openid:app.globalData.openid,
+          product_checked: "true"
+        }).remove({
+          success: function(res) {
+            wx.showToast({
+              title: '删除成功',
+              icon:'success'
+            })
+         
+          },
+          fail(res){
+            console.log('fail')
+          }
+        })
+      },
 
   // 商品数量加事件
   product_jia:function(e){
