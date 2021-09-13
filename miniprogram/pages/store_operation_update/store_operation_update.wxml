@@ -42,7 +42,7 @@
 </scroll-view>
 </view>
 
-<button form-type="submit" type="primary" >提交</button>
-<button bindtap="delete_product" type="primary" >删除</button>
+<button type="primary" form-type="submit">提交</button>
+<button type="primary" bindtap="delete_product">删除</button>
 </form>
 

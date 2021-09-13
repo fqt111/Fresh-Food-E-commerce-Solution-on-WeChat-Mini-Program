@@ -94,6 +94,19 @@ page{
   flex-direction: row;
 }
 
+.time{
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  background-color: #fff;
+  height: 200rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+
 .beizhu{
   display: flex;
   width: 96%;

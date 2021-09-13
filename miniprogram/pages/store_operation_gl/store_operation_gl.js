@@ -14,7 +14,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    db.collection('product').get({
+    db.collection('food_list').get({
       success:function(res){
         console.log('获取商品成功',res)
         that.setData({

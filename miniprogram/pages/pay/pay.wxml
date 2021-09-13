@@ -1,7 +1,7 @@
 <!--pages/pay/pay.wxml-->
 <!-- 地址模块 -->
 <view class="address">
-  <button bindtap="address" style="width:300rpx" plain="true" type="primary">添加地址</button>
+  <button bindtap="address" style="width:300rpx" plain="true" type="primary">选择地址</button>
   <view class="address_1">
     <view>{{name}}：</view>
     <view>{{phone_number}}</view>
@@ -9,6 +9,14 @@
   <view>{{address}}</view>
 </view>
 
+<!-- 时间选择模块 -->
+<view class="time">
+  <view>选择送达时间</view>
+  <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+    <view class="picker">{{time}}
+    </view>
+  </picker>
+</view>
 
 <!-- 商品展示模块 -->
 <scroll-view class="product" scroll-y="true">

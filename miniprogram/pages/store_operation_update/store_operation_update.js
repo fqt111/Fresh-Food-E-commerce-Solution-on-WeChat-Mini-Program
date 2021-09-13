@@ -12,11 +12,12 @@ Page({
     name:"",
     price:"",
     detail:"",
-    id:""
+    id:"",
+    belong:""
   },
   delete_product:function(e){
     let that = this
-    db.collection('product').doc(that.data.id).remove({
+    db.collection('food_list').doc(that.options.id).remove({
       success: function(res) {
         console.log('删除成功',res.data)
         wx.cloud.deleteFile({
@@ -92,24 +93,25 @@ Page({
   },
   submit:function(e){
     let that = this
+    let id = that.data.id
     console.log(e)
     if(e.detail.value.name!==""&&e.detail.value.price!==""&&e.detail.value.fenlei!==""&&e.detail.value.detail!==""&&that.data.img.length!==0){
-      db.collection('product').doc(that.data.id).update({
+      db.collection('food_list').doc(this.options.id).update({
         data:{
           name:e.detail.value.name,
           price:e.detail.value.price,
           fenlei:e.detail.value.fenlei,
-          detail:e.detail.value.detail,
-          src:that.data.img,
-          num:0,
-          product_xq_src:""
-        },success:function(res){
+          content:e.detail.value.detail,
+          img:that.data.img,
+        },
+        success:function(res){
           wx.showToast({
             title: '提交成功',
           })
-          wx.redirectTo({
-            url: '../store_operation_update/store_operation_update',
-          })
+        },fail:function(res){
+          console.log('提交失败',res),
+          console.log(that.data)
+          console.log(id)
         }
       })
     }else{
@@ -127,7 +129,7 @@ Page({
     that.setData({
       id:options.id
     })
-    db.collection('fnelei').get({
+    db.collection('fenlei').get({
       success:function(res){
         console.log('分类获取成功',res)
         that.setData({
@@ -137,14 +139,15 @@ Page({
         console.log('分类获取失败',res)
       }
     })
-    db.collection('product').doc(options.id).get({
+    db.collection('food_list').doc(options.id).get({
       success:function(res){
         console.log('信息获取成功',res)
         that.setData({
           name:res.data.name,
           price:res.data.price,
-          detail:res.data.detail,
-          img:res.data.src
+          detail:res.data.content,
+          id:res.data._id,
+          belong:res.data.belong
         })
       },fail:function(res){
         console.log('分信息获取失败',res)

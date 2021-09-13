@@ -12,7 +12,15 @@ Page({
     name:"",
     phone_number:"",
     address:"",
-    beizhu:""
+    beizhu:"",
+    time:'12:01'
+  },
+
+  //时间选择
+  bindTimeChange:function(e){
+    this.setData({
+      time:e.detail.value
+    })
   },
   // 备注
   beizhu:function(e){
