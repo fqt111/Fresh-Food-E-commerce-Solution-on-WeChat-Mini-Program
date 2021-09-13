@@ -9,7 +9,7 @@
   </view>
   <view class="operation_1" bindtap="operation" data-page="../store_operation_gl/store_operation_gl">
     <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/gongzuoguanli-dingdanguanli.png" style="width:100rpx;height:100rpx"></image>
-    <view>管理商品</view>
+    <view>管理</view>
   </view>
   <!-- <view class="operation_1">
     <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/product_gl.png" style="width:100rpx;height:100rpx"></image>
