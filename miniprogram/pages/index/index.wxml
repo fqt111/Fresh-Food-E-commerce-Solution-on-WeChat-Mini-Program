@@ -17,14 +17,14 @@
 </view>
 
 
-<!-- 轮播图 -->
+<!-- 轮播图
 <view class="banner" >
   <swiper class="banner_1" autoplay="true" circular="true" interval="5000" indicator-dots="true">
     <swiper-item  wx:for="{{banner}}" wx:key="_id">
       <image src="{{item.img[0]}}" style="width:750rpx;height:400rpx"></image>
     </swiper-item>
   </swiper>
-</view>
+</view> -->
 
 
 
@@ -34,8 +34,18 @@
     <navigator url="../product_fenlei/product_fenlei?name={{item.name}}"  class="fenlei_2">
       <image src="{{item.img}}" style="width:80rpx;height:80rpx"></image>
       <text>{{item.name}}</text>
+      
     </navigator>
   </view>
+  <view class="fenlei_1">
+    <view  class="fenlei_2">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/kefu.png" style="width:80rpx;height:80rpx"></image>
+    <button open-type="contact" size="mini"  type="primary">
+      <text style="font-size:28rpx">客服订制</text>
+    </button>
+    </view>
+  </view>
+  
 </view>
 
 

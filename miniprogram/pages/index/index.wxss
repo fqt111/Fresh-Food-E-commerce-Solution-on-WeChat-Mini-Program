@@ -5,7 +5,7 @@ Page{
 /* 搜索框 */
 
 .search{
-  width: 80%;
+  width: 90%;
   height: 60rpx;
   display: flex;
   flex-direction: row;
@@ -57,7 +57,7 @@ Page{
 /* 分类模块 */
 .fenlei{
   width: 95%;
-  height: 170rpx;
+  height: 200rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -70,7 +70,7 @@ Page{
 .fenlei_1{
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 30%;
   align-self: center;
   align-items: center;
   justify-content: center;
@@ -78,6 +78,7 @@ Page{
   border: 1rpx solid silver;
 }
 .fenlei_2{
+  height: 150rpx;
   display: flex;
   flex-direction: column;
   align-self: center;

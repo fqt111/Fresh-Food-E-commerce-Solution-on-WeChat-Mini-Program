@@ -21,17 +21,18 @@ Page{
   margin-top: 10rpx;
   padding-top: 15rpx;
   padding-bottom: 15rpx;*/
-  padding-left: 20rpx; 
+ 
   justify-content: space-between;
   /* text-align: justify; */
 }
 .aq{
+  padding-left: 20rpx; 
   display: flex;
   flex-direction: row;
   font-size: 21px;
   font-weight: 400;
   width: 100%;
-  height: 60rpx;
+  height: 75rpx;
   background-color: #fff;
   margin-top: 10rpx;
   padding-top: 15rpx;

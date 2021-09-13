@@ -8,6 +8,7 @@ Page({
    */
   data: {
     fenlei:[],
+    img:[],
     product:[],
     fenlei_now:""
   },
@@ -43,7 +44,7 @@ Page({
     console.log("获取到类别",options.name)
     if(options.name==="单品"){
       db.collection('food_list').where({
-        belong:"蔬菜"
+        belong:"海鲜"
     }).get({
       success:function(res){
         console.log('获取分类成功',res)
@@ -56,7 +57,7 @@ Page({
     })
     }else{
       db.collection('food_list').where({
-        belong:"简单"
+        belong:"川菜"
     }).get({
       success:function(res){
         console.log('获取分类成功',res)
@@ -81,6 +82,7 @@ Page({
         console.log('获取分类成功',res)
         that.setData({
           fenlei:res.data[0].category
+          
         }) 
       },fail:function(res){
         console.log('获取分类失败',res)

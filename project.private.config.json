@@ -141,6 +141,12 @@
           "pathName": "pages/store_operation_up/store_operation_up",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/store_operation_up/store_operation_up",
+          "pathName": "pages/store_operation_up/store_operation_up",
+          "query": "",
+          "scene": null
         }
       ]
     }

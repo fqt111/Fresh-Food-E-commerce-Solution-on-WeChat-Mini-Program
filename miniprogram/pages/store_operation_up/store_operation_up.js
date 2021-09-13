@@ -1,14 +1,18 @@
 // pages/store_operation_up/store_operation_up.js
 const db = wx.cloud.database()
-
+const _ = db.command
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    belong:[],
     fenlei:[],
     img:[],
+    category_1:[],
+    category_2:[],
+    category_3:[]
   },
   // 上传图片
   upload_img:function(){
@@ -68,41 +72,54 @@ Page({
   submit:function(e){
     let that = this
     console.log(e)
+    // if(e.detail.value.fenlei==="单品"){
+    //   that.setData({
+    //     category_1:that.data.category_1.concat(e.detail.value.belong)
+    //   })
+    //   that.data.category_3=that.data.category_1
+    // }else{
+    //   that.setData({
+    //     category_2:that.data.category_2.concat(e.detail.value.belong)
+    //   })
+    //   that.data.category_3=that.data.category_2
+    // }
+    // console.log(that.data.category_3)
     if(e.detail.value.name!==""&&e.detail.value.price!==""&&e.detail.value.fenlei!==""&&e.detail.value.detail!==""&&that.data.img.length!==0){
       db.collection('food_list').add({
         data:{
           name:e.detail.value.name,
           price:e.detail.value.price,
           belong:e.detail.value.belong,
-          content:e.detail.value.detail,
+          content:e.detail.value.content,
+          product_contain:e.detail.value.detail,
           img:that.data.img,
           sell:0,
           
-          
         },success:function(res){
-          console.log("haha")
-          // db.collection('fenlei').where({
-          //   name:e.detail.fenlei
-          // })
-          // add({
-          //   data:{
-          //     category:e.detail.belong
-          //   },success:function(res){
-              
-          //     wx.showToast({
-          //       title: '提交成功',
-          //     })
-          //     wx.redirectTo({
-          //       url: '../store_operation_up/store_operation_up',
-          //     })
-          //   }
-          // })
-          // wx.showToast({
-          //   title: '提交成功',
-          // })
-          // wx.redirectTo({
-          //   url: '../store_operation_up/store_operation_up',
-          // })
+          console.log("hahaha",e.detail.value.fenlei)
+          db.collection('fenlei').where({
+            name:e.detail.value.fenlei
+          })
+          .update({
+            data:{
+              category:_.push(e.detail.value.belong)
+            },
+            success:function(res){
+              console.log("hahahhaah",res)
+              wx.showToast({
+                title: '提交成功',
+              })
+              wx.redirectTo({
+                url: '../store_operation_up/store_operation_up',
+              })
+            }
+          })
+          wx.showToast({
+            title: '提交成功',
+          })
+          wx.redirectTo({
+            url: '../store_operation_up/store_operation_up',
+          })
         }
       })
     }else{
@@ -120,9 +137,11 @@ Page({
     let that = this
     db.collection('fenlei').get({
       success:function(res){
-        console.log('分类获取成功',res)
+        console.log('分类获取成功',res.data[0].category)
         that.setData({
-          fenlei:res.data
+          fenlei:res.data,
+          category_1:res.data[0].category,
+          category_2:res.data[1].category
         })
       },fail:function(res){
         console.log('分类获取失败',res)

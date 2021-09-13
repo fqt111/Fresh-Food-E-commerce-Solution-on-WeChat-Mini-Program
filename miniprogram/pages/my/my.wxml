@@ -19,7 +19,7 @@
 <!-- 联系客服 -->
 <view class="aq">
   <view class="al">
-    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/order.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+    <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/kefu.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
     <view>联系客服</view>
   </view>
   <view>{{tele}}</view>
@@ -29,7 +29,7 @@
 <!-- 我的订单 -->
 <navigator url="../my_record/my_record">
   <view class="aq">
-    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/order.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+    <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/gongzuoguanli-dingdanguanli.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
     <view>我的订单</view>
     <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
   </view>
@@ -41,7 +41,7 @@
 
 
 <view class="aq" bindtap="address">
-  <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/adress.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+  <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/hehuoren-guanlishangpin.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
   <view>收货地址</view>
   <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
 </view>
@@ -50,7 +50,7 @@
 <!-- 商户平台 -->
 <navigator url="../store_login/store_login">
   <view class="aq">
-    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/sj.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+    <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/shangjia.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
     <view>商家平台</view>
     <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
   </view>
@@ -59,7 +59,7 @@
 <!-- 骑手平台 -->
 <navigator url="../store_login/store_login">
   <view class="aq">
-    <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/sj.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
+    <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/qishou.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
     <view>骑手平台</view>
     <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
   </view>

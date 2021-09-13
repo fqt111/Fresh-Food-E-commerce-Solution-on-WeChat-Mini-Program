@@ -19,45 +19,55 @@ Page({
 
   songda:function(){
     let that= this
-    wx.cloud.callFunction({
-      name:'songda',
+    db.collection('order').doc(that.data.order._id).update({
       data:{
-        id:that.data.order._id
-      },success:function(res){
-        console.log('订单状态更新成功',res)
-        wx.showToast({
-          title: '送货成功',
-        })
-        wx.redirectTo({
-          url: '../store_operation_order/store_operation_order',
-        })
-      },fail:function(res){
-        console.log('订单状态更新失败',res)
-      }
-    })
-  },
+        product_state:"已送达"
+      },
+      success: function(res){
+      console.log('订单状态更新成功',res)
+      wx.showToast({
+        title: '送货成功',
+      })
+      wx.redirectTo({
+        url: '../store_operation_order/store_operation_order',
+      })
+    },fail:function(res){
+      console.log('订单状态更新失败',res)
+    }
+  })
+},
+  //   wx.cloud.callFunction({
+  //     name:'order_accomplished',
+  //     data:{
+  //       id:that.data.order._id
+  //     },success:function(res){
+  //       console.log('订单状态更新成功',res)
+  //       wx.showToast({
+  //         title: '送货成功',
+  //       })
+  //       wx.redirectTo({
+  //         url: '../store_operation_order/store_operation_order',
+  //       })
+  //     },fail:function(res){
+  //       console.log('订单状态更新失败',res)
+  //     }
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this
-    that.setData({
-      id:options.id
-    })
-    wx.cloud.callFunction({
-      name:"get_order_detail",
-      data:{
-        id:options.id
-      },success:function(res){
-        console.log('订单详情获取成功',res)
+    db.collection('order').doc(options.id).get({
+      success:function(res){
+        console.log('订单获取成功',res)
         that.setData({
-          order:res.result.data
+          order:res.data
         })
       },fail:function(res){
-        console.log('订单详情获取失败',res)
+        console.log('订单获取失败',res)
       }
     })
-    
   },
 
   /**

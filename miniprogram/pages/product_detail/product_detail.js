@@ -2,7 +2,7 @@
 const db = wx.cloud.database({
   env: "cloud1-6gtiz48ybf23c5c5"
 })
-
+let value=""
 Page({
 
   /**
@@ -14,12 +14,20 @@ Page({
     product_price: 0,
     product_detail: "",
     product_num: "",
-    product_contain: [],
+    product_contain: "",
     id: "",
     product_add:[],
     //没有get到这个方法
     
     
+  },
+  search: function (e) {
+    console.log(e)
+    value = e.detail.value
+    this.setData({
+      product_add:value
+    })
+    console.log(this.data.product_add)
   },
   checkboxChange:function(e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)

@@ -12,6 +12,40 @@
   overflow: hidden;
 }
 
+.goods_price {
+  padding: 15rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--themeColor);
+}
+.goods_name_row {
+  border-top: 5rpx solid #dedede;
+  border-bottom: 5rpx solid #dedede;
+  padding: 10rpx 0;
+  display: flex;
+}
+.goods_name_row .goods_name {
+  flex: 5;
+  color: #000;
+  font-size: 30rpx;
+  padding: 0 10rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.goods_name_row .goods_collect {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 1rpx solid #000;
+}
+.goods_name_row .goods_collect .icon-shoucang1 {
+  color: orangered;
+}
+
 /* 产品信息 */
 .product{
   display: flex;
@@ -26,7 +60,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:aqua;
   border-radius: 15rpx;
   color: #666;
   font-size: 50rpx;
@@ -63,6 +96,12 @@
   margin-right: 100rpx;
 }
 
+.product_delete{
+  padding: 15rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--themeColor);
+}
 /* 购买按钮 */
 .pay{
   width: 100%;

@@ -64,3 +64,18 @@ page{
   justify-content: space-between;
   margin-left: 50rpx;
 }
+
+.order_4{
+  display: flex;
+  width: 96%;
+  height: 100rpx;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff8601;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}

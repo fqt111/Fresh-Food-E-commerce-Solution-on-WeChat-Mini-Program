@@ -33,7 +33,12 @@
 
     <view class="upload">
       <view>商品简介：</view>
-      <textarea placeholder="请输入商品简介（80字）" maxlength="80" name="detail"></textarea>
+      <textarea placeholder="请输入商品简介" maxlength="80" name="content"></textarea>
+    </view>
+
+    <view class="upload">
+      <view>配料信息：</view>
+      <textarea placeholder="请输入配料信息" maxlength="80" name="detail"></textarea>
     </view>
 
 

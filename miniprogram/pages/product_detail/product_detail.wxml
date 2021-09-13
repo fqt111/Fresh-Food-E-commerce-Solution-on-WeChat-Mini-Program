@@ -9,21 +9,42 @@
 
 
 <!-- 产品信息 -->
-<view class="product">
-  <view class="product_detail">主要信息</view>
 
-  <view class="product_1">
-    <view>{{product_name}}:{{product_detail}}</view>
-    <view style="color:red">价格:{{product_price}}元</view>
+  <view class="goods_price">￥{{product_price}}</view>
+  <view class="goods_name_row">
+    <view class="goods_name">{{product_name}}{{goodsObj.goods_name}}</view>
   </view>
-</view>
-<view class="line"></view>
+
+  
+  <view class="product">
+    <view class="product_detail">介绍</view>
+    <view class="product_1">
+      <view>{{product_detail}}</view>
+    </view>
+  </view>
+
+  <view class="line"></view>
 
 
-<!-- 商品详情 -->
-<view class="product_detail">选择喜好（可删减套餐配料）</view>
-<view class="product_contain">
-  <!-- <checkbox-group bindchange="checkboxChange">
+  <!-- 商品详情 -->
+  <view class="product">
+    <view class="product_detail">配料</view>
+    <view class="product_1">
+      <view>{{product_contain}}</view>
+    </view>
+  </view>
+  
+ 
+
+  <view class="product_delete">
+    <view>请输入需要删减的辅料（主要成分不给予删减）</view>
+  </view>
+    <view style="padding: 15rpx;">
+      <textarea placeholder="请输入需要添加或删减的辅料" bindblur="search" ></textarea>
+    </view>
+
+
+    <!-- <checkbox-group bindchange="checkboxChange">
           <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
             <view class="weui-cell__hd">
               <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
@@ -31,28 +52,23 @@
             <view class="weui-cell__bd">{{item.name}}</view>
           </label>
         </checkbox-group> -->
-  <checkbox-group class="checkboxgroup" bindchange="checkboxChange">
-    <label class="checkbox" wx:for="{{product_contain}}">
-      <checkbox value="{{item}}" checked="{{item.checked}}" />{{item}}
-    </label>
-  </checkbox-group>
+    <!-- <checkbox-group class="checkboxgroup" bindchange="checkboxChange">
+      <label class="checkbox" wx:for="{{product_contain}}">
+        <checkbox value="{{item}}" checked="{{item.checked}}" />{{item}}
+      </label>
+    </checkbox-group> -->
+  
 
-</view>
-
-<!-- <view class="product_xq">
-  <view style="color:#ff6801" bindtap="xq">商品详情</view>
-</view>
-<image src="{{product_xq_src}}" mode="widthFix" style="width:750rpx"></image> -->
-<view style="align-self: center;height:150rpx">已到底</view>
+  <view style="align-self: center;height:150rpx">已到底</view>
 
 
-<!-- 按钮 -->
-<view class="pay">
-  <view class="pay_1" bindtap="into_shopping_cart">
-    <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/购物车.png"
-      style="width:80rpx;height:80rpx">
-    </image>
-    <view>加入购物车</view>
+  <!-- 按钮 -->
+  <view class="pay">
+    <view class="pay_1" bindtap="into_shopping_cart">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/购物车.png"
+        style="width:80rpx;height:80rpx">
+      </image>
+      <view>加入购物车</view>
+    </view>
+    <view class="pay_2" bindtap="buy">立即购买</view>
   </view>
-  <view class="pay_2" bindtap="buy">立即购买</view>
-</view>

@@ -23,20 +23,18 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    wx.cloud.callFunction({
-      name:'get_order',
-      data:{
-        state:that.data.state
-      },success:function(res){
+    db.collection('order').where({
+      product_state:that.data.state
+    }).get({
+      success:function(res){
         console.log('订单获取成功',res)
         that.setData({
-          order:res.result.data
+          order:res.data
         })
       },fail:function(res){
         console.log('订单获取失败',res)
       }
     })
-    
   },
 
   /**
@@ -87,5 +85,7 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+
 })

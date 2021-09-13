@@ -19,6 +19,7 @@
         <view>{{item.product[0].product_name}}</view>
         <view>商品:{{item.product.length}}件-共{{item.money}}元</view>
       </view>
+      
     </view>
   </navigator>
 </block>
