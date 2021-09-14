@@ -97,6 +97,7 @@ Page({
           
         },success:function(res){
           console.log("hahaha",e.detail.value.fenlei)
+          
           db.collection('fenlei').where({
             name:e.detail.value.fenlei
           })

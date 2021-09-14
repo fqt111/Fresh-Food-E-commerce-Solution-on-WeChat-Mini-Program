@@ -17,7 +17,7 @@ page{
 }
 .upload{
   width: 96%;
-  height: 400rpx;
+  height: 450rpx;
   display: flex;
   align-items: center;
   align-self: center;

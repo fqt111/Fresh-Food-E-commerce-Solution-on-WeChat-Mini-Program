@@ -18,7 +18,7 @@
       <view class="upload_1">
         <radio-group name="fenlei">
           <block wx:for="{{fenlei}}" wx:key="_id">
-            <radio value="{{item.name}}">{{item.name}}</radio>
+            <radio value="{{item.name}}" checked="{{judge}}">{{item.name}}</radio>
           </block>
         </radio-group>
       </view>

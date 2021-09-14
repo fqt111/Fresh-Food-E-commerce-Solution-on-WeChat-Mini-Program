@@ -1,6 +1,6 @@
 <!-- 搜索框 -->
 <view class="search">
-  <input placeholder="请输入要搜索的商品" bindinput="search" confirm-type="done"></input>
+  <input placeholder="请输入要搜索的商品" bindblur="search" confirm-type="done"></input>
   <!-- <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/search.png" style="width:50rpx;height:50rpx"></image> -->
   <text bindtap="search_1" class="iconfont icon-sousuokuang"></text>
 </view>

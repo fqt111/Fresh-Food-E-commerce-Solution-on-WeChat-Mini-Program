@@ -44,9 +44,16 @@ Page({
         // }).get()
         .then(res => {
           console.log('請求成功', res)
-          this.setData({
-            search: res.data
-          })
+          if(res.data.length===0){
+            wx.showToast({
+              icon: 'none',
+              title: '未搜索到该商品',
+            })
+          }else{
+            this.setData({
+              search: res.data
+            })
+          }
         })
         .catch(err => {
           console.log('請求失敗', err)
@@ -101,32 +108,32 @@ Page({
   },
   
   onReachBottom: function () {
-    let that = this
-    wx.showLoading({
-      title: '刷新中！',
-      duration: 1000
-    })
-    let old_data = that.data.product
-    db.collection('product').skip(that.data.num)
-      .get()
-      .then(res => {
-        // 利用concat函数连接新数据与旧数据
-        // 并更新emial_nums  
-        this.setData({
-          product: old_data.concat(res.data),
-          num: that.data.num + 20
-        })
-        if (res.data == "") {
-          wx.showToast({
-            icon: 'none',
-            title: '已经加载完毕'
-          })
-        }
-      })
-      .catch(err => {
-        console.error(err)
-      })
-    console.log('circle 下一页');
+  //   let that = this
+  //   wx.showLoading({
+  //     title: '刷新中！',
+  //     duration: 1000
+  //   })
+  //   let old_data = that.data.product
+  //   db.collection('product').skip(that.data.num)
+  //     .get()
+  //     .then(res => {
+  //       // 利用concat函数连接新数据与旧数据
+  //       // 并更新emial_nums  
+  //       this.setData({
+  //         product: old_data.concat(res.data),
+  //         num: that.data.num + 20
+  //       })
+  //       if (res.data == "") {
+  //         wx.showToast({
+  //           icon: 'none',
+  //           title: '已经加载完毕'
+  //         })
+  //       }
+  //     })
+  //     .catch(err => {
+  //       console.error(err)
+  //     })
+  //   console.log('circle 下一页');
   },
 
 })

@@ -22,14 +22,24 @@
         </block>
       </radio-group>
     </view>
+    <view class="line"></view>
+      <view class="upload_1">
+        <view>分类：</view>
+        <input placeholder="请输入具体分类"  value="{{belong}}" name="belong"></input>
+      </view>
+      <view class="line"></view>
   </view>
   
 
 <view class="upload">
   <view>商品简介：</view>
-  <textarea placeholder="请输入商品简介（80字）" maxlength="80" style="" name="detail" value="{{detail}}"></textarea>
+  <textarea placeholder="请修改商品简介（80字）" maxlength="80" name="content" value="{{content}}"></textarea>
 </view>
 
+<view class="upload">
+      <view>配料信息：</view>
+      <textarea placeholder="请修改配料信息" maxlength="80" name="detail" value="{{detail}}"></textarea>
+    </view>
 
 <scroll-view class="img" scroll-y="true">
   <block wx:for="{{img}}">
