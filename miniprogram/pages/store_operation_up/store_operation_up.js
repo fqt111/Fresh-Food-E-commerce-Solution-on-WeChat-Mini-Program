@@ -141,8 +141,8 @@ Page({
         console.log('分类获取成功',res.data[0].category)
         that.setData({
           fenlei:res.data,
-          category_1:res.data[0].category,
-          category_2:res.data[1].category
+          // category_1:res.data[0].category,
+          // category_2:res.data[1].category
         })
       },fail:function(res){
         console.log('分类获取失败',res)
