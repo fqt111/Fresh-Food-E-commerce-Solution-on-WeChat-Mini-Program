@@ -1,7 +1,7 @@
 // 使用了 async await 语法
-import { init, getWXContext } from 'wx-server-sdk'
-init({
-  env: 'cloud1-6gtiz48ybf23c5c5',
+const cloud = require('wx-server-sdk')
+cloud.init({
+  env:"cloud1-6gtiz48ybf23c5c5"
 })
 
 
