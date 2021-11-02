@@ -4,7 +4,7 @@
   <!-- <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/search.png" style="width:50rpx;height:50rpx"></image> -->
   <text bindtap="search_1" class="iconfont icon-sousuokuang"></text>
 </view>
-
+<!-- fqt -->
 
 <!-- 搜索列表 -->
 <view class="list" wx:for="{{search}}" wx:key="_id">
