@@ -34,10 +34,10 @@
     <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/jt.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
   </view>
 </navigator>
-<!-- huanglx -->
 
 
-<!-- 收货地址 -->
+
+
 
 
 <view class="aq" bindtap="address">
