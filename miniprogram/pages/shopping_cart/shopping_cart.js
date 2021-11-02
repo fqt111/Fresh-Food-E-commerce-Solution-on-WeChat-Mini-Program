@@ -78,7 +78,7 @@ Page({
       })
     }
   },
-  // 商品删除(没有实现删除)
+  // 商品删除
   delete: function () {
     let that = this
     var app = getApp();
@@ -90,6 +90,7 @@ Page({
         title: '删除成功',
         icon: 'success'
       })
+      that.onLoad()
     }).catch(e => {
       console.log(e)
     })
