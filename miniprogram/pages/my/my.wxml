@@ -24,7 +24,7 @@
   </view>
   <view>{{tele}}</view>
 </view>
-<!-- hlx -->
+
 
 <!-- 我的订单 -->
 <navigator url="../my_record/my_record">
