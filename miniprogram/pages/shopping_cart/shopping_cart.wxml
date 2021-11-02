@@ -17,7 +17,7 @@
        
       </view>
     </view>
-<!-- fqt -->
+
     <!-- 商品数量功能模块 -->
     <view class="product_list_4">
       <image data-id="{{item._id}}" bindtap="product_jian"
