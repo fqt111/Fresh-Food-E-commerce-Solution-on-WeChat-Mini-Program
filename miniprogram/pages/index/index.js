@@ -93,18 +93,18 @@ Page({
         console.log('請求失敗', err)
       })
 
-    // db.collection('product').get({
-    //   success:function(res){
-    //     console.log('商品获取成功',res)
-    //     that.setData({
+    db.collection('product').get({
+      success:function(res){
+        console.log('商品获取成功',res)
+        that.setData({
 
-    //       product:res.data
-    //     })
-    //   },
-    //   fail:function(res){
-    //     console.log('商品获取失败',res)
-    //   },
-    // })
+          product:res.data
+        })
+      },
+      fail:function(res){
+        console.log('商品获取失败',res)
+      },
+    })
   },
   
   onReachBottom: function () {
