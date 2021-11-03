@@ -25,6 +25,7 @@ Page({
 
   },
   //有搜索的问题
+  //wrt
   search_1: function () {
     console.log('chufa', value)
     let that = this
