@@ -3,6 +3,7 @@ const db = wx.cloud.database({
   env: "cloud1-6gtiz48ybf23c5c5"
 })
 // asdad
+//d
 let value = ''
 Page({
   data: {
