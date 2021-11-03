@@ -2,8 +2,7 @@ wx.cloud.init()
 const db = wx.cloud.database({
   env: "cloud1-6gtiz48ybf23c5c5"
 })
-// asdad
-//d
+
 let value = ''
 Page({
   data: {
@@ -68,7 +67,7 @@ Page({
       })
     }
   },
-  // wrt
+
   onLoad: function () {
     db.collection('food_list')
       .orderBy("sell", "desc")
