@@ -96,7 +96,7 @@ Page({
         console.log('請求失敗', err)
       })
   },
-  
+  //asdasd
   onReachBottom: function () {
 
   },
