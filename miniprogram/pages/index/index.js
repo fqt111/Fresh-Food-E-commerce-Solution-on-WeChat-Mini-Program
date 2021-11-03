@@ -65,6 +65,7 @@ Page({
       })
     }
   },
+  // wrt
   onLoad: function () {
     db.collection('food_list')
       .orderBy("sell", "desc")
