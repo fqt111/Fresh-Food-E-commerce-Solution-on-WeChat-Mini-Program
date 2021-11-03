@@ -79,7 +79,7 @@ Page({
       .catch(err => {
         console.log('請求失敗', err)
       })
-
+// fqt
 
     db.collection('fenlei')
       .get()
