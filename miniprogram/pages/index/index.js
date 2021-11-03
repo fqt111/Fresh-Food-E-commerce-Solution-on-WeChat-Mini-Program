@@ -3,6 +3,7 @@ const db = wx.cloud.database({
   env: "cloud1-6gtiz48ybf23c5c5"
 })
 // asdad
+//d
 let value = ''
 Page({
   data: {
@@ -96,7 +97,7 @@ Page({
         console.log('請求失敗', err)
       })
   },
-  //hlx
+  
   onReachBottom: function () {
 
   },
