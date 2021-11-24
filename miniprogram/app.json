@@ -1,7 +1,7 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/paySuccess/paySuccess",
     "pages/product_detail/product_detail",
     "pages/product_detail2/product_detail2",
     "pages/product_fenlei/product_fenlei",
@@ -19,7 +19,6 @@
     "pages/store_operation_order_detail/store_operation_order_detail",
     "pages/store_operation_gl/store_operation_gl",
     "pages/store_operation_update/store_operation_update"
-
   ],
   "window": {
     "backgroundColor": "#ff6801",
@@ -33,23 +32,27 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath":"./pages/img/sy_1.png",
-        "selectedIconPath":"./pages/img/sy_2.png"
+        "iconPath": "./pages/img/sy_1.png",
+        "selectedIconPath": "./pages/img/sy_2.png"
       },
-      
       {
         "pagePath": "pages/shopping_cart/shopping_cart",
         "text": "购物车",
-        "iconPath":"./pages/img/sc_1.png",
-        "selectedIconPath":"./pages/img/sc_2.png"
+        "iconPath": "./pages/img/sc_1.png",
+        "selectedIconPath": "./pages/img/sc_2.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath":"./pages/img/my_1.png",
-        "selectedIconPath":"./pages/img/my_2.png"
+        "iconPath": "./pages/img/my_1.png",
+        "selectedIconPath": "./pages/img/my_2.png"
       }
     ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

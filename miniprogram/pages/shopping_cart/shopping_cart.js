@@ -16,8 +16,10 @@ Page({
   // 支付事件
   pay: function (e) {
     let that = this
+    var app=getApp()
     db.collection('shopping_cart').where({
-      product_checked: "true"
+      product_checked: "true",
+      _openid:app.globalData.openid
     }).get({
       success: function (res) {
         console.log('获取商品成功', res)
@@ -175,7 +177,10 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    db.collection('shopping_cart').get({
+    var app=getApp()
+    db.collection('shopping_cart').where({
+      _openid:app.globalData.openid
+    }).get({
       success: function (res) {
         console.log('获取购物车商品成功', res)
         that.setData({
@@ -191,7 +196,11 @@ Page({
 
   onShow: function () {
     let that = this
-    db.collection('shopping_cart').get({
+    var app=getApp();
+    console.log(app.globalData.openid)
+    db.collection('shopping_cart').where({
+      _openid:app.globalData.openid
+    }).get({
       success: function (res) {
         console.log('获取购物车商品成功', res)
         that.setData({

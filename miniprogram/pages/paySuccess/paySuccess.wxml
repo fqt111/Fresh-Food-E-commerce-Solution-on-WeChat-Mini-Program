@@ -1,0 +1,10 @@
+<!--pages/pay/pay.wxml-->
+<view class="result_contain">
+  <view class="result_img">
+    <icon type="{{resultType}}" size="72"></icon>
+  </view>
+  <view class="result_content">{{resultContent}}</view>
+  
+    <text class="result_to_order"  bindtap="backTo">返回首页</text>
+
+</view>
