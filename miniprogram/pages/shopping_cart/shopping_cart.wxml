@@ -32,8 +32,6 @@
   <view class="line"></view>
 </block>
 
-
-<!-- 哈哈哈 -->
 <!-- 按钮模块 -->
 <view class="anniu">
   <button bindtap="delete" size="mini" type="warn" plain="true">删除</button>

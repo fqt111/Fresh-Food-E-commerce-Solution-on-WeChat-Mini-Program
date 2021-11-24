@@ -2,8 +2,7 @@ wx.cloud.init()
 const db = wx.cloud.database({
   env: "cloud1-6gtiz48ybf23c5c5"
 })
-// asdad
-//d
+
 let value = ''
 Page({
   data: {
@@ -16,6 +15,8 @@ Page({
     list: [],
 
   },
+
+
   // 分类跳转事件
   fenlei: function (e) {
     console.log(e)
@@ -30,21 +31,19 @@ Page({
   //wrt
   search_1: function () {
     console.log('chufa', value)
-    let that = this
+    // wx.cloud.callFunction({
+    //   name: 'test',
+    //   complete: res => {
+    //     console.log('callFunction test result: ', res)
+    //   }
+    // })
     if (value && value.length > 0) {
-
       db.collection("food_list").where({ //collectionName 表示欲模糊查询数据所在collection的名
           name: { //columnName表示欲模糊查询数据所在列的名
             $regex: '.*' + value + '.*', //queryContent表示欲查询的内容，‘.*’等同于SQL中的‘%’
             $options: 'i' //$options:'1' 代表这个like的条件不区分大小写,详见开发文档
           }
         }).get()
-        // db.collection('food_list').where({
-        //   name: db.RegExp({
-        //     regexp: 'value',
-        //     options: 'i',
-        //   })
-        // }).get()
         .then(res => {
           console.log('請求成功', res)
           if(res.data.length===0){
@@ -68,9 +67,11 @@ Page({
       })
     }
   },
-  // wrt
+
   onLoad: function () {
-    db.collection('food_list')
+    db.collection('food_list').where({
+      fenlei:'套餐'
+    })
       .orderBy("sell", "desc")
       .limit(5)
       .get()
@@ -83,7 +84,6 @@ Page({
       .catch(err => {
         console.log('請求失敗', err)
       })
-// fqt
 
     db.collection('fenlei')
       .get()
@@ -97,10 +97,4 @@ Page({
         console.log('請求失敗', err)
       })
   },
-  //asdasd
-  onReachBottom: function () {
-
-  },
-
-
 })

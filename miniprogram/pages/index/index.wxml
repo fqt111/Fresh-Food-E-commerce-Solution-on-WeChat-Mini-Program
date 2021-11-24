@@ -1,11 +1,9 @@
 <!-- 搜索框 -->
 <view class="search">
-  <input placeholder="请输入要搜索的商品" bindblur="search" confirm-type="done"></input>
+  <input placeholder="请输入要搜索的商品" placeholder-style="color:#ff6801" cbindblur="search" confirm-type="done"></input>
   <!-- <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/search.png" style="width:50rpx;height:50rpx"></image> -->
   <text bindtap="search_1" class="iconfont icon-sousuokuang"></text>
 </view>
-
-
 
 <view class="list" wx:for="{{search}}" wx:key="_id">
   <navigator class="list_1" url="../product_detail/product_detail?id={{item._id}}">
@@ -16,25 +14,12 @@
   <view class="line"></view>
 </view>
 
-
-<!-- 
-<view class="banner" >
-  <swiper class="banner_1" autoplay="true" circular="true" interval="5000" indicator-dots="true">
-    <swiper-item  wx:for="{{banner}}" wx:key="_id">
-      <image src="{{item.img[0]}}" style="width:750rpx;height:400rpx"></image>
-    </swiper-item>
-  </swiper>
-</view> -->
-
-
-
 <!-- 分类模块 -->
 <view class="fenlei" >
   <view class="fenlei_1" wx:for="{{fenlei}}" wx:key="_id">
     <navigator url="../product_fenlei/product_fenlei?name={{item.name}}"  class="fenlei_2">
       <image src="{{item.img}}" style="width:80rpx;height:80rpx"></image>
       <text>{{item.name}}</text>
-      
     </navigator>
   </view>
   <view class="fenlei_1">

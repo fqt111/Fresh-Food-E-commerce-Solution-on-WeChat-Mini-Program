@@ -1,9 +1,9 @@
 Page{
-  background-color: #ff6801;
+  /* background-color: #ff6801; */
+  background-color: #fff;
 }
 
 /* 搜索框 */
-
 .search{
   width: 90%;
   height: 60rpx;
@@ -16,7 +16,8 @@ Page{
   align-items: center;
   align-self: center;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
+ 
 }
 
 /* 搜索列表 */
@@ -39,24 +40,9 @@ Page{
   justify-content: space-between;
 }
 
-/* 轮播图 */
-.banner{
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  margin-top: 20rpx;
-  width: 100%;
-  height: 400rpx;
-}
-.banner_1{
-  width: 100%;
-  height: 400rpx;
-  overflow: hidden;
-}
-
 /* 分类模块 */
 .fenlei{
-  width: 95%;
+  width: 100%;
   height: 200rpx;
   display: flex;
   flex-direction: row;
