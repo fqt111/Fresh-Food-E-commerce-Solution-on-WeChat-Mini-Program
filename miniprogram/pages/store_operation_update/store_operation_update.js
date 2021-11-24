@@ -188,51 +188,37 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    let that = this
-    // that.setData({
-    //   id:id_1
-    // })
-    db.collection('fenlei').get({
-      success:function(res){
-        console.log('分类获取成功',res)
-        that.setData({
-          fenlei:res.data
-        })
-      },fail:function(res){
-        console.log('分类获取失败',res)
-      }
-    })
-    db.collection('food_list').doc(id_1).get({
-      success:function(res){
-        console.log('信息获取成功',res)
-        that.setData({
-          name:res.data.name,
-          price:res.data.price,
-          detail:res.data.product_contain,
-          id:res.data._id,
-          belong:res.data.belong,
-          content:res.data.content
-        })
-      },fail:function(res){
-        console.log('分信息获取失败',res)
-      }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
+  // onShow: function () {
+  //   let that = this
+  //   // that.setData({
+  //   //   id:id_1
+  //   // })
+  //   db.collection('fenlei').get({
+  //     success:function(res){
+  //       console.log('分类获取成功',res)
+  //       that.setData({
+  //         fenlei:res.data
+  //       })
+  //     },fail:function(res){
+  //       console.log('分类获取失败',res)
+  //     }
+  //   })
+  //   db.collection('food_list').doc(id_1).get({
+  //     success:function(res){
+  //       console.log('信息获取成功',res)
+  //       that.setData({
+  //         name:res.data.name,
+  //         price:res.data.price,
+  //         detail:res.data.product_contain,
+  //         id:res.data._id,
+  //         belong:res.data.belong,
+  //         content:res.data.content
+  //       })
+  //     },fail:function(res){
+  //       console.log('分信息获取失败',res)
+  //     }
+  //   })
+  // },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -244,17 +230,5 @@ Page({
     })
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -22,6 +22,7 @@
           </block>
         </radio-group>
       </view>
+      
       <view class="line"></view>
       <view class="upload_1">
         <view>分类：</view>

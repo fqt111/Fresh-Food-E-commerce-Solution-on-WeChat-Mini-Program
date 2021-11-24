@@ -165,6 +165,12 @@
           "pathName": "pages/fenlei/fenlei",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/store_operation_update/store_operation_update",
+          "pathName": "pages/store_operation_update/store_operation_update",
+          "query": "id=caf707f9613eb24300f3e98d74aae8ae",
+          "scene": null
         }
       ]
     }

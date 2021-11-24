@@ -10,15 +10,37 @@ Page({
         fenlei: [],
         img: [],
         product: [],
-        fenlei_now: ""
+        fenlei_now: "",
+ 
     },
     get_product_detail: function(e) {
       console.log("huoqudetail", e)
-      this.setData({
-          fenlei_now: e.currentTarget.dataset.name
-      })
-      // this.get_product()
+
+      let id = e.currentTarget.dataset.name._id
+      console.log(id)
+      if(e.currentTarget.dataset.name.fenlei=="单品"){
+       	wx.navigateTo({
+          url: '../product_detail2/product_detail2?id=' + id 
+        })
+      }else{
+        wx.navigateTo({
+          url: '../product_detail/product_detail?id=' + id 
+        })
+      }
   },
+  // 当前文件：A.js
+// go: function (e){//event对象
+	
+// 	// 这个就是 flag 值(要带走的参数)
+// 	let flag = e.currentTarget.dataset.flag
+	
+// 	// 路由跳转并带参数(跳转到 B 页面)
+// 	wx.navigateTo({
+//       url: '/pages/B?flag =' + flag 
+//     })
+// }
+
+  
     get_product_fenlei: function(e) {
         console.log("huoqu", e)
         this.setData({

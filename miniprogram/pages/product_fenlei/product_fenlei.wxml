@@ -13,7 +13,7 @@
   <!-- 商品栏 -->
   <scroll-view class="fenlei_right" scroll-y="true">
     <block wx:for="{{product}}" wx:key="_id">
-      <navigator class="fenlei_right_1" bindtap="get_product_detail" data-name="{{item}}" >
+      <view class="fenlei_right_1"  bindtap="get_product_detail"  data-name="{{item}}" > 
         <!-- url="../product_detail/product_detail?id={{item._id}}" -->
         <view class="fenlei_right_2">
           <image src="{{item.img[0]}}" style="width:120rpx;height:120rpx"></image>
@@ -23,7 +23,7 @@
           </view>
         </view>
         <view>销量：{{item.sell}}</view>
-      </navigator>
+      </view>
       <view class="line_row"></view>
     </block>
   </scroll-view>

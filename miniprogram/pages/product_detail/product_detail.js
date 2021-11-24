@@ -156,7 +156,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('产品的id已经获取到了', options)
+    console.log('套餐的id已经获取到了', options)
     db.collection('food_list').doc(options.id)
       .get()
       .then(res => {

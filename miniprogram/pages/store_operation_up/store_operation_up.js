@@ -35,7 +35,7 @@ Page({
             // get resource ID
             console.log(res.fileID)
             that.setData({
-              img:that.data.img.concat(res.fileID)
+              img:that.data.img.concat(res.fileID)//添加到元素到数组中
             })
           },
           fail: function(res) {
@@ -84,12 +84,13 @@ Page({
     //   that.data.category_3=that.data.category_2
     // }
     // console.log(that.data.category_3)
-    if(e.detail.value.name!==""&&e.detail.value.price!==""&&e.detail.value.fenlei!==""&&e.detail.value.detail!==""&&that.data.img.length!==0){
-      db.collection('food_list').add({
+    if(e.detail.value.name!==""&&e.detail.value.price!==""&&e.detail.value.fenlei!==""&&e.detail.value.content!==""&&e.detail.value.detail!==""&&that.data.img.length!==0){
+      db.collection('food_list').add({//添加商品到food_list的数据库中
         data:{
           name:e.detail.value.name,
           price:e.detail.value.price,
           belong:e.detail.value.belong,
+          fenlei:e.detail.value.fenlei,
           content:e.detail.value.content,
           product_contain:e.detail.value.detail,
           img:that.data.img,
@@ -103,7 +104,7 @@ Page({
           })
           .update({
             data:{
-              category:_.push(e.detail.value.belong)
+              category:_.push(e.detail.value.belong)//增加商品所属的子分类
             },
             success:function(res){
               console.log("hahahhaah",res)
