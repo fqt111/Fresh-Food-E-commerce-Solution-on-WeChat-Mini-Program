@@ -7,15 +7,32 @@ Page({
    * 页面的初始数据
    */
   data: {
+    mendian:'默认',
     product:[],
     money:0,
     name:"",
     phone_number:"",
     address:"",
     beizhu:"",
-    time:'12:01'
+    time:'12:01',
+    showView:2,
+    items: [
+      { name: '1', value: '自取' },
+      { name: '2', value: '外卖', checked: 'true' },
+    ]
   },
-
+  radioChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      showView:e.detail.value
+    })
+  },
+  //选择门店，还没写跳转地址
+  selectAddress:function(e){
+    wx.navigateTo({
+      url: '',
+    })
+  },
   //时间选择
   bindTimeChange:function(e){
     this.setData({
@@ -34,7 +51,7 @@ Page({
   pay:function(e){
     let that = this
     var DATE = util.formatDate(new Date());
-    if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""){
+    if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""&&that.data.showView==2||that.data.showView==1){
       db.collection('order').add({
             data:{
               name:that.data.name,
@@ -63,8 +80,8 @@ Page({
                       }
                     })
                   }
-                  wx.switchTab({
-                    url: '../shopping_cart/shopping_cart',
+                  wx.navigateTo({
+                    url: '../paySuccess/paySuccess',
                   })
                 },fail:function(res){
                   console.log('购物车删除失败',res)
@@ -129,8 +146,10 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+    var app=getApp()
     db.collection('shopping_cart').where({
-      product_checked:"true"
+      product_checked:"true",
+      _openid:app.globalData.openid
     }).get({
       success:function(res){
         console.log('获取商品成功',res)

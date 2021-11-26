@@ -1,6 +1,20 @@
 page{
   background-color: rgb(228, 226, 226);
 }
+.radio-group {
+  border-bottom: 1px solid #ddd;
+}
+.radio {
+  display: felx;
+  border-top: 1px solid #ddd;
+  padding: 5px;
+}
+.selfSelect{
+  display: inline-flex;
+  margin: auto;
+  padding: 0%;
+}
+
 .product_list{
   display: flex;
   flex-direction: row;

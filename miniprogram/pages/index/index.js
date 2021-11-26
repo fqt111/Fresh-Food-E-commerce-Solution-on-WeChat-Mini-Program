@@ -13,7 +13,6 @@ Page({
     num: 20,
     ss: false,
     list: [],
-
   },
 
 

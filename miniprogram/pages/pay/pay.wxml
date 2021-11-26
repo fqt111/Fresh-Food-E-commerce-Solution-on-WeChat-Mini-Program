@@ -1,6 +1,15 @@
 <!--pages/pay/pay.wxml-->
 <!-- 地址模块 -->
-<view class="address">
+<view  class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+<view wx:if="{{showView==2}}"class="address">
   <button bindtap="address" style="width:300rpx" plain="true" type="primary">选择地址</button>
   <view class="address_1">
     <view>{{name}}：</view>
@@ -8,10 +17,14 @@
   </view>
   <view>{{address}}</view>
 </view>
-
+<view wx:if="{{showView==1}}" bindtap="selectAddress" class='selfSelect'> 
+  <text style="margin-right: 20rpx;" >点击选择取货门店:</text>
+  <view>{{mendian}}</view>
+</view>
 <!-- 时间选择模块 -->
 <view class="time">
-  <view>选择送达时间</view>
+  <view wx:if="{{showView==2}}">选择送达时间</view>
+  <view wx:if="{{showView==1}}">选择取货时间</view>
   <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
     <view class="picker">{{time}}
     </view>
@@ -44,8 +57,7 @@
 
 
 <!-- 订单备注 -->
-<view class="beizhu" >
-  <view>备注：</view>
+<view class="beizhu" > 
   <textarea placeholder="请填入备注" bindinput="beizhu"></textarea>
 </view>
 
