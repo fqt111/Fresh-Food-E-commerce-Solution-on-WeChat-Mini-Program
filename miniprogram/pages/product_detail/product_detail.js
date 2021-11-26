@@ -12,9 +12,10 @@ Page({
     product_name: "",
     product_src: [],
     product_price: 0,
-    product_detail: "",
+    product_detail: [],
     product_num: "",
-    product_contain: "",
+    product_contain: [],
+    product_content:[],
     id: "",
     product_add:[],
     //没有get到这个方法
@@ -166,7 +167,8 @@ Page({
           product_name: res.data.name,
           product_num: res.data.sell,
           product_price: res.data.price,
-          product_detail: res.data.content,
+          product_content: res.data.content,
+          product_detail:res.data.detail,
           product_contain: res.data.product_contain,
           id: res.data._id
         })

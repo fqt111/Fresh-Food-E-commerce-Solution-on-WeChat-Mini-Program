@@ -14,18 +14,35 @@
   <view class="line"></view>
 </view>
 
-<!-- 分类模块 -->
-<view class="fenlei" >
-  <view class="fenlei_1" wx:for="{{fenlei}}" wx:key="_id">
-    <navigator url="../product_fenlei/product_fenlei?name={{item.name}}"  class="fenlei_2">
+    <!-- <navigator url="../product_fenlei/product_fenlei?name={{item.name}}"  class="fenlei_2">
       <image src="{{item.img}}" style="width:80rpx;height:80rpx"></image>
       <text>{{item.name}}</text>
+    </navigator> -->
+<!-- 分类模块 -->
+<view class="fenlei" >
+  <view class="fenlei_1" >
+    <!-- wx:for="{{fenlei}}" wx:key="_id" -->
+    <navigator  url="../product_fenlei/product_fenlei?name=单品" class="fenlei_2">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/danpin.png" style="width:80rpx;height:80rpx"></image>
+    <button size="mini"  type="default">
+      <text style="font-size:28rpx">单品</text>
+    </button>
     </navigator>
   </view>
+
+  <view class="fenlei_1">
+    <navigator url="../product_fenlei/product_fenlei?name=套餐"  class="fenlei_2">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/taocan.png" style="width:80rpx;height:80rpx"></image>
+    <button size="mini"  type="default">
+      <text style="font-size:28rpx">套餐</text>
+    </button>
+    </navigator>
+  </view>
+  
   <view class="fenlei_1">
     <view  class="fenlei_2">
       <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/kefu.png" style="width:80rpx;height:80rpx"></image>
-    <button open-type="contact" size="mini"  type="primary">
+    <button open-type="contact" size="mini"  type="default">
       <text style="font-size:28rpx">客服订制</text>
     </button>
     </view>

@@ -14,20 +14,25 @@
   </view>
 
   <view class="product">
-    <view class="product_detail">介绍</view>
-    <view class="product_1">
-      <view>{{product_detail}}</view>
+    <view class="product_detail">初处理步骤</view>
+    <view wx:for="{{product_detail}}" wx:key="_id" class="product_1">
+      <view>{{item}}</view>
     </view>
   </view>
 
+  <!-- <block wx:for="{{fenlei}}" wx:key="_id">
+      <view class="fenlei_left_1" bindtap="get_product_fenlei" data-name="{{item}}">
+        <image src="{{item.img}}" style="width:50rpx;height:50rpx"></image>
+        <view>{{item}}</view>
+      </view>
+    </block> -->
+    
   <view class="line"></view>
-
-
   <!-- 商品详情 -->
   <view class="product">
-    <view class="product_detail">配料</view>
-    <view class="product_1">
-      <view>{{product_contain}}</view>
+    <view class="product_detail">配料信息</view>
+    <view wx:for="{{product_contain}}" wx:key="_id" class="product_1">
+      <view>{{item}}</view>
     </view>
   </view>
   
