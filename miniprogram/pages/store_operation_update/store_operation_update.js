@@ -51,8 +51,8 @@ Page({
         }
       }
     })
-    
   },
+  
   // 上传图片
   upload_img:function(){
     let that = this

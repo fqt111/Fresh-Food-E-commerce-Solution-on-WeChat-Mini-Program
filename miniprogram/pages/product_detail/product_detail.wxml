@@ -7,62 +7,117 @@
   </swiper>
 </view>
 
-<!-- 产品信息 -->
+
   <view class="goods_price">￥{{product_price}}</view>
   <view class="goods_name_row">
     <view class="goods_name">{{product_name}}</view>
   </view>
 
+<!-- 初处理步骤 -->
   <view class="product">
     <view class="product_detail">初处理步骤</view>
-    <view wx:for="{{product_detail}}" wx:key="_id" class="product_1">
-      <view>{{item}}</view>
+    <view wx:for="{{product_process}}" wx:key="_id" class="product_1">
+      <view>{{index+1}} : {{item}}</view>
     </view>
   </view>
-
-  <!-- <block wx:for="{{fenlei}}" wx:key="_id">
-      <view class="fenlei_left_1" bindtap="get_product_fenlei" data-name="{{item}}">
-        <image src="{{item.img}}" style="width:50rpx;height:50rpx"></image>
-        <view>{{item}}</view>
-      </view>
-    </block> -->
     
   <view class="line"></view>
-  <!-- 商品详情 -->
+
+  <!-- 配料信息 -->
   <view class="product">
     <view class="product_detail">配料信息</view>
-    <view wx:for="{{product_contain}}" wx:key="_id" class="product_1">
-      <view>{{item}}</view>
+    <view class="product_2">
+      <view>主要食材 ： {{product_detail1}}</view> 
+    </view>
+    <view class="product_2">
+      <view>辅料 ： {{product_detail2}}</view>
     </view>
   </view>
   
- 
+  <view class="line"></view>
 
-  <view class="product_delete">
-    <view>请输入需要删减的辅料（主要成分不给予删减）</view>
+  <!-- 定制辅料 -->
+  <view class="product">
+  <view bindtap="toggleDialog" >
+<view style="font-weight: 600;">请选择需要添加的辅料</view>
+<view class="choose">
+<view class="choose_1">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/danpin.png" style="width:50rpx;height:50rpx"></image>
+</view>
+<view class="choose_1">
+    <button size="mini"  type="default">
+      <text style="font-size:28rpx">定制</text>
+    </button>
+    </view>
+  </view>
+  </view>
+</view>
+
+<view class="{{showDialog ? 'zan-dialog--show' : 'pop_hidden' }}">
+ <view class="zan-dialog__mask" bindtap="toggleDialog" ></view>
+ <view class="zan-dialog__container">
+  <view style='padding:10rpx;'>主要食材（不给予删减）: {{product_detail1}}</view>
+  <view style='padding:10rpx;'>配料 : {{product_detail2}}</view>
+
+  <view class="comment-btn">
+        <button 
+            wx:for="{{product_choose}}" 
+            wx:for-item="item" 
+            wx:key="item.index"  
+            bindtap="checkboxChange" 
+            data-value="{{item.value}}" 
+            data-index="{{index}}"  
+            checked="{{item.selected}}"
+            class="btn {{item.selected ? 'btn-selected' : ''}}" >
+            {{item.value}}
+        </button>
+    </view>
+    <button type="primary" bindtap="finish">完成</button>
+ </view>
+</view>
+
+<view class="line"></view>
+
+  <view class="product_note">
+    <view>请添加备注（可选）</view>
   </view>
     <view style="padding: 15rpx;">
-      <textarea placeholder="请输入需要添加或删减的辅料" bindblur="search" ></textarea>
+      <textarea style="height:50rpx" placeholder="请添加备注" bindblur="note" ></textarea>
     </view>
 
+<view wx:for="{{product_assessment}}">
+  <view bindtap="onTap" data-index="{{index}}">
+    {{item.title}}
+  </view>
+  <view class="{{item.flag?'isBlock':''}}">
+    {{item.content}}
+  </view>
+</view>
+    <!-- // wxml -->
+    <!-- <view class="company-detail">
+    <view class="company-detail-content">
+      <view class="weui-loadmore weui-loadmore_line">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">公司介绍</view>
+      </view>
+      <view wx:for="{{product_assessment}}" class="long-dec {{isFold?'hide':'show'}}"> 
+        <text class="first-dec">
+          创业是个失败概率很大的事情，我们很高兴从2012底到现在还活着， 而且还活的很不错。 目前有赞旗下的产品有：有赞微商城、有赞收银、有赞零售、有赞美业、有赞批发、有赞买家版.我们认为，相比较业务来说，团队才是公司的核心。有赞没有“员工”只有“小伙伴”，也没有人姓“公”名“司”，我们有一群聪明、有要性、又皮实的伙伴，这才是我们最大的资产。
+        </text>
+        <text class="second-dec">
+          我们认为，相比较业务来说，团队才是公司的核心。有赞没有“员工”只有“小伙伴”，也没有人姓“公”名“司”，我们有一群聪明、有要性、又皮实的伙伴，这才是我们最大的资产。
+        </text>
+        <text class="last-dec">
+          有赞的小伙伴目前已超过1000人，工程师比例占55%，我们有很浓的工程师氛围，每周都有很多的有意思的分享：有出国旅游的分享、有如何搭讪的分享、有如何装修房子的分享...技术分享更是数不胜数。 我们的工作不是很轻松，但我们的氛围很轻松，很open，公司里随处可见骑着独轮车来回跑的工程师、懒人沙发、午睡吊篮、复古电话亭等等，每个月都有节日、新人表演、拓展、派对等，对我们来说，天天都可以是节日。我们倡导简单直接的沟通方式，希望做一家通透的公司。这里并没有过多的等级划分，你可以随时提出自己的意见和任何人PK。福利方面我们全额缴纳五险一金，每月980元的有赞E卡鼓励大家一起吃喝玩乐。工程师标配MacBookPro、大屏显示器和机械键盘。办公室里常备零食、水果，休息区有电视、游戏机、桌球、乒乓球、四驱赛车、桌游随时供大家放松减压。每天晚下班的打车费报销，每年给你和你的家人提供旅游和体检等等。
+        </text>
+      <view>{{item}}</view>
+      </view>
+      <image class="arrow" src=" {{isFold?'../../youzan-image/down.png':'../../youzan-image/up.png'}}" bindtap="showAll">haha</image>
+    </view>
+  </view> -->
 
-    <!-- <checkbox-group bindchange="checkboxChange">
-          <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
-            <view class="weui-cell__hd">
-              <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
-            </view>
-            <view class="weui-cell__bd">{{item.name}}</view>
-          </label>
-        </checkbox-group> -->
-    <!-- <checkbox-group class="checkboxgroup" bindchange="checkboxChange">
-      <label class="checkbox" wx:for="{{product_contain}}">
-        <checkbox value="{{item}}" checked="{{item.checked}}" />{{item}}
-      </label>
-    </checkbox-group> -->
-  
+
 
   <view style="align-self: center;height:150rpx">已到底</view>
-
 
   <!-- 按钮 -->
   <view class="pay">

@@ -97,39 +97,6 @@ Page({
       console.log(e)
     })
   },
-  // delete: function () {
-  //   let that = this
-  //   var app = getApp();
-  //   console.log(app.globalData.openid)
-  //   wx.cloud.callFunction({
-  //     name: "product_delet",
-  //     success: function (res) {
-  //           wx.showToast({
-  //             title: '删除成功',
-  //             icon: 'success'
-  //           })
-  //           that.onLoad()
-  //         },
-  //         fail(res) {
-  //           console.log('fail')
-  //         }
-  //   })
-  //   wx.cloud.database().collection('shopping_cart').where({
-  //     _openid: app.globalData.openid,
-  //     product_checked: "true"
-  //   }).remove({
-  //     success: function (res) {
-  //       wx.showToast({
-  //         title: '删除成功',
-  //         icon: 'success'
-  //       })
-  //       that.onLoad()
-  //     },
-  //     fail(res) {
-  //       console.log('fail')
-  //     }
-  //   })
-  // },
 
   // 商品数量加事件
   product_jia: function (e) {

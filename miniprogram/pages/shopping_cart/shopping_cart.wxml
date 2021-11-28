@@ -10,10 +10,13 @@
         <image src="{{item.product_src}}" style="width:100rpx;height:100rpx"></image>
         <view class="product_list_2">
           <view style="font-size:20px">{{item.product_name}}</view>
-          <view style="color:red">￥:{{item.product_price}}----{{item.product_add}}</view>
-         
+          <view style="color:red">￥:{{item.product_price}}  备注：{{item.product_note}}</view>
+          添加辅料：
+          <view class="label-list">
+          <view  wx:for="{{item.product_add}}" wx:for-item="element" wx:key="index">{{element}}/</view>
         </view>
-       
+        </view>
+      
        
       </view>
     </view>

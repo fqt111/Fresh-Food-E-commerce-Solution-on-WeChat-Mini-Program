@@ -19,6 +19,7 @@
   color: var(--themeColor);
 }
 .goods_name_row {
+  padding: 15rpx;
   border-top: 5rpx solid #dedede;
   border-bottom: 5rpx solid #dedede;
   padding: 10rpx 0;
@@ -56,12 +57,13 @@
 }
 .product_detail {
   /* padding: 10rpx 0; */
+  font-weight: 600;
   height: 100%;
   display: flex;
   /* justify-content: center;
   align-items: center; */
   border-radius: 15rpx;
-  color: #666;
+  /* color: #666; */
   /* font-size: 50rpx; */
 }
 
@@ -73,7 +75,16 @@
   width: 100%;
   /* font-size: 30rpx; */
   margin-top: 20rpx;
-  margin-bottom: 20rpx;
+}
+
+.product_2{
+  /* justify-content: center;
+  align-items: center; */
+  display: flex;
+  flex-direction: row;
+
+  /* font-size: 30rpx; */
+  margin-top: 20rpx;
 }
 
 
@@ -83,7 +94,7 @@
   background-color: rgb(209, 209, 209);
   margin-bottom: 10rpx;
 }
-/* 商品详情 */
+/* 商品详情
 .product_contain{
   display: flex;
   flex-direction: row;
@@ -94,14 +105,122 @@
 }
 .checkbox{
   margin-right: 100rpx;
+} */
+
+/* 定制以及弹窗 */
+.zan-dialog__mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  /* background: rgba(0, 0, 0, 0); */
+  /* 设置阴影半透明背景如：  */
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+ }
+  
+ .zan-dialog__container {
+  position: fixed;
+  bottom: 600rpx;
+  width: 650rpx;
+  /* 弹窗布局宽 */
+  /* height: 700rpx; */
+  /* 弹窗布局高，与下面弹出距离transform有关 */
+  margin-left: 50rpx;
+  background: #f8f8f8;
+  transform: translateY(300%);
+  /* 弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */
+  transition: all 0.4s ease;
+  z-index: 12;
+  border-radius: 20rpx;
+  box-shadow: 0px 3px 3px 2px gainsboro;
+  /* 弹框的悬浮阴影效果，如不需要可注释该行 */
+ }
+  
+ .zan-dialog--show .zan-dialog__container {
+  transform: translateY(0);
+ }
+  
+ .zan-dialog--show .zan-dialog__mask {
+  display: block;
+ }
+ /*隐藏*/
+ .pop_hidden{
+   display: none;
+ }
+
+ .choose{
+  width: 96%;
+  display: flex;
+}
+ .choose_1{
+   /* width: 25rpx; */
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
 }
 
-.product_delete{
-  padding: 15rpx;
-  font-size: 32rpx;
-  font-weight: 600;
-  color: var(--themeColor);
+.btn{
+  width: 150rpx;
+  height: 70rpx;
+  font-size: 24rpx;
+  padding: 0;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  border-radius: 4px;
+  margin: 15rpx 10rpx;
+  text-align: center;
 }
+.btn-selected{
+  border: 1px solid #06a380;
+}
+
+/* 备注信息 */
+.product_note{
+  width: 96%;
+  padding: 15rpx;
+  /* font-size: 32rpx; */
+  font-weight: 600;
+  /* color: var(--themeColor); */
+}
+
+/* // wxss */
+
+.isBlock{
+  display: none
+}
+.long-dec{
+  padding-left: 20rpx;
+  margin-top: -87rpx;
+  display: -webkit-box;/*关键属性*/
+  font-size:28rpx;
+  color:#cfcfd0;
+  line-height: 40rpx;
+  word-break: break-all;
+  -webkit-box-orient: vertical;/* 关键属性 */
+  -webkit-line-clamp:6;/* 关键属性 */
+  overflow: hidden;/* 关键属性 */
+  text-overflow:ellipsis;/* 超出内容显示省略号*/
+}
+.hide{
+ display: -webkit-box;
+}
+.show{
+ display: block;
+}
+.arrow{
+ position: absolute;
+ width: 40rpx;
+ height: 43rpx;
+ left: 50%;
+ transform: translate(-50%);
+}
+
 /* 购买按钮 */
 .pay{
   width: 100%;
