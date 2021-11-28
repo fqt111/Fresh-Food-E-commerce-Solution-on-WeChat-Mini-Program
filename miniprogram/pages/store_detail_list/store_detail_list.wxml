@@ -1,0 +1,17 @@
+<!--pages/store_detail_list/store_detail_list.wxml-->
+<scroll-view scroll-y="true">
+<block wx:for="{{store}}" wx:key="_id">
+<navigator url="../store_details/store_details?id={{item._id}}">
+<view class="store_detail_list">
+  <view class="store_detail_box">
+    <view class="store_info">
+    <image src="{{item.store_picture}}" style="width:100rpx;height: 100rpx;"></image>
+    <view class="text_location">{{item.store_location}}</view>
+    <view style="font-size: 10px;color: red;">{{item.store_satisfaction}}</view>
+    </view>
+    </view>
+    </view>
+  </navigator>
+    <view class="line"></view>
+  </block>
+</scroll-view>

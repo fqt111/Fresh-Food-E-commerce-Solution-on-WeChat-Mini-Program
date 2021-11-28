@@ -130,6 +130,11 @@ Page({
       }
     })
   },
+  show_store_list(){
+    wx.navigateTo({
+      url: '../store_detail_list/store_detail_list',
+    })
+  },
   // 计算金额
   get_money_sum() {
     let that = this

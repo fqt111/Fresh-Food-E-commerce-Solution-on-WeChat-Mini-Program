@@ -19,7 +19,14 @@
     "pages/store_operation_order/store_operation_order",
     "pages/store_operation_order_detail/store_operation_order_detail",
     "pages/store_operation_gl/store_operation_gl",
+<<<<<<< Updated upstream
     "pages/store_operation_update/store_operation_update"
+=======
+    "pages/store_operation_update/store_operation_update",
+    "pages/store_detail_list/store_detail_list",
+    "pages/store_details/store_details",
+    "pages/store_details_upload/store_detail_upload"
+>>>>>>> Stashed changes
   ],
   "window": {
     "backgroundColor": "#ff6801",

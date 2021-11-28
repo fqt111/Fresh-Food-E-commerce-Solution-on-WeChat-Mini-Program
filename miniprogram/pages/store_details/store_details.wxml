@@ -1,0 +1,7 @@
+<view>
+<view class="show_picture">
+<image src="{{store.store_picture}}"></image>
+</view>
+<view style="font-size: 50rpx;">地址:{{store.store_location}}</view>
+<view style="font-size: 50rpx;color: red;">评价:{{store.store_satisfaction}}</view>
+</view>
