@@ -166,9 +166,9 @@ showDialog是由toggledialog的点击事件控制true or false -->
     </block>
 </view>
 
-<block wx:for='{{trendsList}}' wx:key='index'>
+<block wx:for='{{product_assessment}}' wx:key='index'>
   <view class="box">
-   <view class="textFour_box {{item.seeMore?'three':''}}">{{item.text}}</view>
+   <view class="textFour_box {{item.seeMore?'three':''}}">{{item.content}}</view>
    <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
     <text class="text_toggle_text">查看更多</text>
     <image class="toggle-icon" src="../../images/1.png"></image>
