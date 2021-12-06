@@ -72,7 +72,7 @@ Page({
         console.log("获取到类别", options.name)
         if (options.name === "单品") {
             console.log("danping")
-            db.collection('food_list').where({
+            db.collection('item').where({
                 belong: "海鲜"
             }).get()
             .then(res => {
@@ -85,8 +85,8 @@ Page({
               console.log('获取分类失败', res)
           })
         } else {
-            console.log("danping")
-            db.collection('food_list').where({
+            console.log("taocan")
+            db.collection('set_meal').where({
                 belong: "川菜"
             }).get()
              .then(res => {

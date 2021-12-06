@@ -3,6 +3,7 @@ const db = wx.cloud.database({
     env: "cloud1-6gtiz48ybf23c5c5"
 })
 let value = ""
+var index;
 Page({
 
     /**
@@ -17,17 +18,71 @@ Page({
         product_num: "",
         product_choose: [],
         product_process: [],
+        product_note:"",
         id: "",
-        product_add: "",
-
+        product_assessment:[],
         showDialog: false,
         detailValue: [],
         //没有get到这个方法
         isFold: true,
-        product_id: "",
+        show: '全文',
 
+        trendsList:[
+            {
+             auto: false,
+             seeMore: false,
+             text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
+            },
+            {
+             auto: false,
+             seeMore: false,
+             text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
+            },
+             {
+             auto: false,
+             seeMore: false,
+              text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
+            },
+            {
+             auto: false,
+             seeMore: false,
+             text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
+            },
+            {
+             auto: false,
+             seeMore: false,
+             text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
+            },
+           ]
     },
 
+    toggleHandler: function (e) {
+          var that = this;
+          index = e.currentTarget.dataset.index;
+          for (var i = 0; i < that.data.trendsList.length; i++) {
+           if (index == i) {
+            that.data.trendsList[index].auto = true;
+            that.data.trendsList[index].seeMore = false;
+           }
+          }
+          that.setData({
+           trendsList: that.data.trendsList
+          })
+         },
+         //收起更多
+         toggleContent: function (e) {
+          var that = this;
+          index = e.currentTarget.dataset.index;
+          for (var i = 0; i < that.data.trendsList.length; i++) {
+           if (index == i) {
+            that.data.trendsList[index].auto = true;
+            that.data.trendsList[index].seeMore = true;
+           }
+          }
+          that.setData({
+           trendsList: that.data.trendsList
+          })
+         },
     // 选择需要删减的辅料
     checkboxChange(e) {
         console.log('checkboxChange e:', e);
@@ -52,7 +107,6 @@ Page({
             showDialog: !this.data.showDialog
         });
     },
-
     finish: function() {
         this.setData({
             showDialog: !this.data.showDialog
@@ -167,22 +221,38 @@ Page({
         })
     },
 
-    onTap: function(e){
-      //取出“点的是第几个标题”
-      var index=e.currentTarget.dataset.index;
-      //go
-      var list=this.data.product_assessment;
-      var data=list[index];
-      data.flag=!data.flag;//toggle
-      this.setData({
-        product_assessment:list
-      });
-    },
-    // showAll: function(e) {
-    //     this.setData({
-    //         isFold: !this.data.isFold,
-    //     })
+    // onTap: function(e){
+    //   //取出“点的是第几个标题”
+    //   var index=e.currentTarget.dataset.index;
+    //   //go
+    //   var list=this.data.product_assessment;
+    //   var data=list[index];
+    //   data.flag=!data.flag;//toggle
+    //   this.setData({
+    //     product_assessment:list
+    //   });
     // },
+    showAll: function(e) {
+        console.log('checkboxChange e:', e);
+        var index = e.target.dataset.index;
+        var list = this.data.product_assessment;
+        var data = list[index];
+        console.log(data);
+        data.flag = !data.flag;
+        this.setData({
+            product_assessment: list
+        });
+
+        if (data.flag == true) {
+            this.setData({
+                show: "全文"
+            })
+        } else {
+            this.setData({
+                show: "收起"
+            })
+        }
+    },
 
 
     /**
@@ -190,7 +260,7 @@ Page({
      */
     onLoad: function(options) {
         console.log('套餐的id已经获取到了', options)
-        db.collection('food_detail').doc(options.id)
+        db.collection('set_meal').doc(options.id)
             .get()
             .then(res => {
                 console.log('請求成功', res)
@@ -208,7 +278,6 @@ Page({
                 console.log(options.id)
                 db.collection('assessment').where({
                         product_id: options.id
-                            // comment_name:"宫保鸡丁"
                     })
                     .get()
                     .then(res => {
@@ -225,8 +294,29 @@ Page({
                 console.log('請求失敗', err)
             })
 
-
+            
+            var that = this;
+            let query = wx.createSelectorQuery().in(this);
+            query.selectAll('.textFour_box').fields({
+             size:true
+            }).exec(function (res) {
+             console.log(res, '所有节点信息');
+             let lineHeight = 26; //固定高度值 单位：PX
+             for (var i = 0; i < res[0].length; i++) {
+              if ((res[0][i].height / lineHeight) > 3) {
+            //    that.data.trendsList[i].auto = true;
+            //    that.data.trendsList[i].seeMore = true;
+               that.data.product_assessment[i].auto = true;
+               that.data.product_assessment[i].seeMore = true;
+              }
+             }
+             that.setData({
+            //   trendsList: that.data.trendsList,
+              product_assessment: that.data.product_assessment
+             })
+            })
 
     },
+
 
 })
