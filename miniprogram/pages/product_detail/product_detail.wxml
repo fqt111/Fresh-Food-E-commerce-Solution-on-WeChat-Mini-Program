@@ -107,13 +107,8 @@ showDialog是由toggledialog的点击事件控制true or false -->
                 <image>{{item.avatarUrl}}</image>
                 <text>{{item.nickname}}</text>
             </view>
-         
             <!-- <view class="post_content {{item.flag?'hide':'show'}}"  bindtap="showAll" data-index="{{index}}">{{item.content}}</view> -->
-            
             <!-- <view bindtap="showAll" data-index="{{index}}" style="color: aquamarine; ">{{show}}</view> -->
-         
-
-
   <!-- <view class="box">
    <view class="textFour_box {{item.seeMore?'three':''}}">{{item.text}}</view>
    <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
@@ -124,11 +119,8 @@ showDialog是由toggledialog的点击事件控制true or false -->
     <text class="text_toggle_text">收起</text>
     <image class="toggle-icon" src="../../images/2.png"></image>
    </view>
-  </view> -->
-
-
-            
-              <scroll-view class="img" scroll-y="true">
+  </view> -->   
+             <scroll-view class="img" scroll-y="true">
                <block wx:for="{{item.image}}" wx:for-item="image" wx:key="index">
                <image src="{{image}}" style="width:213rpx;height:213rpx"></image>
                </block>

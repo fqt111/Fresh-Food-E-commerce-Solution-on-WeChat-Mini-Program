@@ -191,18 +191,6 @@ showDialog是由toggledialog的点击事件控制true or false -->
      
       <image class="arrow" src=" {{isFold?'../../youzan-image/down.png':'../../youzan-image/up.png'}}" bindtap="showAll">haha</image> -->
 
-      <view class="coupon-remark-wrapper">
-    <!--id = toggle-warpper 为包裹内容的父级元素-->
-    <view class="coupon-remark-content" id="toggle-wrapper">
-        <!--id = toggle-content 为内容的容器，控制显示全部内容还是显示超出一行... -->
-        <view id="toggle-content" class="{{toggleParams.toggleFlag === 1?'ellipsis':''}}" hidden="{{toggleParams.toggleFlag === 0}}">
-            {{couponData.limitRemark}}
-        </view>
-        <!--class = toggle-icon 为展开更多按钮-->
-        <image class="toggle-icon {{toggleParams.toggleFlag === 1?'hide':'show'}}" wx:if="{{toggleParams.toggleShow}}" bindtap="toggleHandler" src="https://img.dmallcdn.com//dshop/201904/b1c5af14-f29a-494c-9e3b-899f1a2cf218"></image>
-    </view>
-</view>
-
   <view style="align-self: center;height:150rpx">已到底</view>
 
   <!-- 按钮 -->

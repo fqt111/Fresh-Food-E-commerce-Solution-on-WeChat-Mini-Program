@@ -142,7 +142,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     let that = this
     var app=getApp()
     db.collection('shopping_cart').where({
@@ -153,6 +153,7 @@ Page({
         that.setData({
           product: res.data,
         })
+        
         that.get_money_sum()
       },
       fail: function (res) {

@@ -1,8 +1,8 @@
 .product_list{
   display: flex;
   flex-direction: row;
-  width: 96%;
-  height: 200rpx;
+  width: 100%;
+  height:auto;
   align-self: center;
   align-items: center;
   justify-content: space-between;
@@ -16,18 +16,25 @@
 }
 .product_list_2{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-left: 20rpx;
+  align-self: center;
+  align-content: center;
+  align-items: center;
+}
+.hidden{
+  display: none;
 }
 .product_list_3{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-left: 20rpx;
 }
-.product_list_4{
+
+.product_list_10{
   display: flex;
   flex-direction: row;
-  width: 25%;
+  width: 20%;
   justify-content: space-between;
   font-size: 20px;
   align-items: center;
@@ -35,7 +42,8 @@
 
 .label-list {
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  /* justify-content: flex-start; */
 }
 
 .line{
