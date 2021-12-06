@@ -32,6 +32,7 @@ Page({
     wx.navigateTo({
       url: '',
     })
+
   },
   //时间选择
   bindTimeChange:function(e){
@@ -48,8 +49,38 @@ Page({
     })
   },
   // 结算
+  findXy() { //获取用户的经纬度
+    var _this = this
+    wx.getLocation({
+        type: 'wgs84',
+        success(res) {
+            _this.getDistance(res.latitude, res.longitude, 39.924091,116.403414)
+        }
+    })
+},
+
+ Rad: function(d) { //根据经纬度判断距离
+    return d * Math.PI / 180.0;
+},
+getDistance: function(lat1, lng1, lat2, lng2) {
+    // lat1用户的纬度
+    // lng1用户的经度
+    // lat2商家的纬度
+    // lng2商家的经度
+    var radLat1 = this.Rad(lat1);
+    var radLat2 = this.Rad(lat2);
+    var a = radLat1 - radLat2;
+    var b = this.Rad(lng1) - this.Rad(lng2);
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+    s = s * 6378.137;
+    s = Math.round(s * 10000) / 10000;
+    s = s.toFixed(2) + '公里' //保留两位小数
+    console.log('经纬度计算的距离:' + s)
+    return s
+},
   pay:function(e){
     let that = this
+
     var DATE = util.formatDate(new Date());
     if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""&&that.data.showView==2||that.data.showView==1){
       db.collection('order').add({
@@ -102,6 +133,7 @@ Page({
   // 选择地址
   address:function(e){
     let that = this
+
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.address']) {
@@ -146,6 +178,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+    var _this = this;
+    _this.findXy() //查询用户与商家的距离
     var app=getApp()
     db.collection('shopping_cart').where({
       product_checked:"true",

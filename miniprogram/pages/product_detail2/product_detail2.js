@@ -272,13 +272,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+
   onLoad: function(options) {
       console.log('单品的id已经获取到了', options)
+      var that=this
+    
       db.collection('item').doc(options.id)
           .get()
           .then(res => {
               console.log('請求成功', res)
-              this.setData({
+              that.setData({
                   product_src: res.data.img, //
                   product_name: res.data.name, //
                   product_num: res.data.sell, //
@@ -294,9 +297,29 @@ Page({
                   })
                   .get()
                   .then(res => {
-                      console.log('assessment請求成功', res.data[0])
+                      console.log('assessment請求成功', res.data)
                       this.setData({
-                          product_assessment: res.data[0].assessment
+                        product_assessment: res.data[0].assessment
+                      })
+                      var that = this;
+                      let query = wx.createSelectorQuery().in(that);
+                      query.selectAll('.textFour_box').fields({
+                       size:true
+                      }).exec(function (res) {
+                       console.log(res, '所有节点信息');
+                       let lineHeight = 26; //固定高度值 单位：PX
+                       for (var i = 0; i < res[0].length; i++) {
+                        if ((res[0][i].height / lineHeight) > 3) {
+                        //  that.data.trendsList[i].auto = true;
+                        //  that.data.trendsList[i].seeMore = true;
+                         that.data.product_assessment[i].auto = true;
+                         that.data.product_assessment[i].seeMore = true;
+                        }
+                       }
+                       that.setData({
+                        // trendsList: that.data.trendsList,
+                        product_assessment: that.data.product_assessment
+                       })
                       })
                   })
                   .catch(err => {
@@ -307,26 +330,5 @@ Page({
               console.log('請求失敗', err)
           })
 
-          //获取到评论的行数
-          var that = this;
-          let query = wx.createSelectorQuery().in(this);
-          query.selectAll('.textFour_box').fields({
-           size:true
-          }).exec(function (res) {
-           console.log(res, '所有节点信息');
-           let lineHeight = 26; //固定高度值 单位：PX
-           for (var i = 0; i < res[0].length; i++) {
-            if ((res[0][i].height / lineHeight) > 3) {
-             that.data.trendsList[i].auto = true;
-             that.data.trendsList[i].seeMore = true;
-            //  that.data.product_assessment[i].auto = true;
-            //  that.data.product_assessment[i].seeMore = true;
-            }
-           }
-           that.setData({
-            trendsList: that.data.trendsList,
-            // product_assessment: that.data.product_assessment
-           })
-          })
   },
 })
