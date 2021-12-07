@@ -7,7 +7,10 @@
         <checkbox value="{{item._id}}" checked="{{item.product_checked}}"></checkbox>
       </checkbox-group>
       <view class="product_list_2">
+        <view class="navigate"  bindtap="get_product_detail"  data-name="{{item}}" > 
         <image src="{{item.product_src}}" style="width:100rpx;height:100rpx"></image>
+       <view>修改</view>
+      </view>
         <view class="product_list_3">
           <view style="font-size:20px">{{item.product_name}}--￥:{{item.product_price}}</view>
 
@@ -15,7 +18,7 @@
           <view wx:if="{{item.product_process.length==0}}">初处理选择：无</view>
           <view wx:if="{{item.product_process.length>0}}">初处理选择：</view>
           <view wx:if="{{item.product_process.length>0}}" wx:for="{{item.product_process}}" wx:for-item="element" wx:key="index">{{element}}
-            <view wx:if="{{item.product_process.length>0}}" wx:for="{{item.product_process}}" wx:for-item="element" wx:key="index">
+            <view wx:if="{{item.product_process.length>0}}" wx:for="{{item.product_process}}" wx:key="index">
             <view class="hidden {{index<product_process.length-1?true:false}}">/</view>
           </view>
           </view>

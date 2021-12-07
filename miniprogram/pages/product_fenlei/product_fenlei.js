@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        fenlei_name:"",
         fenlei: [],
         img: [],
         product: [],
@@ -28,19 +29,7 @@ Page({
         })
       }
   },
-  // 当前文件：A.js
-// go: function (e){//event对象
-	
-// 	// 这个就是 flag 值(要带走的参数)
-// 	let flag = e.currentTarget.dataset.flag
-	
-// 	// 路由跳转并带参数(跳转到 B 页面)
-// 	wx.navigateTo({
-//       url: '/pages/B?flag =' + flag 
-//     })
-// }
 
-  
     get_product_fenlei: function(e) {
         console.log("huoqu", e)
         this.setData({
@@ -50,7 +39,8 @@ Page({
     },
     // 获取当前分类的商品
     get_product: function() {
-        db.collection('food_list').where({
+        if(this.data.fenlei_name=="单品"){
+        db.collection('item').where({
                 belong: this.data.fenlei_now
             }).get()
             .then(res => {
@@ -62,6 +52,20 @@ Page({
             .catch(err => {
                 console.log('获取分类失败', res)
             })
+        }else{
+            db.collection('set_meal').where({
+                belong: this.data.fenlei_now
+            }).get()
+            .then(res => {
+                console.log('获取分类成功', res)
+                this.setData({
+                    product: res.data
+                })
+            })
+            .catch(err => {
+                console.log('获取分类失败', res)
+            })
+        }
     },
 
     /**
@@ -69,7 +73,10 @@ Page({
      */
     onLoad: function(options) {
         let that = this
-        console.log("获取到类别", options.name)
+        console.log("获取到类别", options.name);
+        this.setData({
+            fenlei_name:options.name
+        })
         if (options.name === "单品") {
             console.log("danping")
             db.collection('item').where({

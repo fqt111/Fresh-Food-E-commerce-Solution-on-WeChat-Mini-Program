@@ -315,7 +315,7 @@
   font-size: 18px;
 }
 
-/* .box{
+.box{
   margin: 40rpx 32rpx;
  }
  .text_box{
@@ -358,7 +358,7 @@
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
- } */
+ }
 
  /* .coupon-remark-wrapper {
   padding: 20rpx;

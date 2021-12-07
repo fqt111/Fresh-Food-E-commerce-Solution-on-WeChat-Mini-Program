@@ -68,7 +68,7 @@ Page({
   },
 
   onLoad: function () {
-    db.collection('food_list').where({
+    db.collection('set_meal').where({
       fenlei:'套餐'
     })
       .orderBy("sell", "desc")

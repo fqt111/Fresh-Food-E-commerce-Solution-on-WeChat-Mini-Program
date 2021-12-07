@@ -18,6 +18,7 @@ Page({
       product_choose: [],
       product_process: [],
       product_note:"",
+      product_fenlei:"",
       id: "",
       product_assessment:[],
       showDialog: false,
@@ -58,32 +59,33 @@ Page({
   },
 
   toggleHandler: function (e) {
-        var that = this;
-        index = e.currentTarget.dataset.index;
-        for (var i = 0; i < that.data.trendsList.length; i++) {
-         if (index == i) {
-          that.data.trendsList[index].auto = true;
-          that.data.trendsList[index].seeMore = false;
-         }
-        }
-        that.setData({
-         trendsList: that.data.trendsList
-        })
-       },
-       //收起更多
-       toggleContent: function (e) {
-        var that = this;
-        index = e.currentTarget.dataset.index;
-        for (var i = 0; i < that.data.trendsList.length; i++) {
-         if (index == i) {
-          that.data.trendsList[index].auto = true;
-          that.data.trendsList[index].seeMore = true;
-         }
-        }
-        that.setData({
-         trendsList: that.data.trendsList
-        })
-       },
+    var that = this;
+    index = e.currentTarget.dataset.index;
+    for (var i = 0; i < that.data.product_assessment.length; i++) {
+     if (index == i) {
+      that.data.product_assessment[index].auto = true;
+      that.data.product_assessment[index].seeMore = false;
+     }
+    }
+    that.setData({
+        product_assessment: that.data.product_assessment
+    })
+   },
+   //收起更多
+   toggleContent: function (e) {
+    var that = this;
+    index = e.currentTarget.dataset.index;
+    for (var i = 0; i < that.data.product_assessment.length; i++) {
+     if (index == i) {
+      that.data.product_assessment[index].auto = true;
+      that.data.product_assessment[index].seeMore = true;
+     }
+    }
+    that.setData({
+        product_assessment: that.data.product_assessment
+    })
+   },
+   
   // 选择需要删减的辅料
   checkboxChange(e) {
       console.log('checkboxChange e:', e);
@@ -131,7 +133,6 @@ Page({
           showDialog: !this.data.showDialog
       });
   },
-  
   finish2: function() {
       this.setData({
           showDialog: !this.data.showDialog
@@ -164,11 +165,11 @@ Page({
                           product_price: that.data.product_price,
                           product_num: 1,
                           product_id: that.data.id,
-                          // 新增代码
                           product_checked: "true",
                           product_note: that.data.product_note,
                           product_add: that.data.detailValue,
                           product_process: that.data.processValue,
+                          product_fenlei:that.data.product_fenlei,
                       },
                       success: function(res) {
                           console.log('商品加入购物车成功', res)
@@ -180,22 +181,21 @@ Page({
                           console.log('商品加入购物车失败', res)
                       }
                   })
-              } else {
-                  console.log("haha")
-                      // db.collection('shopping_cart').doc(e.target.dataset.id).update({
-                      //   data: {
-                      //     product_num: _.inc(1)
-                      //   }, success:function(res){
-                      //     console.log('商品数量加一',res)
-                      //     that.onLoad()
-                      //   },fail:function(res){
-                      //     console.log('获取商品价格失败',res)
-                      //   }
-                      // })
-                  wx.showToast({
-                      title: '已有这个商品',
-                      icon: 'none'
-                  })
+              } else {        
+                    db.collection('shopping_cart').where({
+                        product_id: that.data.id
+                    }).update({
+                        data:{
+                          product_note: that.data.product_note,
+                          product_add: that.data.detailValue,
+                          product_process: that.data.processValue,
+                        }
+                    })
+                    
+                    wx.showToast({
+                        title: '已加入购物车',
+                        icon: 'none'
+                    })
               }
           },
           fail: function(res) {
@@ -224,6 +224,7 @@ Page({
                           product_note: that.data.product_note,
                           product_add: that.data.detailValue,
                           product_process: that.data.processValue,
+                          product_fenlei:that.data.product_fenlei,
                       },
                       success: function(res) {
                           console.log('hh商品加入购物车成功', res)
@@ -236,6 +237,15 @@ Page({
                       }
                   })
               } else {
+                db.collection('shopping_cart').where({
+                    product_id: that.data.id
+                }).update({
+                    data:{
+                      product_note: that.data.product_note,
+                      product_add: that.data.detailValue,
+                      product_process: that.data.processValue,
+                    }
+                })
                   wx.switchTab({
                       url: '../shopping_cart/shopping_cart',
                   })
@@ -247,28 +257,6 @@ Page({
       })
   },
 
-  showAll: function(e) {
-      console.log('checkboxChange e:', e);
-      var index = e.target.dataset.index;
-      var list = this.data.product_assessment;
-      var data = list[index];
-      console.log(data);
-      data.flag = !data.flag;
-      this.setData({
-          product_assessment: list
-      });
-
-      if (data.flag == true) {
-          this.setData({
-              show: "全文"
-          })
-      } else {
-          this.setData({
-              show: "收起"
-          })
-      }
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -276,7 +264,6 @@ Page({
   onLoad: function(options) {
       console.log('单品的id已经获取到了', options)
       var that=this
-    
       db.collection('item').doc(options.id)
           .get()
           .then(res => {
@@ -289,7 +276,8 @@ Page({
                   product_process: res.data.process, //初处理备注
                   product_weight: res.data.weight,
                   product_choose: res.data.choose, //让用户选择不需要哪些辅料
-                  id: res.data._id //识别id
+                  id: res.data._id, //识别id
+                  product_fenlei:res.data.fenlei,
               })
               console.log(options.id)
               db.collection('assessment').where({
@@ -301,23 +289,24 @@ Page({
                       this.setData({
                         product_assessment: res.data[0].assessment
                       })
+
                       var that = this;
-                      let query = wx.createSelectorQuery().in(that);
+                      const query = wx.createSelectorQuery();
                       query.selectAll('.textFour_box').fields({
-                       size:true
+                       size: true,
                       }).exec(function (res) {
-                       console.log(res, '所有节点信息');
+                       console.log(res[0], '所有节点信息');
                        let lineHeight = 26; //固定高度值 单位：PX
                        for (var i = 0; i < res[0].length; i++) {
                         if ((res[0][i].height / lineHeight) > 3) {
                         //  that.data.trendsList[i].auto = true;
                         //  that.data.trendsList[i].seeMore = true;
-                         that.data.product_assessment[i].auto = true;
+                         that.data.product_assessment[i].seeMore = true;
                          that.data.product_assessment[i].seeMore = true;
                         }
                        }
                        that.setData({
-                        // trendsList: that.data.trendsList,
+                        trendsList: that.data.trendsList,
                         product_assessment: that.data.product_assessment
                        })
                       })
