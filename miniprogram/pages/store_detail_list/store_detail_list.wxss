@@ -6,6 +6,16 @@
   margin-bottom: 10rpx;
 }
 
+.radio-group {
+  border-bottom: 1px solid #ddd;
+}
+
+.radio {
+  display: felx;
+  border-top: 1px solid #ddd;
+  padding: 5px;
+}
+
 .store_detail_list{
   display: flex;
   width: 96%;

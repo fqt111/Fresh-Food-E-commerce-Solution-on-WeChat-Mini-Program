@@ -11,7 +11,7 @@ Page({
     money: 0,
     product_now: [],
     product_id: [],
-    delet_id: []
+    delet_id: [],
   },
   // 支付事件
   pay: function (e) {
