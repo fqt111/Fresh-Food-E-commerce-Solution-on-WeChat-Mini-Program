@@ -9,6 +9,7 @@ Page({
   data: {
     mendian:'默认',
     product:[],
+    position:[],
     money:0,
     name:"",
     phone_number:"",
@@ -16,6 +17,8 @@ Page({
     beizhu:"",
     time:'12:01',
     showView:2,
+    distance:[],
+    shop:[],
     items: [
       { name: '1', value: '自取' },
       { name: '2', value: '外卖', checked: 'true' },
@@ -49,12 +52,69 @@ Page({
     })
   },
   // 结算
-  findXy() { //获取用户的经纬度
+  findXy() { //获取用户的经纬度与计算距离
     var _this = this
+    var dis=[]
     wx.getLocation({
         type: 'wgs84',
         success(res) {
-            _this.getDistance(res.latitude, res.longitude, 39.924091,116.403414)
+          _this.setData({
+            position:res
+          })
+          db.collection('shop').get({
+            success:function(res){
+              console.log('获取店铺成功',res)
+              _this.setData({
+                shop:res.data
+              })
+              console.log('111',_this.data.shop[0].coordinate.latitude)
+             
+              for (var i = 0; i < _this.data.shop.length; ++i) {
+               dis[i]=_this.getDistance(_this.data.position.latitude, _this.data.position.longitude,_this.data.shop[i].coordinate.latitude,_this.data.shop[i].coordinate.longitude)
+               
+             }
+             //distance信息上传到云数据库,以更新的形式
+             db.collection('distance').where({
+               _openid:_this.openid,
+             }).get({
+              success:function(res){
+                console.log("1",res)
+                _this.setData({
+                  distance:res.data
+                })
+                if(!_this.data.distance)
+                {
+                  console.log("更新")
+                 db.collection('distance').update({
+                   data:{
+                    // _openid:_this.openid,
+                     distance:dis
+                   },success:function(res){
+                   console.log("上传成功")
+                   },fail:function(res){//如果找不到则创建
+                   }
+                 })
+                }else{
+                 console.log("添加")
+                 db.collection('distance').add({
+                   data:{
+                    // _openid:_this.openid,
+                     distance:dis
+                   },success:function(res){
+                   console.log("上传成功")
+                   },fail:function(res){//如果找不到则创建
+                   }
+                 })
+                }
+              },fail:function(res){
+              }
+             })
+             console.log(1)
+   
+            },fail:function(res){
+              console.log('获取店铺失败',res)
+            }
+          })
         }
     })
 },
@@ -74,8 +134,8 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
     s = s * 6378.137;
     s = Math.round(s * 10000) / 10000;
-    s = s.toFixed(2) + '公里' //保留两位小数
-    console.log('经纬度计算的距离:' + s)
+    s = s.toFixed(2)  //保留两位小数
+    console.log('经纬度计算的距离:' + s+'公里')
     return s
 },
   pay:function(e){
