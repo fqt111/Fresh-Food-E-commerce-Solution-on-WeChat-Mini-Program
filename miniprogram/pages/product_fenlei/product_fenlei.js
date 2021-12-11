@@ -48,6 +48,7 @@ Page({
                 this.setData({
                     product: res.data
                 })
+                
             })
             .catch(err => {
                 console.log('获取分类失败', res)
