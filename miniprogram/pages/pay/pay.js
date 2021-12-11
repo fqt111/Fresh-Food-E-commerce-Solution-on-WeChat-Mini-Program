@@ -82,10 +82,13 @@ Page({
                 _this.setData({
                   distance:res.data
                 })
-                if(!_this.data.distance)
+                if(_this.data.distance.length!=0)
                 {
+                  console.log(_this.data.distance)
                   console.log("更新")
-                 db.collection('distance').update({
+                 db.collection('distance').where({
+                    _openid:_this.openid,
+                 }).update({
                    data:{
                     // _openid:_this.openid,
                      distance:dis
