@@ -1,0 +1,6 @@
+/* pages/comment_product/comment_product.wxss */
+.product_note{
+  width: 96%;
+  padding: 15rpx;
+  font-weight: 600;
+}

@@ -1,0 +1,8 @@
+<!--pages/comment_product/comment_product.wxml-->
+<view class="product_note">
+  </view>
+    <view style="padding: 15rpx;">
+      <textarea style="height:200rpx" placeholder="请输入评价" bindblur="input_comment" ></textarea>
+    </view>
+
+    <button bindtap="back_and_storage"  data-id="{{item}}">确认评价</button>

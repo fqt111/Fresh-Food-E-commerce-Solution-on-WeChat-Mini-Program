@@ -22,7 +22,10 @@
     "pages/store_operation_update/store_operation_update",
     "pages/store_detail_list/store_detail_list",
     "pages/store_details/store_details",
-    "pages/store_details_upload/store_detail_upload"
+    "pages/store_details_upload/store_detail_upload",
+    "pages/comment_product/comment_product",
+    "pages/comment_shop/comment_shop"
+
   ],
   "window": {
     "backgroundColor": "#ff6801",
