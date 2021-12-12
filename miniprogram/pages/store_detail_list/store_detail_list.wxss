@@ -19,7 +19,7 @@
 .store_detail_list{
   display: flex;
   width: 96%;
-  height: 200rpx;
+  height: 230rpx;
   margin: 10rpx;
   align-self: center;
   background-color: lightgray;
