@@ -161,6 +161,7 @@
           "scene": null
         },
         {
+<<<<<<< Updated upstream
           "name": "pages/fenlei/fenlei",
           "pathName": "pages/fenlei/fenlei",
           "query": "",
@@ -187,6 +188,10 @@
         {
           "name": "pages/product_fenlei/product_fenlei",
           "pathName": "pages/product_fenlei/product_fenlei",
+=======
+          "name": "pages/store_detail_list/store_detail_list",
+          "pathName": "pages/store_detail_list/store_detail_list",
+>>>>>>> Stashed changes
           "query": "",
           "scene": null
         }

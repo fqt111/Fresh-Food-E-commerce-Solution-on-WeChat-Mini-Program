@@ -1,0 +1,34 @@
+/* pages/store_detail_list/store_detail_list.wxss */
+.line{
+  width: 100%;
+  height: 5rpx;
+  background-color: rgb(136, 135, 135);
+  margin-bottom: 10rpx;
+}
+
+.radio-group {
+  border-bottom: 1px solid #ddd;
+}
+
+.radio {
+  display: felx;
+  border-top: 1px solid #ddd;
+  padding: 5px;
+}
+
+.store_detail_list{
+  display: flex;
+  width: 96%;
+  height: 230rpx;
+  margin: 10rpx;
+  align-self: center;
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.text_location{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 600rpx;
+}

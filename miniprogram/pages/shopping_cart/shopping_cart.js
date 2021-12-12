@@ -11,7 +11,7 @@ Page({
     money: 0,
     product_now: [],
     product_id: [],
-    delet_id: []
+    delet_id: [],
   },
   // 点击跳转详情界面修改信息
   get_product_detail: function(e) {
