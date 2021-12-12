@@ -9,6 +9,7 @@ Page({
   data: {
     mendian:'默认',
     product:[],
+    position:[],
     money:0,
     name:"",
     phone_number:"",
@@ -16,6 +17,8 @@ Page({
     beizhu:"",
     time:'12:01',
     showView:2,
+    distance:[],
+    shop:[],
     items: [
       { name: '1', value: '自取' },
       { name: '2', value: '外卖', checked: 'true' },
@@ -32,6 +35,7 @@ Page({
     wx.navigateTo({
       url: '',
     })
+
   },
   //时间选择
   bindTimeChange:function(e){
@@ -48,8 +52,98 @@ Page({
     })
   },
   // 结算
+  findXy() { //获取用户的经纬度与计算距离
+    var _this = this
+    var dis=[]
+    wx.getLocation({
+        type: 'wgs84',
+        success(res) {
+          _this.setData({
+            position:res
+          })
+          db.collection('shop').get({
+            success:function(res){
+              console.log('获取店铺成功',res)
+              _this.setData({
+                shop:res.data
+              })
+              console.log('111',_this.data.shop[0].coordinate.latitude)
+             
+              for (var i = 0; i < _this.data.shop.length; ++i) {
+               dis[i]=_this.getDistance(_this.data.position.latitude, _this.data.position.longitude,_this.data.shop[i].coordinate.latitude,_this.data.shop[i].coordinate.longitude)
+               
+             }
+             //distance信息上传到云数据库,以更新的形式
+             db.collection('distance').where({
+               _openid:_this.openid,
+             }).get({
+              success:function(res){
+                console.log("1",res)
+                _this.setData({
+                  distance:res.data
+                })
+                if(_this.data.distance.length!=0)
+                {
+                  console.log(_this.data.distance)
+                  console.log("更新")
+                 db.collection('distance').where({
+                    _openid:_this.openid,
+                 }).update({
+                   data:{
+                    // _openid:_this.openid,
+                     distance:dis
+                   },success:function(res){
+                   console.log("上传成功")
+                   },fail:function(res){//如果找不到则创建
+                   }
+                 })
+                }else{
+                 console.log("添加")
+                 db.collection('distance').add({
+                   data:{
+                    // _openid:_this.openid,
+                     distance:dis
+                   },success:function(res){
+                   console.log("上传成功")
+                   },fail:function(res){//如果找不到则创建
+                   }
+                 })
+                }
+              },fail:function(res){
+              }
+             })
+             console.log(1)
+   
+            },fail:function(res){
+              console.log('获取店铺失败',res)
+            }
+          })
+        }
+    })
+},
+
+ Rad: function(d) { //根据经纬度判断距离
+    return d * Math.PI / 180.0;
+},
+getDistance: function(lat1, lng1, lat2, lng2) {
+    // lat1用户的纬度
+    // lng1用户的经度
+    // lat2商家的纬度
+    // lng2商家的经度
+    var radLat1 = this.Rad(lat1);
+    var radLat2 = this.Rad(lat2);
+    var a = radLat1 - radLat2;
+    var b = this.Rad(lng1) - this.Rad(lng2);
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+    s = s * 6378.137;
+    s = Math.round(s * 10000) / 10000;
+    s = s.toFixed(2)  //保留两位小数
+    console.log('经纬度计算的距离:' + s+'公里')
+    return s
+},
   pay:function(e){
     let that = this
+
     var DATE = util.formatDate(new Date());
     if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""&&that.data.showView==2||that.data.showView==1){
       db.collection('order').add({
@@ -102,6 +196,7 @@ Page({
   // 选择地址
   address:function(e){
     let that = this
+
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.address']) {
@@ -151,6 +246,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+    var _this = this;
+    _this.findXy() //查询用户与商家的距离
     var app=getApp()
     db.collection('shopping_cart').where({
       product_checked:"true",

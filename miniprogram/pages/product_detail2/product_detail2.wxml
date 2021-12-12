@@ -7,60 +7,161 @@
   </swiper>
 </view>
 
-<!-- 产品信息 -->
+
   <view class="goods_price">￥{{product_price}}</view>
   <view class="goods_name_row">
     <view class="goods_name">{{product_name}}</view>
+    <view class="goods_name">重量/个数--{{product_weight}}</view>
   </view>
 
-  <view class="product">
-    <view class="product_detail">介绍</view>
-    <view class="product_1">
-      <view>{{product_detail}}</view>
+<!-- 初处理步骤 -->
+  <!-- <view class="product">
+    <view class="product_detail">可提供的初处理选择 </view>
+    <view wx:for="{{product_process}}" wx:key="_id" class="product_1">
+      <view>{{index+1}} : {{item}}</view>
     </view>
+  </view> -->
+    
+ <view class="product">
+  <view bindtap="changeprocess" >
+    <view style="font-weight: 600;">可提供的初处理选择</view>
+   <view class="choose">
+    <view class="choose_1"> 
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/danpin.png" style="width:50rpx;height:50rpx"></image>
+    </view>
+    <view class="choose_1">   
+    <button size="mini"  type="default">
+      <text style="font-size:28rpx">定制</text>
+    </button>
+    </view>
+   </view>
   </view>
+</view>
 
+<view class="{{showProcess ? 'show' : 'pop_hidden' }}">
+ <view class="mask" bindtap="changeprocess" ></view>
+ <view class="container">
+  <view style='padding:10rpx;'>可提供的初处理选择 : </view>
+
+  <view class="comment-btn">
+        <button 
+            wx:for="{{product_process}}" 
+            wx:for-item="item" 
+            wx:key="item.index"  
+            bindtap="checkboxChange2" 
+            data-value="{{item.value}}" 
+            data-index="{{index}}"  
+            checked="{{item.selected}}"
+            class="btn {{item.selected ? 'btn-selected' : ''}}" >
+            {{item.value}}
+        </button>
+    </view>
+    <button type="primary" bindtap="finish1">完成</button>
+ </view>
+</view>
   <view class="line"></view>
 
 
-  <!-- 商品详情 -->
+  <!-- 定制辅料 -->
   <view class="product">
-    <view class="product_detail">配料</view>
-    <view class="product_1">
-      <view>{{product_contain}}</view>
+  <view bindtap="changeadd" >
+<view style="font-weight: 600;">请选择需要添加的辅料</view>
+<view class="choose">
+<view class="choose_1">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/danpin.png" style="width:50rpx;height:50rpx"></image>
+</view>
+<view class="choose_1">
+    <button size="mini"  type="default">
+      <text style="font-size:28rpx">定制</text>
+    </button>
     </view>
   </view>
-  
- 
+  </view>
+</view>
 
-  <view class="product_delete">
-    <view>请输入需要删减的辅料（主要成分不给予删减）</view>
+<!-- 以下是弹窗组件
+showDialog是由toggledialog的点击事件控制true or false -->
+<view class="{{showDialog ? 'show' : 'pop_hidden' }}">
+ <view class="mask" bindtap="changeadd" ></view>
+ <view class="container">
+  <view style='padding:10rpx;'>可提供的辅料配料 : {{product_detail2}}</view>
+
+  <view class="comment-btn">
+        <button 
+            wx:for="{{product_choose}}" 
+            wx:for-item="item" 
+            wx:key="item.index"  
+            bindtap="checkboxChange" 
+            data-value="{{item.value}}" 
+            data-index="{{index}}"  
+            checked="{{item.selected}}"
+            class="btn {{item.selected ? 'btn-selected' : ''}}" >
+            {{item.value}}
+        </button>
+    </view>
+    <button type="primary" bindtap="finish2">完成</button>
+ </view>
+</view>
+
+<view class="line"></view>
+
+  <view class="product_note">
+    <view>请添加备注（可选）</view>
   </view>
     <view style="padding: 15rpx;">
-      <textarea placeholder="请输入需要添加或删减的辅料" bindblur="search" ></textarea>
+      <textarea style="height:50rpx" placeholder="请添加备注" bindblur="note" ></textarea>
     </view>
 
+<!-- <view wx:for="{{product_assessment}}">
+  <view bindtap="onTap" data-index="{{index}}">
+    {{show}}
+  </view>
+  <view class="{{item.flag?'isBlock':''}}">
+    {{item.content}}
+  </view>
+</view> -->
 
-    <!-- <checkbox-group bindchange="checkboxChange">
-          <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
-            <view class="weui-cell__hd">
-              <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
+<view class="posts">
+    <view class="post_header">
+        <text>评论</text>
+        <image src="/images/pen.png" style="width: 32rpx;height: 32rpx;" bindtap=""></image>
+    </view>
+    <block wx:for="{{product_assessment}}" wx:key="index" data-index="{{index}}">
+        <view class="post">
+            <view class="user_info">
+                <image>{{item.avatarUrl}}</image>
+                <text>{{item.nickname}}</text>
             </view>
-            <view class="weui-cell__bd">{{item.name}}</view>
-          </label>
-        </checkbox-group> -->
-    <!-- <checkbox-group class="checkboxgroup" bindchange="checkboxChange">
-      <label class="checkbox" wx:for="{{product_contain}}">
-        <checkbox value="{{item}}" checked="{{item.checked}}" />{{item}}
-      </label>
-    </checkbox-group> -->
-  
+            <!-- 评论 -->
+              <view class="box">
+              <view class="textFour_box {{item.seeMore?'three':''}}">{{item.content}}</view>
+              <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
+                <text class="text_toggle_text">查看更多</text>
+                <image class="toggle-icon" src="../../images/1.png"></image>
+              </view>
+              <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContent'>
+                <text class="text_toggle_text">收起</text>
+                <image class="toggle-icon" src="../../images/2.png"></image>
+              </view>
+              </view>
+              <!-- 图片 -->
+              <scroll-view class="img" scroll-y="true">
+               <block wx:for="{{item.image}}" wx:for-item="image" wx:key="index">
+               <image src="{{image}}" style="width:213rpx;height:213rpx"></image>
+               </block>
+             </scroll-view>
+
+            <view class="post_footer">
+                <text>{{item.time}}</text>
+            </view>
+        </view>
+    </block>
+</view>
 
   <view style="align-self: center;height:150rpx">已到底</view>
 
-
   <!-- 按钮 -->
-  <view class="pay">
+ <view class="pay">
     <view class="pay_1" bindtap="into_shopping_cart">
       <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/购物车.png"
         style="width:80rpx;height:80rpx">

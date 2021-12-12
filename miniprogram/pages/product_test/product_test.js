@@ -1,5 +1,5 @@
 const db = wx.cloud.database({
-  env: "cloud1-6gtiz48ybf23c5c5"
+    env: "cloud1-6gtiz48ybf23c5c5"
 })
 
 Page({
@@ -9,18 +9,18 @@ Page({
         product_detail2: "",
         product_num: "",
         product_choose: [],
-        detailValue:[],
+        detailValue: [],
     },
 
-    checkboxChange(e){
-      console.log('checkboxChange e:',e);
-      let string = "product_choose["+e.target.dataset.index+"].selected"
-          this.setData({
-              [string]: !this.data.product_choose[e.target.dataset.index].selected
-          })
-          this.data.detailValue = this.data.product_choose.filter(it => it.selected).map(it => it.value)
+    checkboxChange(e) {
+        console.log('checkboxChange e:', e);
+        let string = "product_choose[" + e.target.dataset.index + "].selected"
+        this.setData({
+            [string]: !this.data.product_choose[e.target.dataset.index].selected
+        })
+        this.data.detailValue = this.data.product_choose.filter(it => it.selected).map(it => it.value)
 
-          console.log('所有选中的值为：', this.data.detailValue)
+        console.log('所有选中的值为：', this.data.detailValue)
     },
 
     /**

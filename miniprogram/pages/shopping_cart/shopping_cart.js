@@ -13,6 +13,22 @@ Page({
     product_id: [],
     delet_id: [],
   },
+  // 点击跳转详情界面修改信息
+  get_product_detail: function(e) {
+    console.log("huoqudetail", e)
+    let id = e.currentTarget.dataset.name.product_id
+    console.log(id)
+    if(e.currentTarget.dataset.name.product_fenlei=="单品"){
+       wx.navigateTo({
+        url: '../product_detail2/product_detail2?id=' + id 
+      })
+    }else{
+      wx.navigateTo({
+        url: '../product_detail/product_detail?id=' + id 
+      })
+    }
+},
+
   // 支付事件
   pay: function (e) {
     let that = this
@@ -142,7 +158,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     let that = this
     var app=getApp()
     db.collection('shopping_cart').where({
@@ -153,6 +169,7 @@ Page({
         that.setData({
           product: res.data,
         })
+        
         that.get_money_sum()
       },
       fail: function (res) {

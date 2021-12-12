@@ -6,23 +6,37 @@
       <checkbox-group bindchange="xuanze" data-id="{{item._id}}">
         <checkbox value="{{item._id}}" checked="{{item.product_checked}}"></checkbox>
       </checkbox-group>
-      <view class="product_list_3">
+      <view class="product_list_2">
+        <view class="navigate"  bindtap="get_product_detail"  data-name="{{item}}" > 
         <image src="{{item.product_src}}" style="width:100rpx;height:100rpx"></image>
-        <view class="product_list_2">
-          <view style="font-size:20px">{{item.product_name}}</view>
-          <view style="color:red">￥:{{item.product_price}}  备注：{{item.product_note}}</view>
-          添加辅料：
+       <view>修改</view>
+      </view>
+        <view class="product_list_3">
+          <view style="font-size:20px">{{item.product_name}}--￥:{{item.product_price}}</view>
+
           <view class="label-list">
-          <view  wx:for="{{item.product_add}}" wx:for-item="element" wx:key="index">{{element}}/</view>
+          <view wx:if="{{item.product_process.length==0}}">初处理选择：无</view>
+          <view wx:if="{{item.product_process.length>0}}">初处理选择：</view>
+          <view wx:if="{{item.product_process.length>0}}" wx:for="{{item.product_process}}" wx:for-item="element" wx:key="index">{{element}}
+            <view wx:if="{{item.product_process.length>0}}" wx:for="{{item.product_process}}" wx:key="index">
+            <view class="hidden {{index<product_process.length-1?true:false}}">/</view>
+          </view>
+          </view>
+          </view>
+          <view class="label-list">
+          <view wx:if="{{item.product_add.length==0}}">添加辅料：无</view>
+          <view wx:if="{{item.product_add.length>0}}">添加辅料：</view>
+          <view  wx:if="{{item.product_add.length>0}}" wx:for="{{item.product_add}}" wx:for-item="element" wx:key="index">{{element}}/</view>
+          </view>
+          <!-- 备注 -->
+          <view wx:if="{{item.product_note==''}}"> 备注：无 </view>
+          <view wx:else=""> 备注：{{item.product_note}} </view>
         </view>
-        </view>
-      
-       
       </view>
     </view>
 
     <!-- 商品数量功能模块 -->
-    <view class="product_list_4">
+    <view class="product_list_10">
       <image data-id="{{item._id}}" bindtap="product_jian"
         src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/减.png"
         style="width:40rpx;height:40rpx" data-product_num="{{item.product_num}}"></image>
