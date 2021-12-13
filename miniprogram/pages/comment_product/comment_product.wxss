@@ -4,3 +4,12 @@
   padding: 15rpx;
   font-weight: 600;
 }
+.comment-star{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+}

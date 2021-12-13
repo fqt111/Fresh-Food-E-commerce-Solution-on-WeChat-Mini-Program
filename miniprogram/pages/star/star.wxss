@@ -1,0 +1,108 @@
+/*评论  */
+page {
+  background: #f2f2f2;
+}
+.comment{
+  padding: 20rpx;
+  background-color: #fff;
+}
+.comment-attach{
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666;
+}
+.comment-star{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+}
+.comment-content{
+  font-size: 28rpx;
+  color: #777;
+}
+/* 星级评价遮罩层 */
+.mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.mask .score-wrap {
+  width: 100%;
+  margin: 200rpx 0 100rpx;
+}
+.mask .score-wrap .starTit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+.mask .score-wrap .title {
+  font-size: 40rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+.mask .score-wrap .txt {
+  width: 120rpx;
+  font-size: 40rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+}
+.mask .score-wrap .score-star {
+  width: 140px;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+}
+.mask .score-wrap .score-star .item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mask .score-wrap .score-star .item .half-star {
+  width: 24rpx;
+  height: 48rpx;
+}
+.mask .score-wrap .score-star .item .left {
+  margin-left: 4rpx;
+}
+.mask .score-wrap .score-star .item .right {
+  margin-right: 4rpx;
+}
+.mask .btn {
+  width: 100%;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mask .btn .cancel {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  background: #acacac;
+  color: #fff;
+  text-align: center;
+  margin-right: 40rpx;
+}
+.mask .btn .sure {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  background: #ffaa7f;
+  color: #fff;
+  text-align: center;
+}

@@ -1,0 +1,7 @@
+<view class="quantityViewStyle">
+  <view class="minusStyle" bindtap="minus" style="color:{{num==min?'#DADADA':white}}">-</view>
+  <view class="inputViewStyle">
+    <input class="inputStyle" value="{{num}}" type="number" bindblur="onInputBlur"/>
+  </view>
+  <view class="plusStyle" bindtap="plus" style="color:{{num==max?'#DADADA':white}}">+</view>
+</view>

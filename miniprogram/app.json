@@ -24,7 +24,9 @@
     "pages/store_details/store_details",
     "pages/store_details_upload/store_detail_upload",
     "pages/comment_product/comment_product",
-    "pages/comment_shop/comment_shop"
+    "pages/comment_shop/comment_shop",
+    "pages/star/star"
+
 
   ],
   "window": {

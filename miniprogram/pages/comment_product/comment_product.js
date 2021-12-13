@@ -16,6 +16,11 @@ Page({
     avatarurl:"",
     assess:"",
     id:"",
+    select: 5, // 选中星星数 
+    total: 5, // 星星总数
+    disabled: true,  // 是否可点击
+    star:"",
+    product_assessment:[],
     },
 
   input_comment: function(e){
@@ -28,31 +33,30 @@ Page({
     console.log(this.data.assess)
     // console.log(this.data.name_here)
   },
-
-  back_and_storage:function(options){
-    console.log('这个按钮',options);
-      //  let that=this;
-       console.log('传输的评论',this.data.id);
-      console.log('传输的评论',this.data.assess);
-      db.collection('assessment').where({
-        product_id:this.data.id
-      }).update({
-              data: {
-                assessment:_.push(this.data.assess)
-              },
-              success: function(){
-                console.log("haha",this.data.id);
-                wx.showToast({
-                  title: '评价成功',
-                })      
-              },
-              fail: function () {
-                console.log('失败', res)
-              }
-            })
- 
+  
+  back_and_storage:function(){
+    db.collection('assessment').where({
+      product_id:this.data.id
+    })
+    .update({
+      data:{
+        // assessment:_.push(this.data.assess)
+        assessment:_.push({
+          content:"fqt",
+          auto:false
+        })
+      },
+      success:function(res){
+        console.log("hahahhaah",res)
+        wx.showToast({
+          title: '提交成功',
+        })
+      },
+      fail: function () {
+        console.log('失败', res)
+      }
+    })
   },
-
 
   showSettingToast: function(e) {
         wx.showModal({
@@ -69,10 +73,46 @@ Page({
           }
         })
       },
+
+    onStarChange: function (e) {
+      wx.showToast({
+        title: String(e.detail.value+1)
+      })
+      this.setData({
+        star:e.detail.value+1
+      })
+      let list=this.data.product_assessment;
+        let len=list.length;
+        let sum=0;
+        let star_avg=0;
+        for(let i=0;i<len;i++){
+          sum=sum+list[i].star;
+        }
+        console.log(sum);
+        console.log(len);
+
+        star_avg=(sum+e.detail.value+1)/(len+1);
+        console.log(star_avg);
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    db.collection('assessment').where({
+      product_id:options.id
+    })
+    .get()
+    .then(res => {
+        console.log('請求成功', res);
+        this.setData({
+            product_assessment: res.data[0].assessment, //
+        })
+        console.log(this.data.product_assessment);
+    })
+    .catch(err => {
+        console.log('請求失敗', err)
+    })
+
           wx.getSetting({
               success(res) {
                 // console.log("res", res)

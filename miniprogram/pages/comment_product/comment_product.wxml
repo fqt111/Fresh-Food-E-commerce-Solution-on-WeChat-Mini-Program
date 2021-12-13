@@ -6,3 +6,6 @@
     </view>
 
     <button bindtap="back_and_storage"  data-id="{{item}}">确认评价</button>
+    <view class="comment-star">
+    <star num="{{select}}" total="{{total}}" disabled="{{disabled}}" bindchange="onStarChange"></star>
+  </view>

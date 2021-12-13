@@ -165,6 +165,18 @@
           "pathName": "pages/store_detail_list/store_detail_list",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/star/star",
+          "pathName": "pages/star/star",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my_record/my_record",
+          "pathName": "pages/my_record/my_record",
+          "query": "",
+          "scene": null
         }
       ]
     }

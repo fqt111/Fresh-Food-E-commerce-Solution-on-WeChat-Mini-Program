@@ -1,0 +1,41 @@
+<!-- <view class="comment">
+  <view class="comment-attach">
+    <view>张三</view>
+    <view>2017年11月9日15:23:51</view>
+  </view> -->
+  <view class="comment-star">
+    <star num="{{select}}" total="{{total}}" disabled="{{disabled}}" bindchange="onStarChange"></star>
+  </view>
+  <!-- <view class="comment-content">
+    俺们那嘎达都是东北人，俺们那嘎达都是东北人，俺们那嘎达都是东北人，
+    俺们那嘎达都是东北人，俺们那嘎达都是东北人，俺们那嘎达都是东北人，
+  </view>
+</view> -->
+
+<!-- <view class="mask"  catchtouchmove='true'>
+    <view class="score-wrap">
+      <view class="starTit" wx:for="{{starTit}}" wx:key="index">
+        <view class="title">{{item.name}}：</view>
+          <view class="score-star">
+            <view class="item" wx:for="{{stars}}" wx:for-item="el" wx:for-index="elIndex" wx:key="elIndex">
+              <image class="half-star left" 
+                     src="{{item.score > el ? yel_left : gray_left}}"
+                     data-index="{{index}}"
+                     data-score="{{el + 1}}"
+                     catchtap="selectLeft"></image>
+              <image class="half-star right"
+                    src="{{item.score > el ? (item.score - el == 1 ? gray_right : yel_right) : gray_right}}"  
+                    data-index="{{index}}"
+                    data-score="{{el + 2}}"
+                    catchtap="selectRight"></image>
+            </view>
+          </view>
+        <view class="txt">{{starMap[item.score-1]}}</view>
+      </view>
+    </view>
+    <view class="btn">
+      <view class="cancel" catchtap="hiddenDialog">取消</view>
+      <view class="sure" catchtap="sure">确定</view>
+    </view>
+  </view> -->
+
