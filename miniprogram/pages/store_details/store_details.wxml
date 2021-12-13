@@ -1,7 +1,52 @@
-<view>
-<view class="show_picture">
-<image src="{{store.store_picture}}"></image>
+<!-- 轮播图 -->
+<view class="banner">
+  <swiper class="banner_1" autoplay="true" circular="true" interval="5000" indicator-dots="true">
+    <swiper-item wx:for="{{store_picture}}" wx:key="index">
+      <image src="{{item}}" style="width:750rpx;height:750rpx"></image>
+    </swiper-item>
+  </swiper>
 </view>
-<view style="font-size: 50rpx;">地址:{{store.store_location}}</view>
-<view style="font-size: 50rpx;color: red;">评价:{{store.store_satisfaction}}</view>
+
+  <view class="detail">
+    <view class="detail_1">地址:{{store_location}}</view>
+    <view class="detail_1">星级:{{store_star}}</view>
+  </view>
+
+  <view class="posts">
+    <view class="post_header">
+        <text>用户评论</text>
+        <image src="/images/pen.png" style="width: 32rpx;height: 32rpx;" bindtap=""></image>
+    </view>
+    <block wx:for="{{store_assessment}}" wx:key="index" data-index="{{index}}">
+        <view class="post">
+            <view class="user_info">
+                <image>{{item.avatarUrl}}</image>
+                <text>{{item.nickname}}</text>
+            </view>
+            <!-- 评论 -->
+              <view class="box">
+              <view class="textFour_box {{item.seeMore?'three':''}}">{{item.content}}</view>
+              <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
+                <text class="text_toggle_text">查看更多</text>
+                <image class="toggle-icon" src="../../images/1.png"></image>
+              </view>
+              <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContent'>
+                <text class="text_toggle_text">收起</text>
+                <image class="toggle-icon" src="../../images/2.png"></image>
+              </view>
+              </view>
+              <!-- 图片 -->
+              <scroll-view class="img" scroll-y="true">
+               <block wx:for="{{item.image}}" wx:for-item="image" wx:key="index">
+               <image src="{{image}}" style="width:213rpx;height:213rpx"></image>
+               </block>
+             </scroll-view>
+
+            <view class="post_footer">
+                <text>{{item.time}}</text>
+            </view>
+        </view>
+    </block>
 </view>
+
+  <view style="align-self: center;height:150rpx">已到底</view>

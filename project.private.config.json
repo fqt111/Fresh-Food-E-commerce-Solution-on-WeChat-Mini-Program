@@ -177,6 +177,18 @@
           "pathName": "pages/my_record/my_record",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/store_details/store_details",
+          "pathName": "pages/store_details/store_details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/pay/pay",
+          "pathName": "pages/pay/pay",
+          "query": "",
+          "scene": null
         }
       ]
     }

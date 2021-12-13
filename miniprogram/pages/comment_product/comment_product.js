@@ -19,7 +19,7 @@ Page({
     select: 5, // 选中星星数 
     total: 5, // 星星总数
     disabled: true,  // 是否可点击
-    star:"",
+    star_avg:"",
     product_assessment:[],
     },
 
@@ -78,9 +78,6 @@ Page({
       wx.showToast({
         title: String(e.detail.value+1)
       })
-      this.setData({
-        star:e.detail.value+1
-      })
       let list=this.data.product_assessment;
         let len=list.length;
         let sum=0;
@@ -88,11 +85,12 @@ Page({
         for(let i=0;i<len;i++){
           sum=sum+list[i].star;
         }
-        console.log(sum);
-        console.log(len);
-
         star_avg=(sum+e.detail.value+1)/(len+1);
         console.log(star_avg);
+        this.setData({
+          star_avg:star_avg
+        })
+        
     },
   /**
    * 生命周期函数--监听页面加载
@@ -123,8 +121,8 @@ Page({
                     success(res) {
                       console.log("获取用户信息成功", res.userInfo)
                       that.setData({
-        nickName: res.userInfo.nickName,
-        avatarUrl:res.userInfo.avatarurl,
+                      nickName: res.userInfo.nickName,
+                      avatarUrl:res.userInfo.avatarurl,
                       })
                     },
                     fail(res) {
@@ -151,53 +149,4 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

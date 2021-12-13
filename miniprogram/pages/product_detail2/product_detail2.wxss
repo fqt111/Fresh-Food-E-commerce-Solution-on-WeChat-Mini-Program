@@ -360,43 +360,6 @@
   -webkit-box-orient: vertical;
  }
 
- /* .coupon-remark-wrapper {
-  padding: 20rpx;
-  padding-top: 33rpx;
-  padding-right: 60rpx;
-  margin-top: -20rpx;
-  line-height: 1;
-  box-sizing: border-box;
-  color: #666666;
-  background-color: #fff;
-  position: relative;
-  z-index: 1;
-}
-.coupon-remark-content {
-  width: 100%;
-  view {
-    font-size: 22rpx;
-    line-height: 1.5;
-    word-break: break-all;
-    display: inline-block;
-    max-width: 100%;
-  }
-  .ellipsis{
-    text-overflow:ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  .toggle-icon {
-    width: 30rpx;
-    height: 30rpx;
-    position: absolute;
-    right: 20rpx;
-    top: 35rpx;
-    transition: all 0.2s linear;
-    &.show {
-      transform: rotate(180deg);
-    }
-  } */
-/* } */
+
 
 
