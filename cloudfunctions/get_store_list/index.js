@@ -1,0 +1,23 @@
+// 云函数入口文件
+const cloud = require('wx-server-sdk')
+
+cloud.init({
+  env:"cloud1-6gtiz48ybf23c5c5"
+})
+// 云函数入口函数
+exports.main = async (event, context) => {
+  return cloud.database().collection("store_detail_list").aggregate() //选择我的商店表
+          .lookup({
+            from:"distance", //把distance表关联上
+            localField: 'shop_id', //store表的关联字段
+            foreignField: 'shop_id', //dis表的关联字段
+            as: 'store_list' //匹配的结果作为store_list相当于起个别名
+          }).end({
+            success:function(res){
+              return res;
+            },
+            fail(error) {
+              return error;
+            }
+          })
+}
