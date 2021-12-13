@@ -1,0 +1,5 @@
+<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+  <view class="picker">
+    {{region[0]}}，{{region[1]}}，{{region[2]}}
+  </view>
+</picker>

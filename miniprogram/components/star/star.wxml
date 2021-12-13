@@ -1,0 +1,13 @@
+<!-- <view>
+  {{state.length}}
+</view> -->
+<block wx:if="{{num <= total}}">
+  <block wx:for="{{state}}" wx:key="id">
+    <image bindtap='clickImg' data-id="{{index+1}}" src="./images/{{item.select ? 'fill' : 'empty'}}_star.png" style="width: {{width}}rpx;height:{{height}}rpx;"></image>
+  </block>
+</block>
+<block wx:else>
+  <block wx:for="{{total}}">
+    <image src="./images/empty_star.png" style="width: {{width}}rpx;height:{{height}}rpx;"></image>
+  </block>
+</block> 

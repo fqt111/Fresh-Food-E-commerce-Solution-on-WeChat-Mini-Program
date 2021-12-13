@@ -161,37 +161,32 @@
           "scene": null
         },
         {
-<<<<<<< Updated upstream
-          "name": "pages/fenlei/fenlei",
-          "pathName": "pages/fenlei/fenlei",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/store_operation_update/store_operation_update",
-          "pathName": "pages/store_operation_update/store_operation_update",
-          "query": "id=caf707f9613eb24300f3e98d74aae8ae",
-          "scene": null
-        },
-        {
-          "name": "pages/product_test/product_test",
-          "pathName": "pages/product_test/product_test",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/product_test/product_test",
-          "pathName": "pages/product_test/product_test",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/product_fenlei/product_fenlei",
-          "pathName": "pages/product_fenlei/product_fenlei",
-=======
           "name": "pages/store_detail_list/store_detail_list",
           "pathName": "pages/store_detail_list/store_detail_list",
->>>>>>> Stashed changes
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/star/star",
+          "pathName": "pages/star/star",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my_record/my_record",
+          "pathName": "pages/my_record/my_record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/store_details/store_details",
+          "pathName": "pages/store_details/store_details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/pay/pay",
+          "pathName": "pages/pay/pay",
           "query": "",
           "scene": null
         }

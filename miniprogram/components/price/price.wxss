@@ -1,0 +1,33 @@
+.quantityViewStyle {
+  display:flex;
+  border:0rpx solid #DADADA;
+  border-radius:6rpx;
+  width: 220rpx;
+}
+.minusStyle {
+  height:58rpx;
+  width:60rpx;
+  border-right:0rpx solid #DADADA;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.plusStyle {
+  height:58rpx;
+  width:60rpx;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.inputViewStyle {
+  height:58rpx;
+  width:100rpx;
+  border-right:0rpx solid #DADADA;
+}
+.inputStyle {
+  width:80rpx;
+  height:54rpx;
+  text-align:center;
+  font-size:26rpx;
+  background:white;
+}

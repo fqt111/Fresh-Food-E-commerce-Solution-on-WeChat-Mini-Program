@@ -6,7 +6,7 @@
     "pages/product_detail2/product_detail2",
     "pages/product_fenlei/product_fenlei",
     "pages/product_test/product_test",
-
+    "pages/setting/setting",
     "pages/shopping_cart/shopping_cart",
     "pages/my/my",
     "pages/pay/pay",
@@ -22,7 +22,12 @@
     "pages/store_operation_update/store_operation_update",
     "pages/store_detail_list/store_detail_list",
     "pages/store_details/store_details",
-    "pages/store_details_upload/store_detail_upload"
+    "pages/store_details_upload/store_detail_upload",
+    "pages/comment_product/comment_product",
+    "pages/comment_shop/comment_shop",
+    "pages/star/star"
+
+
   ],
   "window": {
     "backgroundColor": "#ff6801",

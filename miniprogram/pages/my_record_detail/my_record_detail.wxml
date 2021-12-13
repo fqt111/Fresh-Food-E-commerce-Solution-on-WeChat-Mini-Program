@@ -25,6 +25,9 @@
       </view>
     </view>
   </navigator>
+  <view wx:if="{{order.state}}">
+    <button bindtap="comment_product"  data-pass="{{item}}">评价该商品</button>
+  </view>
 </block>
 
 
@@ -34,4 +37,7 @@
   <view>订单时间：{{order.time}}</view>
   <view>订单金额：{{order.money}}</view>
   <view>备注：{{order.beizhu}}</view>
+  <view wx:if="{{order.state}}">
+    <button bindtap="comment_shop" plain="true" data-pass="{{order}}">评价该订单</button>
+  </view>
 </view>

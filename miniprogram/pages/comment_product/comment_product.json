@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "star": "../../components/star/star"
+  },
+  "navigationBarTitleText": "评价星星组件"
+}

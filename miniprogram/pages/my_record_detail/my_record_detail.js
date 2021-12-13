@@ -8,6 +8,22 @@ Page({
   data: {
     order:{},
   },
+  comment_shop:function(options){
+    let pass=options.currentTarget.dataset._id
+    console.log("传递了",pass)
+    wx.navigateTo({
+      url: '../comment_shop/comment_shop?id='+pass,
+    })
+  },
+
+  comment_product:function(options){
+    let product=options.currentTarget.dataset.pass.product_id
+    // console.log("本身是",options)
+    console.log("传递了",product)//能够正确传输当前商品信息，product_id来自数据库套餐set—meal
+    wx.navigateTo({
+      url: '../comment_product/comment_product?id='+product,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
