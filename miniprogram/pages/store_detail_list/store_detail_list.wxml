@@ -10,11 +10,20 @@
 <view class="store_detail_list">
   <view class="store_detail_box">
     <view class="store_info">
-    <image src="{{item.store_picture}}" style="width:100rpx;height: 100rpx;"></image>
+    <image src="{{item.store_picture[0]}}" style="width:100rpx;height: 100rpx;"></image>
     <view class="text_location">{{item.store_location}}</view>
-    <view style="font-size: 10px;color: red;">{{item.store_satisfaction}}</view>
-    <view style="font-size: 10px;color: red;">距离 ： {{item.dis}}</view>
+    <view >
+<block wx:for="{{item.store_satisfaction-1}}">  
+<image class='star' src='cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/gold_star.png'></image>  
+</block>  
+<block wx:for="{{5-item.store_satisfaction}}">  
+<image class='star' src='cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/black_star.png'></image> 
+</block>  
+<view style="display:inline-block;width: 250rpx;"> </view>
+<view style="display:inline-block;font-size: 40rpx;color: rgb(61, 61, 61);">距您  {{item.dis}} Km</view>
     </view>
+
+</view>  
     </view>
     </view>
   </navigator>

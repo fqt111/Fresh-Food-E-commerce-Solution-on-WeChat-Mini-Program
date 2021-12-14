@@ -6,6 +6,13 @@
   margin-bottom: 10rpx;
 }
 
+.star{
+  margin-top: 20rpx;
+  height: 50rpx;
+  width: 50rpx;
+  display: inline-block
+}
+
 .radio-group {
   border-bottom: 1px solid #ddd;
 }
