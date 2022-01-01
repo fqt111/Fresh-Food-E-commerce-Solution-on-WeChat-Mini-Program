@@ -12,6 +12,7 @@ Page({
     position:[],
     money:0,
     name:"",
+    openid:null,
     phone_number:"",
     address:"",
     beizhu:"",
@@ -75,52 +76,50 @@ Page({
              }
              //distance信息上传到云数据库,以更新的形式
              db.collection('distance').where({
-               _openid:_this.openid,
-             }).get({
-              success:function(res){
-                console.log("1",res)
-                _this.setData({
-                  distance:res.data
+              _openid:_this.data.openid
+            }).get({
+             success:function(res){
+               console.log("1",res)
+               _this.setData({
+                 distance:res.data
+               })
+               if(_this.data.distance.length)
+               {
+                 console.log("更新")
+                db.collection('distance').update({
+                  data:{
+                   // _openid:_this.openid,
+                    distance:dis
+                  },success:function(res){
+                  console.log("上传成功")
+                  },fail:function(res){//如果找不到则创建
+                  }
                 })
-                if(_this.data.distance.length!=0)
-                {
-                  console.log(_this.data.distance)
-                  console.log("更新")
-                 db.collection('distance').where({
-                    _openid:_this.openid,
-                 }).update({
-                   data:{
-                    // _openid:_this.openid,
-                     distance:dis
-                   },success:function(res){
-                   console.log("上传成功")
-                   },fail:function(res){//如果找不到则创建
-                   }
-                 })
-                }else{
-                 console.log("添加")
-                 db.collection('distance').add({
-                   data:{
-                    // _openid:_this.openid,
-                     distance:dis
-                   },success:function(res){
-                   console.log("上传成功")
-                   },fail:function(res){//如果找不到则创建
-                   }
-                 })
-                }
-              },fail:function(res){
-              }
-             })
-             console.log(1)
-   
-            },fail:function(res){
-              console.log('获取店铺失败',res)
-            }
-          })
-        }
-    })
+               }else{
+                console.log("添加")
+                db.collection('distance').add({
+                  data:{
+                   // _openid:_this.openid,
+                    distance:dis
+                  },success:function(res){
+                  console.log("上传成功")
+                  },fail:function(res){//如果找不到则创建
+                  }
+                })
+               }
+             },fail:function(res){
+             }
+            })
+            console.log(1)
+  
+           },fail:function(res){
+             console.log('获取店铺失败',res)
+           }
+         })
+       }
+   })
 },
+           
 
  Rad: function(d) { //根据经纬度判断距离
     return d * Math.PI / 180.0;
@@ -249,6 +248,9 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     var _this = this;
     _this.findXy() //查询用户与商家的距离
     var app=getApp()
+    _this.setData({
+      openid:app.globalData.openid
+    })
     db.collection('shopping_cart').where({
       product_checked:"true",
       _openid:app.globalData.openid
