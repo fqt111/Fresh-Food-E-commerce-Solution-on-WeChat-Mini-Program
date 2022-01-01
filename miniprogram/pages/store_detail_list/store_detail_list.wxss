@@ -7,7 +7,9 @@
 }
 
 .star{
-  margin-top: 20rpx;
+  margin-left: 40rpx;
+  margin-right: -40rpx;
+  margin-top: 0rpx;
   height: 50rpx;
   width: 50rpx;
   display: inline-block
@@ -23,6 +25,17 @@
   padding: 5px;
 }
 
+.pic{
+  float: left;
+  width: 230rpx;
+  height: 230rpx;
+  border-radius: 0.2rem;
+}
+
+.stars{
+  
+}
+
 .store_detail_list{
   display: flex;
   width: 96%;
@@ -33,9 +46,20 @@
   border-radius: 10px;
 }
 
+.dis{
+  margin-top: 10rpx;
+  margin-left: -10rpx;
+  display:inline-block;
+  font-size: 40rpx;
+  color: rgb(61, 61, 61);
+}
+
 .text_location{
+  margin: 20rpx;
+  font-size: 35rpx;
+  float: left;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 600rpx;
+  width: 450rpx;
 }
