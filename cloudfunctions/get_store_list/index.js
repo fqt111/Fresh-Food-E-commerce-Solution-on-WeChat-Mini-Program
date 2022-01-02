@@ -15,10 +15,10 @@ exports.main = async (event, context) => {
             let:{},
             pipeline: $.pipeline()
             .match({
-              u_id:id,
+              _openid:id,
             })
             .project({
-              distan:1
+              distance:1
             })
             .done(),
             as: 'store_list' //匹配的结果作为store_list相当于起个别名

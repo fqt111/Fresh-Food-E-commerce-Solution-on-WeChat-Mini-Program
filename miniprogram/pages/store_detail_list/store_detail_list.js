@@ -33,12 +33,12 @@ Page({
           var Store=res.result.list;
          // console.log(Store)
           for(var i=0;i<Store.length;i++){
-            Store[i].dis=Store[i].distan[i]
+            Store[i].dis=Store[i].distance[i]
           }
           console.log(Store)
           for(var i =0;i<Store.length;i++){
             for(var j =0;j<i;j++){
-              if(Store[j].dis<Store[i].dis){
+              if(Store[j].store_satisfaction<Store[i].store_satisfaction){
                 var a;
                 a=Store[j];
                 Store[j]=Store[i];
@@ -88,35 +88,70 @@ Page({
       //   })
       // },
     let that = this
-    console.log('排序方式发生改变，目前的排序方式是：' + e.detail.value)
+    console.log('排序方式发生改变，目前的排序方式是：' + 'e.detail.value')
     if (e.detail.value == 1){
-    db.collection('store_detail_list').orderBy("store_satisfaction", "desc").get({
-      success:function(res){
-        console.log('获取商店信息成功',res)
-        that.setData({
-          store: res.data,
-        })
+      var Store=that.data.store;
+      // console.log(Store)
+       console.log(Store)
+       for(var i =0;i<Store.length;i++){
+         for(var j =0;j<i;j++){
+           if(Store[j].store_satisfaction<Store[i].store_satisfaction){
+             var a;
+             a=Store[j];
+             Store[j]=Store[i];
+             Store[i]=a;
+           }
+         }
+       }
+       that.setData({
+         store:Store
+       })
+    // db.collection('store_detail_list').orderBy("store_satisfaction", "desc").get({
+    //   success:function(res){
+    //     console.log('获取商店信息成功',res)
+    //     that.setData({
+    //       store: res.data,
+    //     })
         
-      },
-      fail:function(res){
-        console.log('获取商店信息失败',res)
-      }
-    })
+    //   },
+    //   fail:function(res){
+    //     console.log('获取商店信息失败',res)
+    //   }
+    // })
   }
     else if (e.detail.value == 2){
-      let that = this
-      db.collection('store_detail_list').orderBy("dis", "asc").get({
-        success:function(res){
-          console.log('获取商店信息成功',res)
-          that.setData({
-            store: res.data,
-          })
-          
-        },
-        fail:function(res){
-          console.log('获取商店信息失败',res)
+      var Store=that.data.store;
+       // console.log(Store)
+       //  for(var i=0;i<Store.length;i++){
+       //    Store[i].dis=Store[i].distance[i]
+       //  }
+        console.log(Store)
+        for(var i =0;i<Store.length;i++){
+          for(var j =0;j<i;j++){
+            if(Store[j].dis<Store[i].dis){
+              var a;
+              a=Store[j];
+              Store[j]=Store[i];
+              Store[i]=a;
+            }
+          }
         }
-      })
+        that.setData({
+          store:Store
+        })
+      // let that = this
+      // db.collection('store_detail_list').orderBy("dis", "asc").get({
+      //   success:function(res){
+      //     console.log('获取商店信息成功',res)
+      //     that.setData({
+      //       store: res.data,
+      //     })
+          
+      //   },
+      //   fail:function(res){
+      //     console.log('获取商店信息失败',res)
+      //   }
+      // })
   }
   },
   /**
