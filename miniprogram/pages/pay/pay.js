@@ -103,7 +103,7 @@ Page({
                     distance:dis
                   },success:function(res){
                   console.log("上传成功")
-                  },fail:function(res){//如果找不到则创建
+                  },fail:function(res){
                   }
                 })
                }

@@ -17,10 +17,6 @@
   </view>
   <view>{{address}}</view>
 </view>
-<view wx:if="{{showView==1}}" bindtap="selectAddress" class='selfSelect'> 
-  <text style="margin-right: 20rpx;" >点击选择取货门店:</text>
-  <view>{{mendian}}</view>
-</view>
 <!-- 时间选择模块 -->
 <view class="time">
   <view wx:if="{{showView==2}}">选择送达时间</view>

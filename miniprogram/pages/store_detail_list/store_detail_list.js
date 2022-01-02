@@ -30,21 +30,30 @@ Page({
         name:'get_store_list',
         success:function(res){
           console.log('联表成功',res.result)
+          var Store=res.result.list;
+         // console.log(Store)
+          for(var i=0;i<Store.length;i++){
+            Store[i].dis=Store[i].distan[i]
+          }
+          console.log(Store)
+          for(var i =0;i<Store.length;i++){
+            for(var j =0;j<i;j++){
+              if(Store[j].dis<Store[i].dis){
+                var a;
+                a=Store[j];
+                Store[j]=Store[i];
+                Store[i]=a;
+              }
+            }
+          }
           that.setData({
-            store: res.result.list,
+            store:Store
           })
       },
       fail:console.error
       })
-    var store = this.data.store
-    for(var i=0;i<=store.length;i++)
-    {
-    store[i].dis=store[i].distan[i]
-    }
-    this.setData({
-      store
-    })
-    console.log(store)
+
+
     // db.collection('store_detail_list').orderBy("store_satisfaction", "desc").get({
     //   success:function(res){
     //     console.log('获取商店信息成功',res)
