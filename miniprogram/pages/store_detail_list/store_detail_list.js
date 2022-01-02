@@ -21,10 +21,11 @@ Page({
   onLoad: function (options) {
     let that = this
     var app=getApp()
+    console.log(app.globalData.openid)
     wx.cloud.callFunction(
       {
         data:{
-          u_id:app.globalData.openid,
+          id:app.globalData.openid,
         },
         name:'get_store_list',
         success:function(res){
@@ -35,6 +36,15 @@ Page({
       },
       fail:console.error
       })
+    var store = this.data.store
+    for(var i=0;i<=store.length;i++)
+    {
+    store[i].dis=store[i].distan[i]
+    }
+    this.setData({
+      store
+    })
+    console.log(store)
     // db.collection('store_detail_list').orderBy("store_satisfaction", "desc").get({
     //   success:function(res){
     //     console.log('获取商店信息成功',res)
