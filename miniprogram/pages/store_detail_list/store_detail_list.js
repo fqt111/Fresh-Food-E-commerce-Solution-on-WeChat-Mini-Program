@@ -20,29 +20,33 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    // wx.cloud.callFunction(
-    //   {
-    //     name:'get_store_list',
-    //     success:function(res){
-    //       console.log('联表成功',res.result)
-    //       that.setData({
-    //         store: res.result.list,
-    //       })
-    //   },
-    //   fail:console.error
-    //   })
-    db.collection('store_detail_list').orderBy("store_satisfaction", "desc").get({
-      success:function(res){
-        console.log('获取商店信息成功',res)
-        that.setData({
-          store: res.data,
-        })
-        
+    var app=getApp()
+    wx.cloud.callFunction(
+      {
+        data:{
+          u_id:app.globalData.openid,
+        },
+        name:'get_store_list',
+        success:function(res){
+          console.log('联表成功',res.result)
+          that.setData({
+            store: res.result.list,
+          })
       },
-      fail:function(res){
-        console.log('获取商店信息失败',res)
-      }
-    })
+      fail:console.error
+      })
+    // db.collection('store_detail_list').orderBy("store_satisfaction", "desc").get({
+    //   success:function(res){
+    //     console.log('获取商店信息成功',res)
+    //     that.setData({
+    //       store: res.data,
+    //     })
+        
+    //   },
+    //   fail:function(res){
+    //     console.log('获取商店信息失败',res)
+    //   }
+    // })
   },
 
   /**
