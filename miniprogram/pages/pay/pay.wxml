@@ -26,7 +26,7 @@
     </view>
   </picker>
 </view>
-
+<view class="address">{{mendian}}</view>
 <!-- 商户信息模块 -->
 <view clss="store_detail_list">
  <button bindtap="show_store_list" style="width: 300px" type="default">选择一个商家</button>

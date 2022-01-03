@@ -26,6 +26,7 @@ Page({
     let that = this
     var app=getApp()
     console.log(app.globalData.openid)
+
     wx.cloud.callFunction(
       {
         data:{
