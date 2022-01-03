@@ -11,6 +11,7 @@ Page({
     items: [
       { name: '1', value: '评价',checked: 'true' },
       { name: '2', value: '距离'},
+      { name: '3', value: '综合'},
     ],
   },
 
@@ -139,6 +140,7 @@ Page({
         that.setData({
           store:Store
         })
+    }
       // let that = this
       // db.collection('store_detail_list').orderBy("dis", "asc").get({
       //   success:function(res){
@@ -152,8 +154,32 @@ Page({
       //     console.log('获取商店信息失败',res)
       //   }
       // })
+      else if (e.detail.value == 3){
+        var Store=that.data.store;
+         // console.log(Store)
+         //  for(var i=0;i<Store.length;i++){
+         //    Store[i].dis=Store[i].distance[i]
+         //  }
+          console.log(Store)
+          for(var i=0;i<Store.length;i++){
+            Store[i].Comprehensive = 0.7*Store[i].dis + 0.3*Store[i].store_satisfaction
+          }
+          console.log(Store)
+          for(var i =0;i<Store.length;i++){
+            for(var j =0;j<i;j++){
+              if(Store[j].Comprehensive<Store[i].Comprehensive){
+                var a;
+                a=Store[j];
+                Store[j]=Store[i];
+                Store[i]=a;
+              }
+            }
+          }
+          that.setData({
+            store:Store
+          })
   }
-  },
+},
   /**
    * 生命周期函数--监听页面显示
    */
