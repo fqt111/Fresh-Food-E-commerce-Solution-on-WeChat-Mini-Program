@@ -1,5 +1,5 @@
 // pages/comment_page/comment_page.js
-
+var util = require('../../utils/util.js');
 const db = wx.cloud.database({
   env: "cloud1-6gtiz48ybf23c5c5"
 })
@@ -21,8 +21,40 @@ Page({
     disabled: true,  // 是否可点击
     star_avg:"",
     product_assessment:[],
+    img:[],
+    
     },
-
+  // 上传图片
+  upload_img:function(){
+    let that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success (res) {
+        var timestamp = Date.parse(new Date());
+        timestamp = timestamp / 1000;
+        console.log("当前时间戳为：" + timestamp);
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        wx.cloud.uploadFile({
+          cloudPath: 'product/'+timestamp+'.png',
+          filePath: tempFilePaths[0], // 文件路径
+          success: function(res) {
+            // get resource ID
+            console.log(res.fileID)
+            that.setData({
+              img:that.data.img.concat(res.fileID)//添加到元素到数组中
+            })
+          },
+          fail: function(res) {
+            // handle error
+          }
+        })
+      }
+    })
+  },
   input_comment: function(e){
     console.log('start input',e)
     let value = e.detail.value
@@ -42,8 +74,14 @@ Page({
       data:{
         // assessment:_.push(this.data.assess)
         assessment:_.push({
-          content:"fqt",
-          auto:false
+          auto:false,
+          avatarUrl:this.data.avatarurl,
+          content:this.data.assess,
+          image:this.data.img,
+          nickname:this.data.nickName,
+          seeMore:false,
+          star:this.data.star,
+          time:this.data.time
         })
       },
       success:function(res){
@@ -96,6 +134,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 调用函数时，传入new Date()参数，返回值是日期和时间
+    var time = util.formatTime(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据
+    this.setData({
+      time: time
+    });
     db.collection('assessment').where({
       product_id:options.id
     })
@@ -122,7 +166,7 @@ Page({
                       console.log("获取用户信息成功", res.userInfo)
                       that.setData({
                       nickName: res.userInfo.nickName,
-                      avatarUrl:res.userInfo.avatarurl,
+                      avatarUrl:res.userInfo.avatarUrl,
                       })
                     },
                     fail(res) {
