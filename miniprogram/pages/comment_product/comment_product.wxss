@@ -3,6 +3,7 @@
   width: 96%;
   padding: 15rpx;
   font-weight: 600;
+  display: table-column;
 }
 .comment-star{
   margin-top: 10rpx;
@@ -12,4 +13,13 @@
   align-items: center;
   font-size: 28rpx;
   color: #666;
+}
+.anniu{
+  display: flex;
+  height: 150rpx;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+  align-items: center;
+  bottom : 5rpx;
 }

@@ -46,11 +46,18 @@
   border-radius: 10px;
 }
 
+.gotopay{
+  font-size: 40rpx;
+  position: relative;
+  top: -50rpx;
+  left: 100rpx;
+}
+
 .dis{
   margin-top: 10rpx;
   margin-left: -10rpx;
   display:inline-block;
-  font-size: 40rpx;
+  font-size: 30rpx;
   color: rgb(61, 61, 61);
 }
 

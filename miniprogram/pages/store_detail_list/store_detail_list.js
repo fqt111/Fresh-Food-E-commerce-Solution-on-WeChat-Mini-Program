@@ -2,16 +2,19 @@
 const db = wx.cloud.database()
 const _ = db.command
 Page({
-
+  gotopay:function(e){
+    console.log('shop_id=' + e.currentTarget.dataset.shop)
+    wx.navigateTo({url: '../pay/pay?shop_id='+e.currentTarget.dataset.shop,})
+  },
   /**
    * 页面的初始数据
    */
   data: {
     store:[],
     items: [
-      { name: '1', value: '评价',checked: 'true' },
+      { name: '1', value: '评价',},
       { name: '2', value: '距离'},
-      { name: '3', value: '综合'},
+      { name: '3', value: '综合',checked: 'true'},
     ],
   },
 
@@ -23,6 +26,7 @@ Page({
     let that = this
     var app=getApp()
     console.log(app.globalData.openid)
+
     wx.cloud.callFunction(
       {
         data:{
@@ -35,11 +39,12 @@ Page({
          // console.log(Store)
           for(var i=0;i<Store.length;i++){
             Store[i].dis=Store[i].distance[i]
+            Store[i].Comprehensive = (-0.3*Store[i].dis) + 0.7*Store[i].store_satisfaction
           }
           console.log(Store)
           for(var i =0;i<Store.length;i++){
             for(var j =0;j<i;j++){
-              if(Store[j].store_satisfaction<Store[i].store_satisfaction){
+              if(Store[j].Comprehensive<Store[i].Comprehensive){
                 var a;
                 a=Store[j];
                 Store[j]=Store[i];
@@ -129,7 +134,7 @@ Page({
         console.log(Store)
         for(var i =0;i<Store.length;i++){
           for(var j =0;j<i;j++){
-            if(Store[j].dis<Store[i].dis){
+            if(Store[j].dis>Store[i].dis){
               var a;
               a=Store[j];
               Store[j]=Store[i];
@@ -160,10 +165,6 @@ Page({
          //  for(var i=0;i<Store.length;i++){
          //    Store[i].dis=Store[i].distance[i]
          //  }
-          console.log(Store)
-          for(var i=0;i<Store.length;i++){
-            Store[i].Comprehensive = 0.7*Store[i].dis + 0.3*Store[i].store_satisfaction
-          }
           console.log(Store)
           for(var i =0;i<Store.length;i++){
             for(var j =0;j<i;j++){

@@ -14,6 +14,7 @@ Page({
     name:"",
     openid:null,
     phone_number:"",
+    shop_id:null,
     address:"",
     beizhu:"",
     time:'12:01',
@@ -247,9 +248,23 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     let that = this
     var _this = this;
     _this.findXy() //查询用户与商家的距离
+    console.log(options.shop_id)
+    _this.setData({
+      shop_id:options.shop_id
+    })
     var app=getApp()
     _this.setData({
       openid:app.globalData.openid
+    })
+    db.collection('store_detail_list').where({
+      _id:_this.data.shop_id
+    }).get({
+      success:function(res){
+        console.log(res.data[0].store_location)
+        _this.setData({
+          mendian:res.data[0].store_location
+        })
+      }
     })
     db.collection('shopping_cart').where({
       product_checked:"true",
