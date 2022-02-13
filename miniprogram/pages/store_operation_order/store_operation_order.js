@@ -25,11 +25,11 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    console.log(options.shop_id)
+    // console.log(options.shop_id)
     that.setData({
       shop_id:options.shop_id
     })
-    console.log(this.data.shop_id)
+    // console.log(this.data.shop_id)
     db.collection('order').where({
       product_state:that.data.state,
       shop_id:this.data.shop_id

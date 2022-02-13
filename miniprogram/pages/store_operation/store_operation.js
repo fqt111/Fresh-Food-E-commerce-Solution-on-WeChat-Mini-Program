@@ -9,7 +9,7 @@ Page({
   },
   // 跳转页面
   operation:function(e){
-    console.log(this.data)
+    // console.log(this.data)
     wx.navigateTo({
       url: e.currentTarget.dataset.page+'?shop_id='+this.data.shop_id,
     })

@@ -12,7 +12,7 @@ Page({
   formsubmit:function(e){
     console.log(e)
     if(e.detail.value.zhanghu!==""&&e.detail.value.pwd!==""){
-      db.collection('user').where({
+      db.collection('store_detail_list').where({
             zhanghu:e.detail.value.zhanghu,
             pwd:e.detail.value.pwd
           }).get({
@@ -25,7 +25,7 @@ Page({
                 })
               }else{
                 wx.navigateTo({
-                  url: '../store_operation/store_operation?shop_id='+res.data[0].shop_id,
+                  url: '../store_operation/store_operation?shop_id='+res.data[0]._id,
                 })
                 // wx.redirectTo({
                 //   url: '../store_operation/store_operation',
