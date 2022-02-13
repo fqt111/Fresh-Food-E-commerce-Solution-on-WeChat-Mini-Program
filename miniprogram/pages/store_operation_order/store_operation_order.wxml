@@ -1,8 +1,8 @@
 
 <!-- 选择栏 -->
 <view class="xuanze">
-  <view class="xuanze_1" bindtap="xuanze" data-state="送货中">送货中</view>
-  <view class="xuanze_1" bindtap="xuanze" data-state="已送达">已送达</view>
+  <view class="xuanze_1" bindtap="xuanze" data-state="送货中" data-shop_id="{{shop_id}}">送货中</view>
+  <view class="xuanze_1" bindtap="xuanze" data-state="已送达" data-shop_id="{{shop_id}}">已送达</view>
 </view> 
 
 

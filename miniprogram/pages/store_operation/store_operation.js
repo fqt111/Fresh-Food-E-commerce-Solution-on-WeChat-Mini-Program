@@ -5,20 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    shop_id:null,
   },
   // 跳转页面
   operation:function(e){
-    console.log(e)
+    console.log(this.data)
     wx.navigateTo({
-      url: e.currentTarget.dataset.page,
+      url: e.currentTarget.dataset.page+'?shop_id='+this.data.shop_id,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    let that = this
+    this.setData({
+      shop_id:options.shop_id
+    })
   },
 
   /**
