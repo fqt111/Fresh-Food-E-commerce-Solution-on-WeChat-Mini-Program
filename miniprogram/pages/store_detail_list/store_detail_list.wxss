@@ -32,9 +32,6 @@
   border-radius: 0.2rem;
 }
 
-.stars{
-  
-}
 
 .store_detail_list{
   display: flex;

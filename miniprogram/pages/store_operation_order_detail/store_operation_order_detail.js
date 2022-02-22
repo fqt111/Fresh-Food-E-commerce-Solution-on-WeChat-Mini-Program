@@ -7,7 +7,8 @@ Page({
    */
   data: {
     order:{},
-    id:""
+    id:"",
+    shop_id:'null'
   },
   // 拨打电话
   phone:function(){
@@ -24,17 +25,18 @@ Page({
         product_state:"已送达"
       },
       success: function(res){
-      console.log('订单状态更新成功',res)
+      console.log('订单状态更新成功',res,that.data.order._id)
       wx.showToast({
         title: '送货成功',
       })
-      wx.redirectTo({
-        url: '../store_operation_order/store_operation_order',
-      })
-    },fail:function(res){
-      console.log('订单状态更新失败',res)
     }
   })
+  console.log(this.data.shop_id)
+  wx.redirectTo({
+    url: '../store_operation_order/store_operation_order?shop_id='+this.data.shop_id,
+  })
+},fail:function(res){
+  console.log('订单状态更新失败',res)
 },
   //   wx.cloud.callFunction({
   //     name:'order_accomplished',
@@ -62,7 +64,8 @@ Page({
       success:function(res){
         console.log('订单获取成功',res)
         that.setData({
-          order:res.data
+          order:res.data,
+          shop_id:res.data.shop_id
         })
       },fail:function(res){
         console.log('订单获取失败',res)

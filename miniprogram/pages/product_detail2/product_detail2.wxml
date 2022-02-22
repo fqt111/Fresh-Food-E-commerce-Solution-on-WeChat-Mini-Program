@@ -14,13 +14,6 @@
     <view class="goods_name">重量/个数--{{product_weight}}</view>
   </view>
 
-<!-- 初处理步骤 -->
-  <!-- <view class="product">
-    <view class="product_detail">可提供的初处理选择 </view>
-    <view wx:for="{{product_process}}" wx:key="_id" class="product_1">
-      <view>{{index+1}} : {{item}}</view>
-    </view>
-  </view> -->
     
  <view class="product">
   <view bindtap="changeprocess" >

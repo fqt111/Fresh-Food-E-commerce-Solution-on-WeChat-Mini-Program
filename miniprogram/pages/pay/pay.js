@@ -155,8 +155,10 @@ getDistance: function(lat1, lng1, lat2, lng2) {
               money:that.data.money,
               product:that.data.product,
               time:DATE,
-              product_state:"送货中"
+              product_state:"送货中",
+              shop_id:that.data.shop_id
             },success:function(res){
+              console.log(that.data.shop_id)
               console.log('下单成功',res)
               wx.cloud.callFunction({
                 name:"product_delet",
