@@ -1,2 +1,17 @@
 <!--pages/comment_shop/comment_shop.wxml-->
-<text>pages/comment_shop/comment_shop.wxml</text>
+<view class="shop_note">
+  </view>
+    <view style="padding: 15rpx;">
+      <textarea style="height:200rpx" placeholder="请输入评价并为店铺评星" bindblur="input_comment" ></textarea>
+    </view>
+    <view class="comment-star">
+      <star num="{{select}}" total="{{total}}" disabled="{{disabled}}" bindchange="onStarChange">
+    </star>
+   
+    
+    <view >
+  <button size="mini" type="primary" bindtap="upload_img" >添加图片</button>
+    </view>
+
+    <button size ="mini" bindtap="back_and_storage"  type="primary" data-id="{{item}}">确认评价</button>
+  </view>

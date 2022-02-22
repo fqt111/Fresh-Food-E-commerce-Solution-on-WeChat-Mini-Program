@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "star": "../../components/star/star"},
+  "navigationBarTitleText": "订单评价"
 }
