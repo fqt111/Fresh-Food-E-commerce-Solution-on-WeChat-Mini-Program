@@ -183,7 +183,8 @@ Page({
     buy: function() {
         let that = this
         db.collection('shopping_cart').where({
-            product_id: that.data.id
+            product_id: that.data.id,
+            _openid:that.data.openid
         }).get({
             success: function(res) {
                 console.log(res)
@@ -301,7 +302,6 @@ Page({
                 console.log('請求失敗', err)
             })
 
-            
             var that = this;
             let query = wx.createSelectorQuery().in(this);
             query.selectAll('.textFour_box').fields({

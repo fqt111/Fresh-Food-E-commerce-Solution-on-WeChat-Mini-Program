@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      openid:"",
       product_name: "",
       product_src: [],
       product_price: 0,
@@ -126,7 +127,8 @@ Page({
   into_shopping_cart: function() {
       let that = this
       db.collection('shopping_cart').where({
-          product_id: that.data.id
+          product_id: that.data.id,
+          _openid:that.data.openid
       }).get({
           success: function(res) {
               console.log(res)
@@ -180,7 +182,8 @@ Page({
   buy: function() {
       let that = this
       db.collection('shopping_cart').where({
-          product_id: that.data.id
+          product_id: that.data.id,
+          _openid:that.data.openid
       }).get({
           success: function(res) {
               console.log(res)
@@ -235,6 +238,11 @@ Page({
    */
 
   onLoad: function(options) {
+    var app=getApp()
+    this.setData({
+      openid:app.globalData.openid,
+    })
+
       console.log('单品的id已经获取到了', options)
       var that=this
       db.collection('item').doc(options.id)
