@@ -73,7 +73,7 @@ Page({
              //传入当前位置的经度和纬度，和四个店铺的经度和纬度分别计算了当前位置和四个店铺位置的直线距离
               for (var i = 0; i < _this.data.shop.length; ++i) {
                dis[i]=_this.getDistance(_this.data.position.latitude, _this.data.position.longitude,_this.data.shop[i].coordinate.latitude,_this.data.shop[i].coordinate.longitude)
-               console.log(dis)
+        
              }
              //distance信息上传到云数据库,以更新的形式
              db.collection('distance').where({
