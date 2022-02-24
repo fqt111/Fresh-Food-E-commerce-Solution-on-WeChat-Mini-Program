@@ -127,6 +127,7 @@ Page({
     // 加入购物车
     into_shopping_cart: function() {
         let that = this
+        var app=getApp()
         db.collection('shopping_cart').where({
             product_id: that.data.id,
             _openid:that.data.openid

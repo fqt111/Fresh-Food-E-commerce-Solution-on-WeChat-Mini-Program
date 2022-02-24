@@ -31,6 +31,7 @@ Page({
 
   // 支付事件
   pay: function (e) {
+    console.log(1)
     let that = this
     var app=getApp()
     db.collection('shopping_cart').where({

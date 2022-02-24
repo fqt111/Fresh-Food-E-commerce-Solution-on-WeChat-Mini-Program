@@ -181,13 +181,14 @@ Page({
   // 立即购买
   buy: function() {
       let that = this
+      var app=getApp()
       db.collection('shopping_cart').where({
           product_id: that.data.id,
           _openid:that.data.openid
       }).get({
           success: function(res) {
               console.log(res)
-              if (res.data == "") {
+              if (res.data[0]._openid!=app.globalData._openid) {
                   db.collection('shopping_cart').add({
                       data: {
                           product_name: that.data.product_name,

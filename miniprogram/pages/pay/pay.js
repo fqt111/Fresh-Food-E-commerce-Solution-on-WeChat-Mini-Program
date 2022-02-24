@@ -21,6 +21,7 @@ Page({
     showView:2,
     distance:[],
     shop:[],
+    flag:false,
     items: [
       { name: '1', value: '自取' },
       { name: '2', value: '外卖', checked: 'true' },
@@ -73,7 +74,11 @@ Page({
              //传入当前位置的经度和纬度，和四个店铺的经度和纬度分别计算了当前位置和四个店铺位置的直线距离
               for (var i = 0; i < _this.data.shop.length; ++i) {
                dis[i]=_this.getDistance(_this.data.position.latitude, _this.data.position.longitude,_this.data.shop[i].coordinate.latitude,_this.data.shop[i].coordinate.longitude)
-        
+                if(dis[i]<5){
+                  _this.setData({
+                    flag:true
+                  })
+                }
              }
              //distance信息上传到云数据库,以更新的形式
              db.collection('distance').where({
@@ -145,54 +150,76 @@ getDistance: function(lat1, lng1, lat2, lng2) {
   pay:function(e){
     let that = this
     var DATE = util.formatDate(new Date());
-    if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""&&that.data.showView==2||that.data.showView==1){
-      db.collection('order').add({
-            data:{
-              name:that.data.name,
-              phone_number:that.data.phone_number,
-              address:that.data.address,
-              beizhu:that.data.beizhu,
-              money:that.data.money,
-              product:that.data.product,
-              time:DATE,
-              product_state:"送货中",
-              shop_id:that.data.shop_id
-            },success:function(res){
-              console.log(that.data.shop_id)
-              console.log('下单成功',res)
-              wx.cloud.callFunction({
-                name:"product_delet",
-                data:{
-                },
-                success:function(res){
-                  console.log('购物车删除成功',res)
-                  for(var i= 0;i<that.data.product.length;i++){
-                    wx.cloud.callFunction({
-                      name:"inc_product_num",
+    if(that.data.flag==false){
+      if(that.data.showView==1){
+        wx.showModal({
+          title: '提示',
+          content: '当前距离你最近的店铺超过5公里，请慎重选择',
+          success: function (res) {
+            if (res.confirm) {//这里是点击了确定以后
+              console.log('用户点击确定')
+              if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""&&that.data.showView==2||that.data.showView==1){
+                db.collection('order').add({
                       data:{
-                        product_id:that.data.product[i].product_id
+                        name:that.data.name,
+                        phone_number:that.data.phone_number,
+                        address:that.data.address,
+                        beizhu:that.data.beizhu,
+                        money:that.data.money,
+                        product:that.data.product,
+                        time:DATE,
+                        product_state:"送货中",
+                        shop_id:that.data.shop_id
                       },success:function(res){
-                        console.log('商品销量自加成功',res)
+                        console.log(that.data.shop_id)
+                        console.log('下单成功',res)
+                        wx.cloud.callFunction({
+                          name:"product_delet",
+                          data:{
+                          },
+                          success:function(res){
+                            console.log('购物车删除成功',res)
+                            for(var i= 0;i<that.data.product.length;i++){
+                              wx.cloud.callFunction({
+                                name:"inc_product_num",
+                                data:{
+                                  product_id:that.data.product[i].product_id
+                                },success:function(res){
+                                  console.log('商品销量自加成功',res)
+                                }
+                              })
+                            }
+                            wx.redirectTo({
+                              url: '../paySuccess/paySuccess'
+                            })
+                          },fail:function(res){
+                            console.log('购物车删除失败',res)
+                          }
+                        })
+                      },fail:function(res){
+                        console.log('下单失败',res)
                       }
                     })
-                  }
-                  wx.navigateTo({
-                    url: '../paySuccess/paySuccess',
-                  })
-                },fail:function(res){
-                  console.log('购物车删除失败',res)
-                }
-              })
-            },fail:function(res){
-              console.log('下单失败',res)
+              }else{
+                wx.showToast({
+                  title: '地址信息有误',
+                  icon:"none"
+                })
+              }
+            } else {//这里是点击了取消以后
+              console.log('用户点击取消')
             }
-          })
-    }else{
-      wx.showToast({
-        title: '地址信息有误',
-        icon:"none"
-      })
+          }
+        })
+      }else{
+        wx.showToast({
+          title: '距离您最近的店铺超过5公里，不提供外卖服务',
+          icon: 'none',
+          duration: 2000//持续的时间
+        })
+      }
     }
+
     
   },
   // 选择地址
