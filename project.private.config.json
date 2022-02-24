@@ -213,6 +213,12 @@
           "pathName": "pages/shopping_cart/shopping_cart",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
