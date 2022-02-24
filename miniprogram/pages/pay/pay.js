@@ -253,7 +253,8 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     //获取当前用户的openid
     var app=getApp()
     that.setData({
-      openid:app.globalData.openid
+      openid:app.globalData.openid,
+      shop_id:options.shop_id
     })
 
     console.log(options.shop_id)
@@ -263,7 +264,6 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     }).get({
       success:function(res){
         console.log("haha",res)
-        
         console.log(res.data[0].store_location)
         that.setData({
           mendian:res.data[0].store_location

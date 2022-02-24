@@ -2,7 +2,7 @@
 <!-- 收货信息 -->
 <view class="order_deatail">
   <view class="order_deatail_1">
-  <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/order_address.png" style="width:80rpx;height:80rpx" ></image>
+  <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/essential-information.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;" ></image>
   </view>
 
   <view class="order_deatail_2">
@@ -25,7 +25,7 @@
       </view>
     </view>
   </navigator>
-  <view wx:if="{{order.state}}">
+  <view wx:if="{{order.product_state=='已送达'}}">
     <button bindtap="comment_product"  data-pass="{{item}}">评价该商品</button>
   </view>
 </block>
