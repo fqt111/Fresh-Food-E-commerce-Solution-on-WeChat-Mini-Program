@@ -19,7 +19,7 @@ page{
   display: flex;
   flex-direction: row;
   width: 96%;
-  height: 150rpx;
+  height: 200rpx;
   align-self: center;
   align-items: center;
   justify-content: space-between;
@@ -99,7 +99,7 @@ page{
   align-self: center;
   justify-content: center;
   background-color: #fff;
-  height: 200rpx;
+  height: 150rpx;
   border-radius: 20rpx;
   margin-top: 20rpx;
 }
@@ -116,7 +116,7 @@ page{
   align-self: center;
   justify-content: center;
   background-color: #fff;
-  height: 200rpx;
+  height: 100rpx;
   border-radius: 20rpx;
   margin-top: 20rpx;
 }
@@ -124,11 +124,12 @@ page{
 .beizhu{
   display: flex;
   width: 96%;
+  height: 150rpx;
   align-items: center;
   align-self: center;
   justify-content: center;
   background-color: #fff;
-  height: 300rpx;
+
   border-radius: 20rpx;
   margin-top: 20rpx;
 }

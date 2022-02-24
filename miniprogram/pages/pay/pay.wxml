@@ -12,7 +12,7 @@
 <view wx:if="{{showView==2}}"class="address">
   <button bindtap="address" style="width:300rpx" plain="true" type="primary">选择地址</button>
   <view class="address_1">
-    <view>{{name}}：</view>
+    <view>{{name}}</view>
     <view>{{phone_number}}</view>
   </view>
   <view>{{address}}</view>
@@ -26,11 +26,16 @@
     </view>
   </picker>
 </view>
-<view class="address">{{mendian}}</view>
-<!-- 商户信息模块 -->
+
+<view class="address">
 <view clss="store_detail_list">
- <button bindtap="show_store_list" style="width: 300px" type="default">选择一个商家</button>
+ <button bindtap="show_store_list" style="width: 350rpx" type="primary" plain="true">选择一个商家</button>
 </view>
+<view>{{mendian}}</view>
+</view>
+<!-- 商户信息模块 -->
+
+
 <!-- 商品展示模块 -->
 <scroll-view class="product" scroll-y="true">
 <block wx:for="{{product}}" wx:key="_id">
@@ -54,11 +59,11 @@
 </block>
 </scroll-view>
 
-
-
 <!-- 订单备注 -->
 <view class="beizhu" > 
-  <textarea placeholder="请填入备注" bindinput="beizhu"></textarea>
+  <view style="padding: 15rpx;">
+      <textarea style="height:100rpx" placeholder="请添加备注" bindblur="note" ></textarea>
+    </view>
 </view>
 
 

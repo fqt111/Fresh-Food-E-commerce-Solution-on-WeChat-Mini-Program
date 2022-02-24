@@ -47,9 +47,9 @@ Page({
   },
   // 备注
   beizhu:function(e){
-    let that = this
+
     console.log(e)
-    that.setData({
+    this.setData({
       beizhu:e.detail.value
     })
   },
@@ -70,10 +70,10 @@ Page({
                 shop:res.data
               })
               console.log('111',_this.data.shop[0].coordinate.latitude)
-             
+             //传入当前位置的经度和纬度，和四个店铺的经度和纬度分别计算了当前位置和四个店铺位置的直线距离
               for (var i = 0; i < _this.data.shop.length; ++i) {
                dis[i]=_this.getDistance(_this.data.position.latitude, _this.data.position.longitude,_this.data.shop[i].coordinate.latitude,_this.data.shop[i].coordinate.longitude)
-               
+               console.log(dis)
              }
              //distance信息上传到云数据库,以更新的形式
              db.collection('distance').where({
@@ -141,9 +141,9 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     console.log('经纬度计算的距离:' + s+'公里')
     return s
 },
+
   pay:function(e){
     let that = this
-
     var DATE = util.formatDate(new Date());
     if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""&&that.data.showView==2||that.data.showView==1){
       db.collection('order').add({
@@ -248,26 +248,29 @@ getDistance: function(lat1, lng1, lat2, lng2) {
    */
   onLoad: function (options) {
     let that = this
-    var _this = this;
-    _this.findXy() //查询用户与商家的距离
-    console.log(options.shop_id)
-    _this.setData({
-      shop_id:options.shop_id
-    })
+    that.findXy() //查询用户与商家的距离
+
+    //获取当前用户的openid
     var app=getApp()
-    _this.setData({
+    that.setData({
       openid:app.globalData.openid
     })
+
+    console.log(options.shop_id)
+    //将选择后的商家添加到mendian中
     db.collection('store_detail_list').where({
-      _id:_this.data.shop_id
+      _id:options.shop_id
     }).get({
       success:function(res){
+        console.log("haha",res)
+        
         console.log(res.data[0].store_location)
-        _this.setData({
+        that.setData({
           mendian:res.data[0].store_location
         })
       }
     })
+    //获取当前购物车为true的选项
     db.collection('shopping_cart').where({
       product_checked:"true",
       _openid:app.globalData.openid
@@ -283,53 +286,4 @@ getDistance: function(lat1, lng1, lat2, lng2) {
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
