@@ -1,0 +1,26 @@
+<!--start.wxml-->
+<view class="container">
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="/assets/images/auth/loading.gif"></image>
+  </view>
+  <block wx:else>
+      <view class="title text-center margin-bottom text-lg  animation-slide-bottom fs42 fw5 " style="animation-delay:1s" >欢迎走进“初处理生鲜商城”</view>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <view class="logo">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <image class="wave" src="/assets/images/auth/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/assets/images/auth/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd  padding margin-top-sm">
+         <view class="bd-title text-df margin-top-sm">获取你的公开信息（昵称、头像、地区及性别）</view>
+         <view class="flex flex-direction bd-content">
+            <button  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo"   class="lg round cu-btn bg-69">登录授权
+            </button>
+            <button bindtap="goIndex" class="cu-btn line-grey lg round action margin-top-lg">返回首页</button>
+         </view>
+      </view>
+    </view>
+  </block>
+</view>

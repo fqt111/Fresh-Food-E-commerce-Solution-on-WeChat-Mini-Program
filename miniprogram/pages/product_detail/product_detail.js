@@ -124,118 +124,134 @@ Page({
         console.log(this.data.product_note)
     },
 
+   
     // 加入购物车
     into_shopping_cart: function() {
-        let that = this
-        var app=getApp()
-        db.collection('shopping_cart').where({
-            product_id: that.data.id,
-            _openid:that.data.openid
-        }).get({
-            success: function(res) {
-                console.log(res)
-                if (res.data == "") {
-                    db.collection('shopping_cart').add({
-                        data: {
-                            product_name: that.data.product_name,
-                            product_src: that.data.product_src[0],
-                            product_price: that.data.product_price,
-                            product_num: 1,
-                            product_id: that.data.id,
-                            // 新增代码
-                            product_checked: "true",
-                            product_note: that.data.product_note,
-                            product_add: that.data.detailValue,
-                        },
-                        success: function(res) {
-                            console.log('商品加入购物车成功', res)
-                            wx.showToast({
-                                title: '加入成功',
-                            })
-                        },
-                        fail: function(res) {
-                            console.log('商品加入购物车失败', res)
-                        }
-                    })
-                } else {
-                    console.log("haha")
-                        // db.collection('shopping_cart').doc(e.target.dataset.id).update({
-                        //   data: {
-                        //     product_num: _.inc(1)
-                        //   }, success:function(res){
-                        //     console.log('商品数量加一',res)
-                        //     that.onLoad()
-                        //   },fail:function(res){
-                        //     console.log('获取商品价格失败',res)
-                        //   }
-                        // })
-                    wx.showToast({
-                        title: '已有这个商品',
-                        icon: 'none'
-                    })
-                }
-            },
-            fail: function(res) {
-                console.log(res)
+        wx.getSetting({
+            success:(res)=> {
+              if (res.authSetting['scope.userInfo']) {
+                // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                wx.getUserInfo({
+                  success(res) {
+                    console.log("用户已授权信息", res.userInfo)
+                  },
+                  fail(res) {
+                    console.log("获取用户信息失败", res)
+                  }
+                })
+                   //加入购物车
+                   let that=this
+                   db.collection('shopping_cart').where({
+                      product_id: that.data.id,
+                      _openid:that.data.openid
+                  }).get({
+                      success: (res)=> {
+                          console.log(res)
+                          if (res.data == "") {
+                              db.collection('shopping_cart').add({
+                                  data: {
+                                      product_name: that.data.product_name,
+                                      product_src: that.data.product_src[0],
+                                      product_price: that.data.product_price,
+                                      product_num: 1,
+                                      product_id: that.data.id,
+                                      // 新增代码
+                                      product_checked: "true",
+                                      product_note: that.data.product_note,
+                                      product_add: that.data.detailValue,
+                                  },
+                                  success: function(res) {
+                                      console.log('商品加入购物车成功', res)
+                                      wx.showToast({
+                                          title: '加入成功',
+                                      })
+                                  },
+                                  fail: function(res) {
+                                      console.log('商品加入购物车失败', res)
+                                  }
+                              })
+                          } else {
+                              console.log("haha")
+                                 
+                              wx.showToast({
+                                  title: '已有这个商品',
+                                  icon: 'none'
+                              })
+                          }
+                      },
+                      fail: function(res) {
+                          console.log(res)
+                      }
+                  })
+              } else {
+                console.log("未授权=====需要跳转界面")
+                wx.navigateTo({
+                  url: '/pages/auth/auth',
+                })
+              }
             }
-        })
+          })
     },
+
     // 立即购买
     buy: function() {
-        let that = this
-        db.collection('shopping_cart').where({
-            product_id: that.data.id,
-            _openid:that.data.openid
-        }).get({
-            success: function(res) {
-                console.log(res)
-                if (res.data == "") {
-                    db.collection('shopping_cart').add({
-                        data: {
-                            product_name: that.data.product_name,
-                            product_src: that.data.product_src[0],
-                            product_price: that.data.product_price,
-                            product_num: 1,
-                            product_id: that.data.id,
-                            // 新增代码
-                            product_checked: "",
-                            product_note: that.data.product_note,
-                            product_add: that.data.detailValue,
-
-                        },
-                        success: function(res) {
-                            console.log('hh商品加入购物车成功', res)
+        wx.getSetting({
+            success:(res)=> {
+              console.log("res", res)
+              if (res.authSetting['scope.userInfo']) {
+                //加入购物车
+                let that=this
+                db.collection('shopping_cart').where({
+                    product_id: that.data.id,
+                    _openid:that.data.openid
+                }).get({
+                    success: (res)=> {
+                        console.log(res)
+                        if (res.data == "") {
+                            db.collection('shopping_cart').add({
+                                data: {
+                                    product_name: that.data.product_name,
+                                    product_src: that.data.product_src[0],
+                                    product_price: that.data.product_price,
+                                    product_num: 1,
+                                    product_id: that.data.id,
+                                    // 新增代码
+                                    product_checked: "",
+                                    product_note: that.data.product_note,
+                                    product_add: that.data.detailValue,
+        
+                                },
+                                success: function(res) {
+                                    console.log('hh商品加入购物车成功', res)
+                                    wx.switchTab({
+                                        url: '../shopping_cart/shopping_cart',
+                                    })
+                                },
+                                fail: function(res) {
+                                    console.log('商品加入购物车失败', res)
+                                }
+                            })
+                        } else {
                             wx.switchTab({
                                 url: '../shopping_cart/shopping_cart',
                             })
-                        },
-                        fail: function(res) {
-                            console.log('商品加入购物车失败', res)
                         }
-                    })
-                } else {
-                    wx.switchTab({
-                        url: '../shopping_cart/shopping_cart',
-                    })
-                }
-            },
-            fail: function(res) {
-                console.log(res)
+                    },
+                    fail: function(res) {
+                        console.log(res)
+                    }
+                })
+              } else {
+                console.log("未授权=====需要跳转界面")
+                wx.navigateTo({
+                  url: '/pages/auth/auth',
+                })
+              }
             }
-        })
+          })
     },
 
-    // onTap: function(e){
-    //   //取出“点的是第几个标题”
-    //   var index=e.currentTarget.dataset.index;
-    //   //go
-    //   var list=this.data.product_assessment;
-    //   var data=list[index];
-    //   data.flag=!data.flag;//toggle
-    //   this.setData({
-    //     product_assessment:list
-    //   });
-    // },
+   
     showAll: function(e) {
         console.log('checkboxChange e:', e);
         var index = e.target.dataset.index;
@@ -263,6 +279,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
         var app=getApp()
         this.setData({
           openid:app.globalData.openid,

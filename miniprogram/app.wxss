@@ -1,5 +1,10 @@
 /**app.wxss**/
 @import "./styles/iconfont.wxss";
+@import "vendor/colorui/main.wxss";
+@import "vendor/colorui/animation.wxss";
+@import "vendor/colorui/icon.wxss";
+@import "assets/styles/lib.wxss";
+@import "assets/styles/box.wxss";
 
 .container {
   display: flex;

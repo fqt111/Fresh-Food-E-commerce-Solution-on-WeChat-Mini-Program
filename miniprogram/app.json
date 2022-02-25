@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/auth/auth",
     "pages/paySuccess/paySuccess",
     "pages/product_detail/product_detail",
     "pages/product_detail2/product_detail2",
     "pages/product_fenlei/product_fenlei",
     "pages/product_test/product_test",
-    "pages/setting/setting",
     "pages/shopping_cart/shopping_cart",
     "pages/my/my",
     "pages/pay/pay",
@@ -26,6 +26,7 @@
     "pages/comment_product/comment_product",
     "pages/comment_shop/comment_shop",
     "pages/star/star"
+  
 
 
   ],
@@ -41,20 +42,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "./pages/img/sy_1.png",
-        "selectedIconPath": "./pages/img/sy_2.png"
+        "iconPath": "./pages/img/tab1.png",
+        "selectedIconPath": "./pages/img/tab1_active.png"
       },
       {
         "pagePath": "pages/shopping_cart/shopping_cart",
         "text": "购物车",
-        "iconPath": "./pages/img/sc_1.png",
-        "selectedIconPath": "./pages/img/sc_2.png"
+        "iconPath": "./pages/img/tab3.png",
+        "selectedIconPath": "./pages/img/tab3_active.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "./pages/img/my_1.png",
-        "selectedIconPath": "./pages/img/my_2.png"
+        "iconPath": "./pages/img/tab4.png",
+        "selectedIconPath": "./pages/img/tab4_active.png"
       }
     ]
   },

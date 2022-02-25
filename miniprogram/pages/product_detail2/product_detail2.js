@@ -123,70 +123,87 @@ Page({
       console.log(this.data.product_note)
   },
 
+ 
   // 加入购物车
   into_shopping_cart: function() {
-      let that = this
-      db.collection('shopping_cart').where({
-          product_id: that.data.id,
-          _openid:that.data.openid
-      }).get({
-          success: function(res) {
-              console.log(res)
-              if (res.data == "") {
-                  db.collection('shopping_cart').add({
-                      data: {
-                          product_name: that.data.product_name,
-                          product_src: that.data.product_src[0],
-                          product_price: that.data.product_price,
-                          product_num: 1,
-                          product_id: that.data.id,
-                          product_checked: "true",
-                          product_note: that.data.product_note,
-                          product_add: that.data.detailValue,
-                          product_process: that.data.processValue,
-                          product_fenlei:that.data.product_fenlei,
-                      },
-                      success: function(res) {
-                          console.log('商品加入购物车成功', res)
-                          wx.showToast({
-                              title: '加入成功',
+         // 获取用户信息
+    wx.getSetting({
+        success:(res)=> {
+          if (res.authSetting['scope.userInfo']) {
+            let that = this
+            db.collection('shopping_cart').where({
+                product_id: that.data.id,
+                _openid:that.data.openid
+            }).get({
+                success: (res)=> {
+                    console.log(res)
+                    if (res.data == "") {
+                        db.collection('shopping_cart').add({
+                            data: {
+                                product_name: that.data.product_name,
+                                product_src: that.data.product_src[0],
+                                product_price: that.data.product_price,
+                                product_num: 1,
+                                product_id: that.data.id,
+                                product_checked: "true",
+                                product_note: that.data.product_note,
+                                product_add: that.data.detailValue,
+                                product_process: that.data.processValue,
+                                product_fenlei:that.data.product_fenlei,
+                            },
+                            success: function(res) {
+                                console.log('商品加入购物车成功', res)
+                                wx.showToast({
+                                    title: '加入成功',
+                                })
+                            },
+                            fail: function(res) {
+                                console.log('商品加入购物车失败', res)
+                            }
+                        })
+                    } else {        
+                          db.collection('shopping_cart').where({
+                              product_id: that.data.id
+                          }).update({
+                              data:{
+                                product_note: that.data.product_note,
+                                product_add: that.data.detailValue,
+                                product_process: that.data.processValue,
+                              }
                           })
-                      },
-                      fail: function(res) {
-                          console.log('商品加入购物车失败', res)
-                      }
-                  })
-              } else {        
-                    db.collection('shopping_cart').where({
-                        product_id: that.data.id
-                    }).update({
-                        data:{
-                          product_note: that.data.product_note,
-                          product_add: that.data.detailValue,
-                          product_process: that.data.processValue,
-                        }
-                    })
-                    
-                    wx.showToast({
-                        title: '已加入购物车',
-                        icon: 'none'
-                    })
-              }
-          },
-          fail: function(res) {
-              console.log(res)
+                          
+                          wx.showToast({
+                              title: '已加入购物车',
+                              icon: 'none'
+                          })
+                    }
+                },
+                fail: function(res) {
+                    console.log(res)
+                }
+            })
+          } else {
+            console.log("未授权=====需要跳转界面")
+            wx.navigateTo({
+              url: '/pages/auth/auth',
+            })
           }
+        }
       })
   },
   // 立即购买
   buy: function() {
-      let that = this
+       // 获取用户信息
+       wx.getSetting({
+        success:(res)=> {
+          if (res.authSetting['scope.userInfo']) {
       var app=getApp()
+      var that=this
       db.collection('shopping_cart').where({
           product_id: that.data.id,
           _openid:that.data.openid
       }).get({
-          success: function(res) {
+          success: (res)=> {
               console.log(res)
               if (res.data[0]._openid!=app.globalData._openid) {
                   db.collection('shopping_cart').add({
@@ -196,7 +213,6 @@ Page({
                           product_price: that.data.product_price,
                           product_num: 1,
                           product_id: that.data.id,
-                          // 新增代码
                           product_checked: "",
                           product_note: that.data.product_note,
                           product_add: that.data.detailValue,
@@ -232,6 +248,14 @@ Page({
               console.log(res)
           }
       })
+          } else {
+            console.log("未授权=====需要跳转界面")
+            wx.navigateTo({
+              url: '/pages/auth/auth',
+            })
+          }
+        }
+      })
   },
 
   /**
@@ -245,12 +269,11 @@ Page({
     })
 
       console.log('单品的id已经获取到了', options)
-      var that=this
       db.collection('item').doc(options.id)
           .get()
           .then(res => {
               console.log('請求成功', res)
-              that.setData({
+              this.setData({
                   product_src: res.data.img, //
                   product_name: res.data.name, //
                   product_num: res.data.sell, //

@@ -1,0 +1,8 @@
+<template name="empty">
+
+	<view class='text-center response h100 padding-top-50 bg-white'>
+		<image class="vw50" src='/assets/images/utils/empty.png' mode='widthFix'></image>
+		<view class="que2 fw5 c9">{{content}}</view>
+	</view>
+
+</template>

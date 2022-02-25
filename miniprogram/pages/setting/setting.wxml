@@ -1,4 +1,0 @@
-<view class="anniu">
-  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" type="primary" plain='true' style="margin-top: 100rpx;width:300rpx">授权登录</button>
-  <view wx:else>请升级微信版本</view>
-</view>

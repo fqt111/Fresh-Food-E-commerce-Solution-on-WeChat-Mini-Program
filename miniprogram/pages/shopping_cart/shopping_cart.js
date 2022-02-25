@@ -31,8 +31,7 @@ Page({
 
   // 支付事件
   pay: function (e) {
-    console.log(1)
-    let that = this
+  
     var app=getApp()
     db.collection('shopping_cart').where({
       product_checked: "true",
@@ -160,7 +159,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    let that = this
+    
+
     var app=getApp()
     db.collection('shopping_cart').where({
       _openid:app.globalData.openid

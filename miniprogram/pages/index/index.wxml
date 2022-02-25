@@ -1,6 +1,7 @@
+
 <!-- 搜索框 -->
 <view class="search">
-  <input placeholder="请输入要搜索的商品" placeholder-style="color:#ff6801" cbindblur="search" confirm-type="done"></input>
+  <input placeholder="请输入要搜索的商品" placeholder-style="color:#ff6801" bindblur="search" ></input>
   <!-- <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/search.png" style="width:50rpx;height:50rpx"></image> -->
   <text bindtap="search_1" class="iconfont icon-sousuokuang"></text>
 </view>
@@ -14,14 +15,9 @@
   <view class="line"></view>
 </view>
 
-    <!-- <navigator url="../product_fenlei/product_fenlei?name={{item.name}}"  class="fenlei_2">
-      <image src="{{item.img}}" style="width:80rpx;height:80rpx"></image>
-      <text>{{item.name}}</text>
-    </navigator> -->
 <!-- 分类模块 -->
 <view class="fenlei" >
   <view class="fenlei_1" >
-    <!-- wx:for="{{fenlei}}" wx:key="_id" -->
     <navigator  url="../product_fenlei/product_fenlei?name=单品" class="fenlei_2">
       <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/danpin.png" style="width:80rpx;height:80rpx"></image>
     <button size="mini"  type="default">
