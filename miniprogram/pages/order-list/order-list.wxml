@@ -1,15 +1,15 @@
-<!-- 选择栏 -->
-<view class="xuanze">
-  <view class="xuanze_1" bindtap="xuanze" wx:for-items="{{items}}" wx:key="name"  data-value="{{item.value}}">
-                    <text>{{item.value}}</text>
+<view class="container">
+  <view class="status-box">
+    <view bindtap="statusTap" class="status-label {{index == currentType ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+      {{item}}
+      <view class="{{tabClass[index]}}"></view>
+    </view>
   </view>
-  <!-- <view class="xuanze_1" bindtap="xuanze" data-state="等待中">等待中</view>
-  <view class="xuanze_1" bindtap="xuanze" data-state="处理中">处理中</view>
-  <view class="xuanze_1" bindtap="xuanze" data-state="送货中">送货中</view>
-  <view class="xuanze_1" bindtap="xuanze" data-state="已送达">已送达</view> -->
-</view> 
-
-<!-- 订单栏 -->
+  <view wx:if="{{order==null}}" class="no-order" style="height: {{bodyHeight}}px;">
+    <image src="../img/cart_empty.png" class="no-order-img"></image>
+    <view class="text">还没有订单呢</view>
+  </view>
+  <!-- 订单栏 -->
 <block wx:for="{{order}}" wx:key="_id">
   <navigator url="../my_record_detail/my_record_detail?id={{item._id}}" class="order">
     <view class="order_1">
@@ -22,10 +22,12 @@
         <view>{{item.product[0].product_name}}</view>
         <view>商品:{{item.product.length}}件-共{{item.money}}元</view>
       </view>
-      <view  class="order_4" wx:if="{{state=='等待中'}}"  > 查看订单状态</view>
+      <view  class="order_4" wx:if="{{state=='等待中'}}"> 查看订单状态</view>
       <view class="order_4" wx:elif="{{state =='处理中'}}">查看实时视频</view>
       <view class="order_4" wx:elif="{{state =='待收货'}}">查看配送信息</view>
       <view class="order_4" wx:else="{{state =='待评价'}}">点击评价</view>
     </view>
   </navigator>
 </block>
+ 
+</view>

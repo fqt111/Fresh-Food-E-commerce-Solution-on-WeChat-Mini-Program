@@ -12,8 +12,8 @@ Page({
       items: [
         { name: '1', value: '等待中' },
         { name: '2', value: '处理中' },
-        { name: '3', value: '送货中' },
-        { name: '4', value: '已送达' }
+        { name: '3', value: '待收货' },
+        { name: '4', value: '待评价' }
       ]
   },
   //改变值，显示摄像头功能或者是评价功能
@@ -22,7 +22,7 @@ Page({
     this.setData({
       state:e.currentTarget.dataset.value
     })
-    this.onLoad()
+    this.onShow()
   },
 
   /**
@@ -32,10 +32,29 @@ Page({
     let that = this
     //获取当前的openid
     var app=getApp()
+    console.log(options.state)
     that.setData({
-      openid:app.globalData.openid
+      openid:app.globalData.openid,
+      state:options.state
     })
 
+    db.collection('order').where({
+      product_state:that.data.state,
+      _openid:app.globalData.openid
+    }).get({
+      success:function(res){
+        console.log('订单获取成功',res)
+        that.setData({
+          order:res.data
+        })
+      },fail:function(res){
+        console.log('订单获取失败',res)
+      }
+    })
+  },
+  onShow(){
+    var app=getApp()
+    let that = this
     db.collection('order').where({
       product_state:that.data.state,
       _openid:app.globalData.openid
@@ -50,7 +69,7 @@ Page({
         console.log('订单获取失败',res)
       }
     })
-  },
+  }
 
  
 })
