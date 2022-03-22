@@ -7,6 +7,7 @@ let value = ''
 Page({
   data: {
     banner: [],
+    start_banner:[],
     fenlei: [],
     product: [],
     search: [],
@@ -63,7 +64,20 @@ Page({
  
 
   onLoad: function () {
-      let that = this;
+    db.collection('fenlei').where({
+      _id:'efbc6d716238361e00e5e1b84186ac2a'
+    })
+      .get()
+      .then(res => {
+        console.log('首页轮播图获取成功', res)
+        this.setData({
+          start_banner: res.data[0].start_banner
+        })
+      })
+      .catch(err => {
+        console.log('請求失敗', err)
+      })
+
     db.collection('set_meal').where({
       fenlei:'套餐'
     })

@@ -1,3 +1,5 @@
+<navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="商家列表" animation="{{fadeAni}}"></navigation>
+
 <!--pages/store_detail_list/store_detail_list.wxml-->
 <radio-group class="radio-group" bindchange="radioChange">
                 <radio wx:for="{{items}}" wx:key="name"  class="radio" value="{{item.name}}" checked="{{item.checked}}">{{item.value}}

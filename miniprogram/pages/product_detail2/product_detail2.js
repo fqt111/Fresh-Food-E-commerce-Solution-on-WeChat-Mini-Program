@@ -91,27 +91,27 @@ Page({
    * 2：用到弹出或者关闭弹窗的业务逻辑时都可调用
    */
   
-  changeprocess() {
+  changestate(){
     this.setData({
-        showProcess: !this.data.showProcess
+        showDialog: !this.data.showDialog,
+      
     });
-  },
-  finish1: function() {
+},
+addcart() {
+
     this.setData({
-      showProcess: !this.data.showProcess
+        showDialog: !this.data.showDialog,
+        showtag:"加入购物车"
+    });
+},
+quickbuy: function() {
+    this.setData({
+        showDialog: !this.data.showDialog,
+        showtag:"立即购买"
     });
 },
 
-  changeadd() {
-      this.setData({
-          showDialog: !this.data.showDialog
-      });
-  },
-  finish2: function() {
-      this.setData({
-          showDialog: !this.data.showDialog
-      });
-  },
+ 
 
   // 添加备注
   note: function(e) {
@@ -278,7 +278,9 @@ Page({
                   product_name: res.data.name, //
                   product_num: res.data.sell, //
                   product_price: res.data.price, //
-                  product_process: res.data.process, //初处理备注
+                  product_origin_price: res.data.origin_price,
+                  product_sell: res.data.sell,
+                  product_process: res.data.process, //初处理选择
                   product_weight: res.data.weight,
                   product_choose: res.data.choose, //让用户选择不需要哪些辅料
                   id: res.data._id, //识别id

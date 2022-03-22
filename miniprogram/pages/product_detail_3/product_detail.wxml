@@ -1,0 +1,182 @@
+<navigation id='Navigation'  show-icon="{{true}}" show-title='{{true}}' title="套餐详情" animation="{{fadeAni}}"></navigation>
+
+<!-- 轮播图 -->
+<view class="banner">
+  <swiper class="banner_1" autoplay="true" circular="true" interval="5000" indicator-dots="true">
+    <swiper-item wx:for="{{product_src}}" wx:key="index">
+      <image src="{{item}}" style="width:750rpx;height:750rpx"></image>
+    </swiper-item>
+  </swiper>
+</view>
+<!-- 
+  <view class="goods_name">￥{{product_name}}</view>
+  <view class="goods_price">{{product_price}}</view> -->
+
+  <block>
+        <view class="goods-price">Ұ {{product_price}}</view>
+        <view  wx:if="{{product_origin_price.flag == true}}" class="goods-originalPrice">Ұ {{product_origin_price.price}}</view>
+        <view class="piangjia">
+          已售 {{product_sell}}
+        </view>
+      </block>
+
+  <view class="line"></view>
+
+<!-- 初处理步骤 -->
+  <view class="product">
+    <view class="product_detail">初处理步骤</view>
+    <view wx:for="{{product_process}}" wx:key="_id" class="product_1">
+      <view>{{index+1}} : {{item}}</view>
+    </view>
+  </view>
+    
+  <view class="line"></view>
+
+  <!-- 配料信息 -->
+  <view class="product">
+    <view class="product_detail">配料信息</view>
+    <view class="product_2">
+      <view>主要食材 ： {{product_detail1}}</view> 
+    </view>
+    <view class="product_2">
+      <view>辅料 ： {{product_detail2}}</view>
+    </view>
+  </view>
+  
+  <view class="line"></view>
+
+  <!-- 定制辅料 -->
+  <view class="product">
+  <view bindtap="toggleDialog" >
+<view style="font-weight: 600;">请选择需要添加的辅料</view>
+<view class="choose">
+<view class="choose_1">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/danpin.png" style="width:50rpx;height:50rpx"></image>
+</view>
+<view class="choose_1">
+    <button size="mini"  type="default">
+      <text style="font-size:28rpx">定制</text>
+    </button>
+    </view>
+  </view>
+  </view>
+</view>
+
+<!-- 以下是弹窗组件
+showDialog是由toggledialog的点击事件控制true or false -->
+<view class="{{showDialog ? 'show' : 'pop_hidden' }}">
+ <view class="mask" bindtap="toggleDialog" ></view>
+ <view class="container">
+  <view style='padding:10rpx;'>主要食材（不给予删减）: {{product_detail1}}</view>
+  <view style='padding:10rpx;'>配料 : {{product_detail2}}</view>
+
+  <view class="comment-btn">
+        <button 
+            wx:for="{{product_choose}}" 
+            wx:for-item="item" 
+            wx:key="item.index"  
+            bindtap="checkboxChange" 
+            data-value="{{item.value}}" 
+            data-index="{{index}}"  
+            checked="{{item.selected}}"
+            class="btn {{item.selected ? 'btn-selected' : ''}}" >
+            {{item.value}}
+        </button>
+    </view>
+    <button type="primary" bindtap="finish">完成</button>
+ </view>
+</view>
+
+<view class="line"></view>
+
+  <view class="product_note">
+    <view>请添加备注（可选）</view>
+  </view>
+    <view style="padding: 15rpx;">
+      <textarea style="height:50rpx" placeholder="请添加备注" bindblur="note" ></textarea>
+    </view>
+
+<!-- <view wx:for="{{product_assessment}}">
+  <view bindtap="onTap" data-index="{{index}}">
+    {{show}}
+  </view>
+  <view class="{{item.flag?'isBlock':''}}">
+    {{item.content}}
+  </view>
+</view> -->
+
+<view class="posts">
+    <view class="post_header">
+        <text>评论</text>
+        <image src="/images/pen.png" style="width: 32rpx;height: 32rpx;" bindtap=""></image>
+    </view>
+    <block wx:for="{{product_assessment}}" wx:key="index" data-index="{{index}}">
+        <view class="post">
+            <view class="user_info">
+                <image>{{item.avatarUrl}}</image>
+                <text>{{item.nickname}}</text>
+            </view>
+            <!-- <view class="post_content {{item.flag?'hide':'show'}}"  bindtap="showAll" data-index="{{index}}">{{item.content}}</view> -->
+            <!-- <view bindtap="showAll" data-index="{{index}}" style="color: aquamarine; ">{{show}}</view> -->
+  <!-- <view class="box">
+   <view class="textFour_box {{item.seeMore?'three':''}}">{{item.text}}</view>
+   <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
+    <text class="text_toggle_text">查看更多</text>
+    <image class="toggle-icon" src="../../images/1.png"></image>
+   </view>
+   <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContent'>
+    <text class="text_toggle_text">收起</text>
+    <image class="toggle-icon" src="../../images/2.png"></image>
+   </view>
+  </view> -->   
+             <scroll-view class="img" scroll-y="true">
+               <block wx:for="{{item.image}}" wx:for-item="image" wx:key="index">
+               <image src="{{image}}" style="width:213rpx;height:213rpx"></image>
+               </block>
+             </scroll-view>
+
+            <view class="post_footer">
+                <text>{{item.time}}</text>
+            </view>
+        </view>
+    </block>
+</view>
+
+<block wx:for='{{product_assessment}}' wx:key='index'>
+  <view class="box">
+   <view class="textFour_box {{item.seeMore?'three':''}}">{{item.content}}</view>
+   <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
+    <text class="text_toggle_text">查看更多</text>
+    <image class="toggle-icon" src="../../images/1.png"></image>
+   </view>
+   <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContent'>
+    <text class="text_toggle_text">收起</text>
+    <image class="toggle-icon" src="../../images/2.png"></image>
+   </view>
+  </view>
+ </block>
+      <!-- <view wx:for="{{product_assessment}}" 
+            wx:for-item="item" 
+            wx:key="item.index"  
+           >
+        <view class="long-dec {{item.flag?'hide':'show'}}">
+        {{item.content}}
+        </view>
+        <view class="showall"  bindtap="showAll" data-index="{{index}}" style="color: aquamarine; ">{{show}}</view>
+      </view>
+     
+      <image class="arrow" src=" {{isFold?'../../youzan-image/down.png':'../../youzan-image/up.png'}}" bindtap="showAll">haha</image> -->
+
+
+  <view style="align-self: center;height:150rpx">已到底</view>
+
+  <!-- 按钮 -->
+ <view class="pay">
+    <view class="pay_1" bindtap="into_shopping_cart">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/购物车.png"
+        style="width:80rpx;height:80rpx">
+      </image>
+      <view>加入购物车</view>
+    </view>
+    <view class="pay_2" bindtap="buy">立即购买</view>
+  </view>

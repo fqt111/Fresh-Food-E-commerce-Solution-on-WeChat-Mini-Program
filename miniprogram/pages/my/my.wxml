@@ -38,7 +38,7 @@
       <text>{{balance}}元</text>
       <view>我的余额</view>
     </navigator>
-    <navigator hover-class="none" class="userinfo-item" url="/pages/score/score">
+    <navigator hover-class="none" class="userinfo-item" url="../store_login/store_login">
       <image src="../img/jifen.png"></image>
 			<text>{{score}}积分</text>
       <view>商家平台</view>
@@ -51,8 +51,8 @@
       <image src="../img/profile_collection.png"></image>
       <view>我的收藏</view>
     </navigator>
-    <navigator hover-class="none" class="userinfo-item" url="/pages/address/address">
-      <image src="../img/profile_address.png" bindtap="address"></image>
+    <navigator bindtap="address" hover-class="none" class="userinfo-item" url="/pages/address/address">
+      <image src="../img/profile_address.png" ></image>
       <view>我的地址</view>
     </navigator>
     <view class="userinfo-item">
@@ -61,27 +61,13 @@
       <button open-type="contact" session-from="weapp"></button>
     </view>
   </view>
+
   <view class="userinfo-info">
     {{getInfo}}
   </view>
 </view>
-<view class="aa">
-  <view class="cc">
-    <open-data type="userAvatarUrl"></open-data>
-  </view> 
-  <!-- 用户信息 -->
-  <view>
-    <view class="ac">
-        <open-data type="userNickName" lang="zh_CN" ></open-data>
-    </view>
-    <view class="cv">
-      <open-data type="userCountry" lang="zh_CN" ></open-data>
-      <open-data type="userProvince" lang="zh_CN" ></open-data>
-      <open-data type="userCity" lang="zh_CN" ></open-data>
-    </view>
-  </view>
-</view>
 
+<view style="height: 100rpx;"></view>
 <!-- 联系客服 -->
 <view class="aq">
   <view class="al">

@@ -219,6 +219,20 @@
           "pathName": "pages/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/product_fenlei/product_fenlei",
+          "query": "name=%E5%8D%95%E5%93%81",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/product_detail_3/product_detail",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
         }
       ]
     }

@@ -1,3 +1,5 @@
+<navigation id='Navigation'  show-title='{{true}}' title="购物车" animation="{{fadeAni}}"></navigation>
+
 <block wx:for="{{product}}" wx:key="_id">
   <!-- 商品信息模块 -->
   <view class="product_list">

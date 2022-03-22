@@ -10,14 +10,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-        showtag:"加入购物车",
         openid:"",
         product_name: "",
         product_src: [],
         product_price: "",
         product_origin_price: [],
         product_sell: "",
-        main_detail:[],
         product_detail1: "",
         product_detail2: "",
         product_num: "",
@@ -107,23 +105,14 @@ Page({
      * 1：点击弹窗以外的位置可消失弹窗
      * 2：用到弹出或者关闭弹窗的业务逻辑时都可调用
      */
-    changestate(){
+    toggleDialog() {
         this.setData({
-            showDialog: !this.data.showDialog,
-          
+            showDialog: !this.data.showDialog
         });
     },
-    addcart() {
-    
+    finish: function() {
         this.setData({
-            showDialog: !this.data.showDialog,
-            showtag:"加入购物车"
-        });
-    },
-    quickbuy: function() {
-        this.setData({
-            showDialog: !this.data.showDialog,
-            showtag:"立即购买"
+            showDialog: !this.data.showDialog
         });
     },
 
@@ -311,7 +300,8 @@ Page({
                     product_origin_price: res.data.origin_price,
                     product_sell: res.data.sell,
                     product_process: res.data.process, //初处理备注
-                    main_detail:res.data.main_detail,
+                    product_detail1: res.data.detail[0], //主要配料和辅料
+                    product_detail2: res.data.detail[1], //主要配料和辅料
                     product_choose: res.data.choose, //让用户选择不需要哪些辅料
                     id: res.data._id //识别id
                 })

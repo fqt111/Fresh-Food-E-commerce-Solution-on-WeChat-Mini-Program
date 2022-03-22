@@ -62,9 +62,29 @@ page {
 }
 
 .title {
+  height: 35%;
   position: relative;
   top: 200rpx;
   color: #fff;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.fw5{
+  font-weight: 500;
+}
+
+.fs42{
+  font-size:42rpx
+}
+
+.animation-slide-bottom {
+  animation-name: slide-bottom;
+}
+
+[class*=animation-] {
+  animation-duration: .5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
 }
 
 .smalltitle {
@@ -94,7 +114,7 @@ page {
   left: 50%;
   width: 1000rpx;
   margin-left: -500rpx;
-  height: 200rpx;
+  height: 100rpx;
   transition: all .35s ease;
 }
 
@@ -181,9 +201,6 @@ page {
 
 .bd {
   position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
   align-items: stretch;
   animation: bd-rise 2s cubic-bezier(0.23, 1, 0.32, 1) .75s forwards;
   opacity: 0;
@@ -216,12 +233,32 @@ page {
   opacity: .8;
 }
 
+.bd-title{
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  display: block;
+  justify-content: center;
+  align-content: center;
 
-.bg-69 {
-  background: var(--login-background);
-  color: #fff;
 }
 
+.cu-btn{
+  position: relative;
+    box-sizing: border-box;
+    line-height: 1;
+    text-decoration: none;
+    overflow: visible;
+    transform: translate(0rpx, 0rpx);
+    color: #fff;
+  padding: 0 40rpx;
+  font-size: 32rpx;
+  height: 80rpx;
+  }
+
+.round{
+  border-radius: 5000rpx;
+}
 .action {
   font-size: 13pt;
   line-height: 85rpx;
@@ -235,3 +272,4 @@ page {
 .bd-content {
   margin-top: 150rpx;
 }
+

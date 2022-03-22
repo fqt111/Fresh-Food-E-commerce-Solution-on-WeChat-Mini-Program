@@ -52,21 +52,17 @@ Page({
 
   onLoad: function (e) {
     var that = this;
-    var currentType = e.currentType;
-    this.data.currentType = currentType;
-    if (currentType) {
-      that.setData({
-        currentType: currentType,
-        state:that.data.statusType[currentType]
-      });
-    }
+    console.log(e)
+    this.setData({
+      currentType = e.currentType,
+      state:this.data.statusType[currentType]
+    })
+  
+    
     //获取当前的openid
     var app=getApp()
-    that.setData({
-      state:that.data.statusType[currentType]
-    })
     db.collection('order').where({
-      product_state:that.data.state,
+      product_state:this.data.state,
       _openid:app.globalData.openid
     }).get({
       success:function(res){
@@ -81,29 +77,4 @@ Page({
     that.statusTap(e);
 
   },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-
-  },
-
-  onShow: function (e) {
-    // 获取订单列表
-  
-  },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
-
-  },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
-
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-
-  }
 })

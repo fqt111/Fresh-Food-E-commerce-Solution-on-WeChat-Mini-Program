@@ -12,6 +12,7 @@ Page({
         img: [],
         product: [],
         fenlei_now: "",
+        activeCategoryId: 1,
  
     },
     get_product_detail: function(e) {
@@ -33,7 +34,8 @@ Page({
     get_product_fenlei: function(e) {
         console.log("huoqu", e)
         this.setData({
-            fenlei_now: e.currentTarget.dataset.name
+            fenlei_now: e.currentTarget.dataset.name,
+            activeCategoryId: e.currentTarget.id
         })
         this.get_product()
     },

@@ -62,8 +62,8 @@
 	/* border: 1px solid #eee; */
   border-radius: 27px;
 	background: hsla(0, 0%, 100%, .6);
-	height: 32px;
-	width: 355rpx;
+	height: 45rpx;
+	width: 250rpx;
 	background: #f7f7f7;
 	margin-left: 20rpx;
 	display: flex;

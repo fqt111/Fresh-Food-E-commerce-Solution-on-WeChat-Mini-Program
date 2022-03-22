@@ -1,17 +1,12 @@
 /* 轮播图 */
-page {
-  background-color: #fff;
-}
-
-.banner {
+.banner{
   display: flex;
   flex-direction: row;
   align-self: center;
   width: 100%;
   height: 750rpx;
 }
-
-.banner_1 {
+.banner_1{
   width: 100%;
   height: 750rpx;
   overflow: hidden;
@@ -23,7 +18,6 @@ page {
   font-weight: 600;
   color: var(--themeColor);
 }
-
 .goods_name_row {
   padding: 15rpx;
   border-top: 5rpx solid #dedede;
@@ -31,10 +25,9 @@ page {
   padding: 10rpx 0;
   display: flex;
 }
-
 .goods_name_row .goods_name {
   flex: 5;
-
+ 
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
@@ -44,13 +37,6 @@ page {
   color: #333;
   padding-left: 30rpx;
 }
-
-.goods_title {
-  font-size: 34rpx;
-  color: #333;
-  padding-left: 30rpx;
-}
-
 .goods_name_row .goods_collect {
   flex: 1;
   display: flex;
@@ -59,17 +45,8 @@ page {
   align-items: center;
   border-left: 1rpx solid #000;
 }
-
 .goods_name_row .goods_collect .icon-shoucang1 {
   color: orangered;
-}
-
-.goods-info {
-  background-color: #fff;
-  padding-top: 30rpx;
-  width: 100%;
-  position: relative;
-  border-bottom: 30rpx solid #f5f5f5;
 }
 
 .goods-price {
@@ -99,43 +76,26 @@ page {
 
 
 /* 产品信息 */
-.product1 {
+.product{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 96%;
   align-self: center;
-  border-bottom: 30rpx solid #f5f5f5;
-  padding-left: 10rpx;
-}
-
-.product2 {
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-}
-
-.product3{
-  height: 60rpx;
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  align-content: center;
-  border-bottom: 30rpx solid #f5f5f5;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
-  justify-content: space-between;
+  border-bottom: 30rpx solid #e7e1e1;
 }
 .product_detail {
   /* padding: 10rpx 0; */
   font-weight: 600;
   height: 100%;
   display: flex;
-  padding-left: 10rpx;
+  /* justify-content: center;
+  align-items: center; */
   border-radius: 15rpx;
- 
+  /* color: #666; */
+  /* font-size: 50rpx; */
 }
 
-.product_1 {
+.product_1{
   /* justify-content: center;
   align-items: center; */
   display: flex;
@@ -145,50 +105,39 @@ page {
   margin-top: 20rpx;
 }
 
-.product_2 {
+.product_2{
+  /* justify-content: center;
+  align-items: center; */
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  width: auto;
-  align-self: center;
-  padding-bottom: 10rpx;
-  padding-top: 10rpx;
+
+  /* font-size: 30rpx; */
+  margin-top: 20rpx;
 }
 
-.product_3{
-  justify-content: space-between;
-}
 
-.product_image{
-  width: 50rpx;
-  height: 50rpx;
-  display: flex;
-}
-
-.line {
+.line{
   width: 100%;
-
+  
   background-color: rgb(209, 209, 209);
   border-bottom: 30rpx solid #f5f5f5;
 }
 
 
-/*定制按钮*/
-.choose {
-  width: 96%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.choose_1 {
-  /* width: 25rpx; */
-  height: 50rpx;
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  align-items: center;
-
-}
+  /*定制按钮*/
+  .choose{
+    width: 96%;
+    display: flex;
+  }
+   .choose_1{
+     /* width: 25rpx; */
+    height: 50rpx;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+  }
 
 /* 定制以及弹窗 */
 .mask {
@@ -202,68 +151,56 @@ page {
   /* 设置阴影半透明背景如：  */
   background: rgba(0, 0, 0, 0.4);
   display: none;
-}
-
-/* 定义弹窗的大小 */
-.container {
-  height: 600rpx;
+ }
+  
+ /* 定义弹窗的大小 */
+ .container {
   position: fixed;
-  top: 400rpx;
-  /* bottom: 600rpx; */
-  width: 700rpx;
+  bottom: 600rpx;
+  width: 650rpx;
   /* 弹窗布局宽 */
-  /* height: auto; */
+  /* height: 700rpx; */
   /* 弹窗布局高，与下面弹出距离transform有关 */
-  margin-left: 25rpx;
+  margin-left: 50rpx;
   background: #f8f8f8;
-  /* transform: translateY(300%); */
+  transform: translateY(300%);
   /* 弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */
   transition: all 0.4s ease;
   z-index: 12;
   border-radius: 20rpx;
   box-shadow: 0px 3px 3px 2px gainsboro;
   /* 弹框的悬浮阴影效果，如不需要可注释该行 */
-}
-
-.show .container {
+ }
+  
+ .show .container {
   transform: translateY(0);
-}
-
-.show .mask {
+ }
+ .show .mask {
   display: block;
-}
-
-.pop_hidden {
-  display: none;
-}
+ }
+ .pop_hidden{
+   display: none;
+ }
 
 
 /* 选择配料的时候加边框 */
-.btn {
+.btn{
   width: 150rpx;
   height: 70rpx;
-  font-size: 28rpx;
+  font-size: 24rpx;
+  padding: 0;
   border: 1px solid #dcdcdc;
   background: #fff;
   border-radius: 4px;
   margin: 15rpx 10rpx;
   text-align: center;
-  align-self: center;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20rpx;
 }
-
-.btn-selected {
+.btn-selected{
   border: 1px solid #06a380;
 }
 
-.comment-btn{
-  
-}
-
 /* 备注信息 */
-.product_note {
+.product_note{
   width: 96%;
   padding: 15rpx;
   /* font-size: 32rpx; */
@@ -316,11 +253,11 @@ page {
   margin-right: 20rpx;
 }
 
-.post_content {
+.post_content{
   margin-bottom: 20rpx;
   padding-left: 20rpx;
   display: block;
-  font-size: 28rpx;
+  font-size:28rpx;
   line-height: 40rpx;
   /* word-break: break-all;
   -webkit-box-orient: vertical;
@@ -329,35 +266,30 @@ page {
   text-overflow:ellipsis; */
   /* 超出内容显示省略号*/
 }
-
-.hide {
-  display: none;
+.hide{
+ display: none;
 }
-
-.show {
-  display: block;
+.show{
+ display: block;
 }
-
-.arrow {
-  position: absolute;
-  width: 40rpx;
-  height: 43rpx;
-  left: 50%;
-  transform: translate(-50%);
+.arrow{
+ position: absolute;
+ width: 40rpx;
+ height: 43rpx;
+ left: 50%;
+ transform: translate(-50%);
 }
-
-.image {
+.image{
   display: flex;
 
 }
-
-.image image {
+.image image{
   display: flex;
   width: 160rpx;
   height: 160rpx;
 }
 
-.img {
+.img{
   display: flex;
   align-self: center;
   align-items: center;
@@ -380,7 +312,7 @@ page {
 }
 
 /* 购买按钮 */
-.pay {
+.pay{
   width: 100%;
   height: 100rpx;
   display: flex;
@@ -392,8 +324,7 @@ page {
   bottom: 0;
   background-color: #fff;
 }
-
-.pay_1 {
+.pay_1{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -401,8 +332,7 @@ page {
   justify-content: center;
   width: 50%;
 }
-
-.pay_2 {
+.pay_2{
   display: flex;
   width: 80%;
   height: 100rpx;
@@ -415,48 +345,42 @@ page {
   font-size: 18px;
 }
 
-.box {
+.box{
   margin: 40rpx 32rpx;
-}
-
-.text_box {
+ }
+ .text_box{
   width: 100%;
   font-size: 30rpx;
   font-weight: 400;
-  color: rgba(87, 105, 123, 1);
+  color: rgba(87,105,123,1);
   line-height: 48rpx;
-}
-
-.textFour_box {
+ }
+ .textFour_box{
   width: 100%;
   font-size: 30rpx;
   font-weight: 400;
-  color: rgba(87, 105, 123, 1);
+  color: rgba(87,105,123,1);
   line-height: 26px;
   text-align: justify;
-}
-
-.toggle-icon {
+ }
+ .toggle-icon {
   width: 25rpx;
   height: 25rpx;
-}
-
-.text_toggloe_box {
+ }
+ .text_toggloe_box{
   display: -webkit-box;
   display: -webkit-flex;
   flex-direction: row;
   align-items: center;
   margin: 10rpx 0;
-}
-
-.text_toggle_text {
+ }
+ .text_toggle_text{
   font-size: 24rpx;
   color: #333;
   line-height: 32rpx;
   margin-right: 10rpx;
-}
-
-.three {
+ }
+ .three{
   text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -464,13 +388,5 @@ page {
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
-}
+ }
 
-.reputation-none {
-  width: 100%;
-  height: 300px;
-  color: #999;
-  text-align: center;
-  font-size: 24rpx;
-  margin-top: 15px;
-}

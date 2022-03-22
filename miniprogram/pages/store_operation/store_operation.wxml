@@ -1,3 +1,5 @@
+<navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="商家平台" animation="{{fadeAni}}"></navigation>
+
 <view class="operation">
   <view class="operation_1" bindtap="operation" data-page="../store_operation_up/store_operation_up">
     <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/shangchuan.png" style="width:100rpx;height:100rpx"></image>

@@ -6,6 +6,7 @@
     "pages/paySuccess/paySuccess",
     "pages/product_detail/product_detail",
     "pages/product_detail2/product_detail2",
+    "pages/product_detail_3/product_detail",
     "pages/product_fenlei/product_fenlei",
     "pages/product_test/product_test",
     "pages/shopping_cart/shopping_cart",
@@ -32,13 +33,14 @@
 
   ],
   "window": {
-    "backgroundColor": "#ff6801",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ff6801",
-    "navigationBarTitleText": "初处理生鲜食物平台",
-    "navigationBarTextStyle": "white"
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "color": "#838383",
+    "selectedColor": "#b4282d",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -64,6 +66,9 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
+  },
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

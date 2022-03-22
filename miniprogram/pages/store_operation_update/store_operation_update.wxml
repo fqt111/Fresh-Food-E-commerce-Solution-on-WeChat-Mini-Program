@@ -1,3 +1,5 @@
+<navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="商家平台" animation="{{fadeAni}}"></navigation>
+
 <form bindsubmit="submit">
   <view class="up">
   <view class="upload">

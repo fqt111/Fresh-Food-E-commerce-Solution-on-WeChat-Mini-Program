@@ -1,41 +1,99 @@
 /**app.wxss**/
 @import "./styles/iconfont.wxss";
-@import "vendor/colorui/main.wxss";
+/* @import "vendor/colorui/main.wxss"; */
 @import "vendor/colorui/animation.wxss";
 @import "vendor/colorui/icon.wxss";
-@import "assets/styles/lib.wxss";
-@import "assets/styles/box.wxss";
+/* @import "assets/styles/lib.wxss";
+@import "assets/styles/box.wxss";  */
 
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-} 
+}  */
 
-button {
-  background: initial;
-}
-
-button:focus{
-  outline: 0;
-}
-
-button::after{
-  border: none;
-}
-
-page,view,text,swiper,swiper-item,image,navigator{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 page {
   background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   font-size: 28rpx;
   --themeColor:#eb4450;
 }
 
+.container {
+  height: 100%;
+}
+
+.wxParse-img {
+  display: block !important;
+}
+
+.header-container {
+  width: 100%;
+  height: 130rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.header-container .header-name {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 170rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.iphone .header-container {
+  height: 180rpx;
+}
+
+.iphone .header-container .header-name {
+  line-height: 270rpx;
+}
+
+.header-container .goback {
+  width: 56rpx;
+  height: 56rpx;
+  margin-top: 50rpx;
+  position: absolute;
+  margin-left: 20rpx;
+  border: 1rpx solid #fff;
+  border-radius: 50%;
+  padding: 6rpx;
+}
+
+.iphone .header-container .goback {
+  margin-top: 90rpx;
+}
+.hidden {
+  display: none;
+}
+.flex{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.no-more-goods {
+  text-align: center;
+  margin-top: 20%;
+}
+
+.no-order-img {
+  width: 110px;
+  height: 110px;
+}
+
+.no-more-goods .text {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: -5px;
+}
+.fix-top{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+}

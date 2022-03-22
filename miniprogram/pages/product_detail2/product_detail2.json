@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "单品详情"
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation"
+  }
+ 
 }

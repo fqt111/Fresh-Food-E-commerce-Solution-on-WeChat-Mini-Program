@@ -1,3 +1,5 @@
+<navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="订单信息" animation="{{fadeAni}}"></navigation>
+
 <!--pages/pay/pay.wxml-->
 <!-- 地址模块 -->
 <view  class="page__bd">
