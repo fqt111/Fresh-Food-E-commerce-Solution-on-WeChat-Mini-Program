@@ -4,9 +4,7 @@ Page({
     tele: "400-1234-567" ,
 
   },
-  cc:function(){
-    
-  },
+ 
 
   onLoad: function() {
     // 查看是否授权

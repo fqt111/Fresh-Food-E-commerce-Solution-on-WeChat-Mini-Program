@@ -1,3 +1,6 @@
+<navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="商家详情" animation="{{fadeAni}}"></navigation>
+
+
 <!-- 轮播图 -->
 <view class="banner">
   <swiper class="banner_1" autoplay="true" circular="true" interval="5000" indicator-dots="true">

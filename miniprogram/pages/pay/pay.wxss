@@ -59,6 +59,7 @@ page{
 
 
 .anniu{
+  height: 80rpx;
   display: flex;
   flex-direction: row;
   position: fixed;

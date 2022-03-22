@@ -54,7 +54,7 @@ Page({
     var that = this;
     console.log(e)
     this.setData({
-      currentType = e.currentType,
+      currentType : e.currentType,
       state:this.data.statusType[currentType]
     })
   

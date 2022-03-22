@@ -7,7 +7,7 @@
       <view class="{{tabClass[index]}}"></view>
     </view>
   </view>
-  <view wx:if="{{order==null}}" class="no-order" style="height: {{bodyHeight}}px;">
+  <view wx:if="{{order.length==0}}" class="no-order" style="height: {{bodyHeight}}px;">
     <image src="../img/cart_empty.png" class="no-order-img"></image>
     <view class="text">还没有订单呢</view>
   </view>
