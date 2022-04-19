@@ -1,15 +1,25 @@
 <navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="管理订单" animation="{{fadeAni}}"></navigation>
 
 <!-- 选择栏 -->
-<view class="xuanze">
-  <view class="xuanze_1" bindtap="xuanze" data-state="送货中" data-shop_id="{{shop_id}}">送货中</view>
-  <view class="xuanze_1" bindtap="xuanze" data-state="已送达" data-shop_id="{{shop_id}}">已送达</view>
-</view> 
-
+<!-- <view class="xuanze">
+  <view class="xuanze_1" bindtap="xuanze" data-state="等待中" data-shop_id="{{shop_id}}">送货中</view>
+  <view class="xuanze_1" bindtap="xuanze" data-state="处理中" data-shop_id="{{shop_id}}">已送达</view>
+</view>  -->
+<view class="container">
+  <view class="status-box">
+    <view bindtap="statusTap" class="status-label {{index == currentType ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+      {{item}}
+      <view class="{{tabClass[index]}}"></view>
+    </view>
+  </view>
+  <view wx:if="{{order.length==0}}" class="no-order" >
+    <image src="../img/cart_empty.png" class="no-order-img"></image>
+    <view class="text">还没有订单呢</view>
+  </view>
 
 <!-- 订单栏 -->
 <block wx:for="{{order}}" wx:key="_id">
-  <navigator url="../store_operation_order_detail/store_operation_order_detail?id={{item._id}}" class="order">
+  <navigator url="../store_operation_order_detail/store_operation_order_detail?id={{item._id}}&currentType={{currentType}}&state={{state}}" class="order">
     <view class="order_1">
       <view>{{item.time}}</view>
       <view>{{item.product_state}}</view>
@@ -24,3 +34,4 @@
     </view>
   </navigator>
 </block>
+</view>

@@ -8,7 +8,11 @@ Page({
   data: {
     order:{},
     id:"",
-    shop_id:'null'
+    statusType: ["处理中", "待收货", "待评价"],
+    currentType:"",
+    nexttype:"",
+    shop_id:'null',
+    state:""
   },
   // 拨打电话
   phone:function(){
@@ -22,7 +26,7 @@ Page({
     let that= this
     db.collection('order').doc(that.data.order._id).update({
       data:{
-        product_state:"已送达"
+        product_state:that.data.nexttype
       },
       success: function(res){
       console.log('订单状态更新成功',res,that.data.order._id)
@@ -31,10 +35,11 @@ Page({
       })
     }
   })
-  console.log(this.data.shop_id)
   wx.redirectTo({
-    url: '../store_operation_order/store_operation_order?shop_id='+this.data.shop_id,
-  })
+             url: '../store_operation_order/store_operation_orde?shop_id='+that.data.shop_id+'&currentType='+that.data.currentType,
+           })
+  console.log(this.data.shop_id)
+  
 },fail:function(res){
   console.log('订单状态更新失败',res)
 },
@@ -60,6 +65,12 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+    console.log(options)
+    that.setData({
+      state:options.state,
+      currentType:options.currentType,
+      nexttype:that.data.statusType[options.currentType]
+    })
     db.collection('order').doc(options.id).get({
       success:function(res){
         console.log('订单获取成功',res)
@@ -73,52 +84,4 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    let that = this
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
