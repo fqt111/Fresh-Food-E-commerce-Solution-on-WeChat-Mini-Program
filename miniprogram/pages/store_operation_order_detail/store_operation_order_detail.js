@@ -6,43 +6,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order:{},
-    id:"",
+    order: {},
+    id: "",
     statusType: ["处理中", "待收货", "待评价"],
-    currentType:"",
-    nexttype:"",
-    shop_id:'null',
-    state:""
+    currentType: "",
+    nexttype: "",
+    shop_id: 'null',
+    state: ""
   },
   // 拨打电话
-  phone:function(){
-    let that= this
+  phone: function () {
+    let that = this
     wx.makePhoneCall({
       phoneNumber: that.data.order.phone_number
     })
   },
 
-  songda:function(){
-    let that= this
+  songda: function () {
+    let that = this
     db.collection('order').doc(that.data.order._id).update({
-      data:{
-        product_state:that.data.nexttype
+      data: {
+        product_state: that.data.nexttype
       },
-      success: function(res){
-      console.log('订单状态更新成功',res,that.data.order._id)
-      wx.showToast({
-        title: '送货成功',
-      })
-    }
-  })
-  wx.redirectTo({
-             url: '../store_operation_order/store_operation_orde?shop_id='+that.data.shop_id+'&currentType='+that.data.currentType,
-           })
-  console.log(this.data.shop_id)
-  
-},fail:function(res){
-  console.log('订单状态更新失败',res)
-},
+      success: function (res) {
+        console.log('订单状态更新成功', res, that.data.order._id)
+        wx.showToast({
+          title: '送货成功',
+        })
+      }
+    })
+    
+    wx.navigateBack({
+      delta: 1,
+      url:'../store_operation_order/store_operation_order?shop_id=' + that.data.shop_id + '&currentType=' + that.data.currentType,
+    })
+    
+    console.log(this.data.shop_id)
+
+  },
+  fail: function (res) {
+    console.log('订单状态更新失败', res)
+  },
   //   wx.cloud.callFunction({
   //     name:'order_accomplished',
   //     data:{
@@ -67,19 +71,20 @@ Page({
     let that = this
     console.log(options)
     that.setData({
-      state:options.state,
-      currentType:options.currentType,
-      nexttype:that.data.statusType[options.currentType]
+      state: options.state,
+      currentType: options.currentType,
+      nexttype: that.data.statusType[options.currentType],
+      shop_id: options.shop_id
     })
     db.collection('order').doc(options.id).get({
-      success:function(res){
-        console.log('订单获取成功',res)
+      success: function (res) {
+        console.log('订单获取成功', res)
         that.setData({
-          order:res.data,
-          shop_id:res.data.shop_id
+          order: res.data,
         })
-      },fail:function(res){
-        console.log('订单获取失败',res)
+      },
+      fail: function (res) {
+        console.log('订单获取失败', res)
       }
     })
   },

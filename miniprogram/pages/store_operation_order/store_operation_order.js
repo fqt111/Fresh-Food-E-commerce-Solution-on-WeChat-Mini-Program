@@ -26,6 +26,12 @@ Page({
     that.onLoad(this.data)
   },
 
+  tiaozhuan:function(){
+    wx.navigateTo({
+      url:"../store_operation_order_detail/store_operation_order_detail?id="+this.data.order[0]._id+"&currentType="+this.data.currentType+"&state="+this.data.state
+    })
+  },
+
   statusTap: function (e) {
     var obj = e;
     var count = 0;
@@ -50,7 +56,6 @@ Page({
     })
     db.collection('order').where({
       product_state:that.data.state,
-      _openid:app.globalData.openid
     }).get({
       success:function(res){
         console.log('订单获取成功',res)
@@ -61,7 +66,7 @@ Page({
         console.log('订单获取失败',res)
       }
     })
-    this.onLoad();
+    this.onShow();
   },
 
   /**
@@ -69,10 +74,29 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+    
+    //获取当前的openid
+    var app=getApp()
     that.setData({
+      currentType:options.currentType,
+      state:that.data.statusType[options.currentType],
       shop_id:options.shop_id
     })
-    // console.log(this.data.shop_id)
+    // db.collection('order').where({
+    //   product_state:that.data.state,
+    //   _openid:app.globalData.openid
+    // }).get({
+    //   success:function(res){
+    //     console.log('订单获取成功',res)
+    //     that.setData({
+    //       order:res.data
+    //     })
+    //   },fail:function(res){
+    //     console.log('订单获取失败',res)
+    //   }
+    // })
+   
+   console.log(this.data.shop_id)
     db.collection('order').where({
       product_state:that.data.state,
       shop_id:options.shop_id
@@ -86,8 +110,26 @@ Page({
         console.log('订单获取失败',res)
       }
     })
+    that.statusTap(options);
+
   },
 
 
+  onShow:function(options){
+    let that = this
+    db.collection('order').where({
+      product_state:that.data.state,
+      shop_id:that.data.shop_id
+    }).get({
+      success:function(res){
+        console.log('订单获取成功',res)
+        that.setData({
+          order:res.data
+        })
+      },fail:function(res){
+        console.log('订单获取失败',res)
+      }
+    })
+  }
 
 })

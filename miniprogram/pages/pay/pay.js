@@ -42,6 +42,7 @@ Page({
   },
   //时间选择
   bindTimeChange:function(e){
+    console.log(e.detail)
     this.setData({
       time:e.detail.value
     })
@@ -168,7 +169,7 @@ getDistance: function(lat1, lng1, lat2, lng2) {
                         beizhu:that.data.beizhu,
                         money:that.data.money,
                         product:that.data.product,
-                        time:DATE,
+                        time:that.data.time,
                         product_state:"等待中",
                         shop_id:that.data.shop_id
                       },success:function(res){
