@@ -1,3 +1,5 @@
+<navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="订单信息" animation="{{fadeAni}}"></navigation>
+
 <!--pages/comment_product/comment_product.wxml-->
 <view class="product_note">
   </view>

@@ -3,7 +3,7 @@ const db = wx.cloud.database()
 Page({
   data: {
     statusType: ["等待中", "处理中", "待收货", "待评价"],
-    currentType: 0,
+    currentType: "",
     tabClass: ["", "", "", ""],
     bodyHeight:null,
     order:[],
@@ -45,20 +45,13 @@ Page({
         console.log('订单获取失败',res)
       }
     })
-    this.onShow();
+    this.onLoad();
   },
   
   
 
   onLoad: function (e) {
-    var that = this;
-    console.log(e)
-    this.setData({
-      currentType : e.currentType,
-      state:this.data.statusType[currentType]
-    })
-  
-    
+   
     //获取当前的openid
     var app=getApp()
     db.collection('order').where({
@@ -77,4 +70,13 @@ Page({
     that.statusTap(e);
 
   },
+
+  onShow:function(){
+    var that = this;
+    console.log(e)
+    that.setData({
+      currentType : e.currentType,
+      state:this.data.statusType[currentType]
+    })
+  }
 })

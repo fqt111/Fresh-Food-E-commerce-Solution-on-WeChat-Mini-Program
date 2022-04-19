@@ -206,7 +206,7 @@ page {
 
 /* 定义弹窗的大小 */
 .container {
-  height: 600rpx;
+  height: 800rpx;
   position: fixed;
   top: 400rpx;
   /* bottom: 600rpx; */

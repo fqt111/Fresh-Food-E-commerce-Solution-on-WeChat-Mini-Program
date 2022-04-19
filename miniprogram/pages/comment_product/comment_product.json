@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "star": "../../components/star/star"
+    "star": "../../components/star/star",
+    "navigation": "/components/navigation/navigation"
   },
   "navigationBarTitleText": "商品评价"
 }

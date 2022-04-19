@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="商家平台" animation="{{fadeAni}}"></navigation>
+<navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="供应商平台" animation="{{fadeAni}}"></navigation>
 
 <block wx:for="{{product}}" wx:key="_id">
 <navigator url="../store_operation_update/store_operation_update?id={{item._id}}">

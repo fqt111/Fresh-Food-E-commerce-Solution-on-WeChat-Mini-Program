@@ -26,8 +26,8 @@
       </view>
     </view>
   </navigator>
-  <view wx:if="{{order.product_state=='已送达'}}">
-    <button bindtap="comment_product"  data-pass="{{item}}">评价该商品</button>
+  <view wx:if="{{order.product_state=='待评价'}}">
+    <button bindtap="comment_product" type="primary" data-pass="{{item}}">评价该商品</button>
   </view>
 </block>
 
