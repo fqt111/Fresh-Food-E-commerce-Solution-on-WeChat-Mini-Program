@@ -1,5 +1,5 @@
 // pages/pay/pay.js
-const util = require('../../utils/util.js')
+
 const  db = wx.cloud.database()
 Page({
 
@@ -149,8 +149,9 @@ getDistance: function(lat1, lng1, lat2, lng2) {
 
   pay:function(e){
     let that = this
-    var DATE = util.formatDate(new Date());
-    if(that.data.flag==false){
+    console.log("结算")
+    let DATE = new Date();
+    if(that.data.flag==true){
       if(that.data.showView==1){
         wx.showModal({
           title: '提示',
@@ -218,6 +219,12 @@ getDistance: function(lat1, lng1, lat2, lng2) {
           duration: 2000//持续的时间
         })
       }
+    }else{
+      wx.showToast({
+        title: '距离您最近的店铺超过5公里，不提供外卖服务',
+        icon: 'none',
+        duration: 2000//持续的时间
+      })
     }
 
     
