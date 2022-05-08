@@ -6,7 +6,7 @@ Page({
     console.log('shop_id=' + e.currentTarget.dataset.shop)
   
     wx.redirectTo({
-      url: '../pay/pay?shop_id='+e.currentTarget.dataset.shop+'&showView='+this.data.showView,
+      url: '../pay/pay?shop_id='+e.currentTarget.dataset.shop+'&showView='+this.data.showView+'&location='+this.data.location,
     })
     
   },
@@ -32,7 +32,8 @@ Page({
     var app=getApp()
     console.log(app.globalData.openid)
     this.setData({
-      showView:options.showView
+      showView:options.showView,
+      location:options.location
     })
     wx.cloud.callFunction(
       {

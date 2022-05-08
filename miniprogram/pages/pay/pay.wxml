@@ -20,7 +20,7 @@
   </view>
   <view>{{address}}</view> -->
   <button type="primary" size="default" bindtap='getLocation'>打开地图选择位置</button>
-  {{location}}
+  {{location==null?'':location}}
 </view>
 <!-- 时间选择模块 -->
 <view class="time">

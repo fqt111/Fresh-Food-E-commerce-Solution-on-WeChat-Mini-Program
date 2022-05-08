@@ -13,13 +13,14 @@ Page({
     money:0,
     name:"",
     openid:null,
-    phone_number:"",
+    // phone_number:"",
     shop_id:null,
-    address:"",
+    // address:"",
     beizhu:"",
     time:'12:01',
     showView:2,
     distance:[],
+    location:null,
     shop:[],
     flag:false,
     items: [
@@ -74,7 +75,8 @@ Page({
               console.log('111',_this.data.shop[0].coordinate.latitude)
              //传入当前位置的经度和纬度，和四个店铺的经度和纬度分别计算了当前位置和四个店铺位置的直线距离
               for (var i = 0; i < _this.data.shop.length; ++i) {
-               dis[i]=_this.getDistance(_this.data.position.latitude, _this.data.position.longitude,_this.data.shop[i].coordinate.latitude,_this.data.shop[i].coordinate.longitude)
+              //  dis[i]=_this.getDistance(_this.data.position.latitude, _this.data.position.longitude,_this.data.shop[i].coordinate.latitude,_this.data.shop[i].coordinate.longitude)
+               dis[i]=_this.getDistance(_this.data.latitude, _this.data.longitude,_this.data.shop[i].coordinate.latitude,_this.data.shop[i].coordinate.longitude)
                 if(dis[i]<5000){
                   _this.setData({
                     flag:true
@@ -296,7 +298,7 @@ getDistance: function(lat1, lng1, lat2, lng2) {
   },
   show_store_list(){
     wx.redirectTo({
-      url: '../store_detail_list/store_detail_list?showView='+this.data.showView,
+      url: '../store_detail_list/store_detail_list?showView='+this.data.showView+'&location='+this.data.location,
     })
   },
   // 计算金额
@@ -321,7 +323,9 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     var times=hour.toString()+':'+minute.toString()
     console.log('当前时间：',times)
     that.findXy() //查询用户与商家的距离
-
+    that.setData({
+      location:null,
+    })
     //获取当前用户的openid
     var app=getApp()
     console.log('携带的参数：',options.showView)
@@ -329,7 +333,8 @@ getDistance: function(lat1, lng1, lat2, lng2) {
       openid:app.globalData.openid,
       shop_id:options.shop_id,
       time:times,
-      showView:options.showView==1?1:showView
+      showView:options.showView==undefined?that.data.showView:options.showView,
+      location:options.location==undefined?that.data.location:options.location
     })
     let showView=options.showView
     let items=that.data.items
