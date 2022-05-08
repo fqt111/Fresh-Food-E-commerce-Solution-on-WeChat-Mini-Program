@@ -231,6 +231,38 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     
   },
   // 选择地址
+  getLocation: function () {
+    var _this = this;
+    wx.chooseLocation({
+      success: function (res) {
+        var name = res.name
+        var address = res.address
+        var tude = res.latitude+','+res.longitude
+        _this.setData({
+          address_name: name,
+          address: address,
+          latitude:res.latitude,
+          longitude:res.longitude
+        })
+        var getAddressUrl = "https://apis.map.qq.com/ws/geocoder/v1/?location=" + res.latitude + "," + res.longitude + "&key=SMXBZ-KANW6-EKJSA-MTZSX-ARKN6-Y5FNL"
+
+        wx.request({          
+          url: getAddressUrl,
+          success: function (res) {        
+            console.log(res.data.result.address)      
+            _this.setData({
+              location:res.data.result.address
+            })
+          }        
+        })
+
+      },
+      complete(r) {
+        console.log(r)
+        console.log(222)
+      }
+    })
+  },
   address:function(e){
     let that = this
 
@@ -264,7 +296,7 @@ getDistance: function(lat1, lng1, lat2, lng2) {
   },
   show_store_list(){
     wx.redirectTo({
-      url: '../store_detail_list/store_detail_list',
+      url: '../store_detail_list/store_detail_list?showView='+this.data.showView,
     })
   },
   // 计算金额
@@ -283,15 +315,31 @@ getDistance: function(lat1, lng1, lat2, lng2) {
    */
   onLoad: function (options) {
     let that = this
+    var time=new Date()
+    var hour=time.getHours()
+    var minute=time.getMinutes()
+    var times=hour.toString()+':'+minute.toString()
+    console.log('当前时间：',times)
     that.findXy() //查询用户与商家的距离
 
     //获取当前用户的openid
     var app=getApp()
+    console.log('携带的参数：',options.showView)
     that.setData({
       openid:app.globalData.openid,
-      shop_id:options.shop_id
+      shop_id:options.shop_id,
+      time:times,
+      showView:options.showView==1?1:showView
     })
-
+    let showView=options.showView
+    let items=that.data.items
+    if(showView==1){
+      items[0].checked=true
+      items[1].checked=false
+    }
+that.setData({
+  items
+})
     console.log(options.shop_id)
     //将选择后的商家添加到mendian中
     db.collection('store_detail_list').where({

@@ -6,7 +6,7 @@ Page({
     console.log('shop_id=' + e.currentTarget.dataset.shop)
   
     wx.redirectTo({
-      url: '../pay/pay?shop_id='+e.currentTarget.dataset.shop,
+      url: '../pay/pay?shop_id='+e.currentTarget.dataset.shop+'&showView='+this.data.showView,
     })
     
   },
@@ -15,6 +15,7 @@ Page({
    */
   data: {
     store:[],
+    showView:null,
     items: [
       { name: '1', value: '评价',},
       { name: '2', value: '距离'},
@@ -30,7 +31,9 @@ Page({
     let that = this
     var app=getApp()
     console.log(app.globalData.openid)
-
+    this.setData({
+      showView:options.showView
+    })
     wx.cloud.callFunction(
       {
         data:{
