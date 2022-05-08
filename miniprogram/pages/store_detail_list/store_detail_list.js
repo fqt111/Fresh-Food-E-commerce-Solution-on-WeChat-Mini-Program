@@ -4,7 +4,11 @@ const _ = db.command
 Page({
   gotopay:function(e){
     console.log('shop_id=' + e.currentTarget.dataset.shop)
-    wx.navigateTo({url: '../pay/pay?shop_id='+e.currentTarget.dataset.shop,})
+  
+    wx.redirectTo({
+      url: '../pay/pay?shop_id='+e.currentTarget.dataset.shop,
+    })
+    
   },
   /**
    * 页面的初始数据

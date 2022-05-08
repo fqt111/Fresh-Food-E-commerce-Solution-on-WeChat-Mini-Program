@@ -263,7 +263,7 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     })
   },
   show_store_list(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../store_detail_list/store_detail_list',
     })
   },

@@ -25,6 +25,7 @@
 <view style="display:inline-block;width: 60rpx;"> </view>
 <view class="dis">距您  {{item.dis}} Km</view>
 <button bindtap="gotopay" class="gotopay" size="mini" type="primary" data-shop="{{item._id}}"> 选择 </button>
+
 </view>  
     </view>
     </view>

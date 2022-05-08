@@ -40,13 +40,13 @@ showDialog是由toggledialog的点击事件控制true or false -->
 
   <scroll-view class="container" scroll-y="true">
   <!-- 食材信息 -->
-    <view class="product2">
+    <!-- <view class="product2">
       <view style="padding-left: 10rpx; padding-top: 10rpx;font-weight: 600;">主要食材(不给予删减) : </view>
       <view wx:for="{{main_detail}}" wx:key="id" data-index="{{index}}" class="product_2">
         <view wx:if="{{index+1<main_detail.length}}">{{item}}、</view>
         <view wx:else="{{index+1>=main_detail.length}}">{{item}}</view>
       </view>
-    </view>
+    </view> -->
     <view class="product2">
       <view style="padding-left: 10rpx; padding-top: 10rpx;font-weight: 600;">辅料 ： </view>
       <view wx:for="{{product_choose}}" wx:key="id" wx:for-item="item" wx:key="item.index" data-index="{{index}}" class="product_2">

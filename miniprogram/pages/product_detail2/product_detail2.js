@@ -105,10 +105,38 @@ Page({
         });
     },
     quickbuy: function () {
-        this.setData({
-            showDialog: !this.data.showDialog,
-            showtag: "立即购买"
-        });
+        var that = this
+        db.collection('shopping_cart').where({
+            product_id: that.data.id,
+            _openid: that.data.openid
+        }).get({
+            success: (res) => {
+                console.log(res)
+                if (res.data == "") {
+                    this.setData({
+                        showDialog: !this.data.showDialog,
+                        showtag: "立即购买"
+                    });
+                } else {
+                    db.collection('shopping_cart').where({
+                        product_id: that.data.id
+                    }).update({
+                        data: {
+                            product_note: that.data.product_note,
+                            product_add: that.data.detailValue,
+                            product_process: that.data.processValue,
+                        }
+                    })
+                    wx.switchTab({
+                        url: '../shopping_cart/shopping_cart',
+                    })
+                }
+            },
+            fail: function (res) {
+                console.log(res)
+            }
+        })
+       
     },
 
 
@@ -204,6 +232,7 @@ Page({
                         _openid: that.data.openid
                     }).get({
                         success: (res) => {
+                            
                             console.log(res)
                             if (res.data == "") {
                                 db.collection('shopping_cart').add({
@@ -231,6 +260,7 @@ Page({
                                     }
                                 })
                             } else {
+                               
                                 db.collection('shopping_cart').where({
                                     product_id: that.data.id
                                 }).update({

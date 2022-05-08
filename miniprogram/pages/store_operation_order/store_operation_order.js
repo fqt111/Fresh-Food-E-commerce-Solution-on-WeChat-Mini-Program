@@ -52,10 +52,11 @@ Page({
     //获取当前的openid
     var app=getApp()
     that.setData({
-      state:that.data.statusType[curType]
+      state:that.data.statusType[curType],
     })
     db.collection('order').where({
       product_state:that.data.state,
+      shop_id:that.data.shop_id
     }).get({
       success:function(res){
         console.log('订单获取成功',res)
@@ -66,7 +67,8 @@ Page({
         console.log('订单获取失败',res)
       }
     })
-    this.onShow();
+    this.onShow()
+  
   },
 
   /**
@@ -74,13 +76,25 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    
     //获取当前的openid
     var app=getApp()
     that.setData({
       currentType:options.currentType,
       state:that.data.statusType[options.currentType],
       shop_id:options.shop_id
+    })
+    db.collection('order').where({
+      product_state:that.data.state,
+      shop_id:that.data.shop_id
+    }).get({
+      success:function(res){
+        console.log('订单获取成功',res)
+        that.setData({
+          order:res.data
+        })
+      },fail:function(res){
+        console.log('订单获取失败',res)
+      }
     })
     // db.collection('order').where({
     //   product_state:that.data.state,
@@ -95,27 +109,12 @@ Page({
     //     console.log('订单获取失败',res)
     //   }
     // })
-   
-   console.log(this.data.shop_id)
-    db.collection('order').where({
-      product_state:that.data.state,
-      shop_id:options.shop_id
-    }).get({
-      success:function(res){
-        console.log('订单获取成功',res)
-        that.setData({
-          order:res.data
-        })
-      },fail:function(res){
-        console.log('订单获取失败',res)
-      }
-    })
-    that.statusTap(options);
+
 
   },
 
 
-  onShow:function(options){
+  onShow:function(){
     let that = this
     db.collection('order').where({
       product_state:that.data.state,
