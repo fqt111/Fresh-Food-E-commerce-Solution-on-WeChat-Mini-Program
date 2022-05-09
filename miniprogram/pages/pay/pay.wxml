@@ -2,25 +2,23 @@
 
 <!--pages/pay/pay.wxml-->
 <!-- 地址模块 -->
+<view class="page__bd">
+  <view class="section section_gap">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+        <text>{{item.value}}</text>
+      </radio>
+    </radio-group>
+  </view>
+</view>
 
-<view  class="page__bd">
-        <view class="section section_gap">
-            <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-                    <text>{{item.value}}</text>
-                </radio>
-            </radio-group>
-        </view>
-    </view>
-<view wx:if="{{showView==2}}"class="address">
-  <!-- <button bindtap="address" style="width:300rpx" plain="true" type="primary">选择地址</button>
+<view wx:if="{{showView==2}}" class="address">
+  <button bindtap="address" style="width:300rpx" plain="true" type="primary">选择地址</button>
   <view class="address_1">
     <view>{{name}}</view>
     <view>{{phone_number}}</view>
   </view>
-  <view>{{address}}</view> -->
-  <button type="primary" size="default" bindtap='getLocation'>打开地图选择位置</button>
-  {{location==null?'':location}}
+  <view>{{address}}</view>
 </view>
 <!-- 时间选择模块 -->
 <view class="time">
@@ -33,48 +31,48 @@
 </view>
 
 <view class="address">
-<view clss="store_detail_list">
- <button bindtap="show_store_list" style="width: 350rpx" type="primary" plain="true">选择一个商家</button>
-</view>
-<view>{{mendian}}</view>
+  <view clss="store_detail_list">
+    <button bindtap="show_store_list" style="width: 350rpx" type="primary" plain="true">选择一个商家</button>
+  </view>
+  <view>{{mendian}}</view>
 </view>
 <!-- 商户信息模块 -->
 
 
 <!-- 商品展示模块 -->
 <scroll-view class="product" scroll-y="true">
-<block wx:for="{{product}}" wx:key="_id">
-<!-- 商品信息模块 -->
-<view class="product_list">
-  <view class="product_list_1">
-    <view class="product_list_3">
-      <image src="{{item.product_src}}" style="width:100rpx;height:100rpx"></image>
-      <view class="product_list_2">
-        <view style="font-size:20px">{{item.product_name}}</view>
-        <view style="color:red">￥:{{item.product_price}}</view>
+  <block wx:for="{{product}}" wx:key="_id">
+    <!-- 商品信息模块 -->
+    <view class="product_list">
+      <view class="product_list_1">
+        <view class="product_list_3">
+          <image src="{{item.product_src}}" style="width:100rpx;height:100rpx"></image>
+          <view class="product_list_2">
+            <view style="font-size:20px">{{item.product_name}}</view>
+            <view style="color:red">￥:{{item.product_price}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 商品数量功能模块 -->
+      <view class="product_list_4">
+        <view>数量：{{item.product_num}}</view>
       </view>
     </view>
-  </view>
-  <!-- 商品数量功能模块 -->
-  <view class="product_list_4">
-    <view>数量：{{item.product_num}}</view>
-  </view>
-</view>
-<view class="line"></view>
-</block>
+    <view class="line"></view>
+  </block>
 </scroll-view>
 
 <!-- 订单备注 -->
-<view class="beizhu" > 
+<view class="beizhu">
   <view style="padding: 15rpx;">
-      <textarea style="height:100rpx" placeholder="请添加备注" bindblur="note" ></textarea>
-    </view>
+    <textarea style="height:100rpx" placeholder="请添加备注" bindblur="note"></textarea>
+  </view>
 </view>
 
 
 <!-- 按钮 -->
 <view class="anniu">
-  <button open-type="contact" size="mini"  type="primary">联系客服</button>
+  <button open-type="contact" size="mini" type="primary">联系客服</button>
   <view class="pay" bindtap="pay">
     <view>结算</view>
     <view>（{{money}}）</view>
