@@ -154,7 +154,8 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     let that = this
     console.log("结算")
     let DATE = new Date();
-    if(that.data.flag==true){
+    if(that.data.showView==1){
+      console.log(that.data.showView)
       if(that.data.showView==1){
         wx.showModal({
           title: '提示',
