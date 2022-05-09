@@ -165,3 +165,39 @@
 	margin-right: 20rpx;
 	margin-bottom: 20rpx;
 }
+
+.goods-list {
+  display: inline-block;
+  width: 45%;
+  margin-left: 26rpx;
+  height: 480rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  }
+  
+  .goods-list image {
+  width: 340rpx;
+  height: 340rpx;
+  border-radius: 6rpx;
+  }
+  
+  .goods-list-title {
+  font-size: 30rpx;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  }
+  
+  .goods-list-text {
+  font-size: 24rpx;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  }
+  
+  .goods-list-money {
+  font-size: 30rpx;
+  color: #ab2b2b;
+  }

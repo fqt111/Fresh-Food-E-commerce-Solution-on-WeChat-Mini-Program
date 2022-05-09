@@ -57,7 +57,7 @@
 			<view class="index-hot flex">
 				<!-- 商品罗列 -->
 			</view>
-			<navigator url="../product_detail/product_detail?id={{item._id}}" class="goods-list" wx:for="{{banner}}" wx:key="{{index}}">
+			<navigator url="../product_detail/product_detail?id={{item._id}}" class="goods-list" wx:for="{{banner}}" wx:key="id">
 				<image src="{{item.img[0]}}" />
 				<view class="goods-list-title">{{item.name}}</view>
 				<view class="goods-list-text">销售量{{item.sell}}</view>

@@ -19,10 +19,25 @@ Page({
 		searchValue: '',
 	},
 	getRecentSearch: function() {
-		let recentSearch = wx.getStorageSync('recentSearch');
-		this.setData({
-			recentSearch
-		});
+		var that=this;
+		wx.getStorage({
+			key: 'key',
+			success: function(res) {
+				that.setData({
+					recentSearch: res.data
+				})
+			},
+			fail: function(res) {
+				that.setData({
+					// number: res.data
+				})
+			}
+
+		})
+		// let recentSearch = wx.getStorageSync('recentSearch');
+		// this.setData({
+		// 	recentSearch:recentSearch
+		// });
 	},
 	clearHistory:function(){
 		wx.clearStorageSync('recentSearch')
@@ -40,9 +55,23 @@ Page({
 	
 	search_1: function () {
 		var value=this.data.value
-    console.log('chufa', value)
+		console.log('触发', value)
+		wx.setStorage({
+      key: "key",
+      data: value,
+      success:function(res){
+        console.log(res);
+      },
+      fail:function(log){
+        console.log(log);
+      },
+      complete:function(com){
+        console.log(com);
+      }
+		})
+		
     if (value && value.length > 0) {
-      db.collection("food_list").where({ //collectionName 表示欲模糊查询数据所在collection的名
+      db.collection("allfood").where({ //collectionName 表示欲模糊查询数据所在collection的名
           name: { //columnName表示欲模糊查询数据所在列的名
             $regex: '.*' + value + '.*', //queryContent表示欲查询的内容，‘.*’等同于SQL中的‘%’
             $options: 'i' //$options:'1' 代表这个like的条件不区分大小写,详见开发文档
@@ -93,30 +122,30 @@ Page({
 			}
 		}
 
-		wx.request({
-			url: app.globalData.urls + '/shop/goods/list',
-			data: {
-				nameLike: keywords
-			},
-			success: function(res) {
-				if (res.data.code == 0) {	
-					var searchs = [];
-					for (var i = 0; i < res.data.data.length; i++) {
-						searchs.push(res.data.data[i]);
-					}
-					that.setData({
-						searchs: searchs,
-						searchHidden: false,
-						noneHidden: true
-					});
-				} else {
-					that.setData({
-						searchHidden: true,
-						noneHidden: false
-					});
-				}
-			}
-		})
+		// wx.request({
+		// 	url: app.globalData.urls + '/shop/goods/list',
+		// 	data: {
+		// 		nameLike: keywords
+		// 	},
+		// 	success: function(res) {
+		// 		if (res.data.code == 0) {	
+		// 			var searchs = [];
+		// 			for (var i = 0; i < res.data.data.length; i++) {
+		// 				searchs.push(res.data.data[i]);
+		// 			}
+		// 			that.setData({
+		// 				searchs: searchs,
+		// 				searchHidden: false,
+		// 				noneHidden: true
+		// 			});
+		// 		} else {
+		// 			that.setData({
+		// 				searchHidden: true,
+		// 				noneHidden: false
+		// 			});
+		// 		}
+		// 	}
+		// })
 
 	},
 	searchFocus: function() {
@@ -159,38 +188,4 @@ Page({
 		this.getRecentSearch();
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function() {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function() {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function() {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function() {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function() {
-
-	}
 })

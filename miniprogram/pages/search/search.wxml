@@ -9,6 +9,16 @@
 			<view hidden="{{search}}" bindtap="searchClose" class="header-search-btn">取消</view>
 		</view>
 	</view>
+
+	<!-- <view class="type-header-menu">
+		<view class="type-search">
+			<image src="../img/search.png" bindtap="search_1" />
+			<input class="input {{searchInput == true ? 'active':''}}" type="text" confirm-type="search" placeholder="搜索商品"
+			 bindfocus="search1" bindconfirm="search" focus="{{true}}"></input>
+			<view hidden="{{search}}" bindtap="searchClose" class="header-search-btn">取消</view>
+		</view>
+	</view> -->
+
 	<view class="search-cont-box" wx:if="{{recentSearch.length && searchHidden}}">
 		<view class="title-and-btn">
 			<view class="title">最近搜索</view>
@@ -17,24 +27,37 @@
 			</view>
 		</view>
 		<view class="keywords-li">
-			<block wx:for="{{recentSearch}}" wx:key="recent">
-				<view bindtap="goSearch" class="item" data-text="{{item}}">{{item}}</view>
+			<block wx:for="{{recentSearch}}" wx:key="id">
+				<view bindtap="search_1" class="item" data-text="{{item}}">{{item}}</view>
 			</block>
 		</view>
 	</view>
 </view>
-<view wx:for="{{search2}}" class="search-box {{iponesc}}">
-	<view class="goods-box"bindtap="toDetailTap"
+
+<view wx:key="id" wx:for="{{search2}}" class="search-box {{iponesc}}">
+	<!-- <view class="goods-box"bindtap="toDetailTap"
 	 data-id="{{item.id}}">
 		<view class="img-box">
-			<image src="{{item.img[0]}}_m" class="image" />
+			<image src="{{item.img[0]}}" class="image" />
 		</view>
 		<view class="goods-title">{{item.name}}</view>
 		<view style='display:flex;'>
 			<view class="goods-price">Ұ{{item.price}}</view>
 			<view class="goods-price-naver">已售{{item.sell}}</view>
 		</view>
-	</view>
+	</view> -->
+
+	<view class="goods-container">
+				<!-- 商品罗列 -->
+			<navigator url="../product_detail/product_detail?id={{item._id}}" class="goods-list" wx:for="{{search2}}" wx:key="id">
+				<image src="{{item.img[0]}}" />
+				<view class="goods-list-title">{{item.name}}</view>
+				<view class="goods-list-text">销售量{{item.sell}}</view>
+				<view class="goods-list-money">Ұ{{item.price}}</view>
+			</navigator>
+		</view>
+
+
 	<view hidden="{{noneHidden}}" class="goods-none">
 		<image src="../../images/search_empty.png" />
 		<text>您寻找的商品还未上架</text>
