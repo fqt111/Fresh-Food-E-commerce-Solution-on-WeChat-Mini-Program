@@ -2,7 +2,7 @@
 .operation{
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
+  
   align-items: center;
   align-self: center;
   justify-content: center;
@@ -11,7 +11,7 @@
 .operation_1{
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 33%;
   height: 180rpx;
   align-self: center;
   align-items: center;

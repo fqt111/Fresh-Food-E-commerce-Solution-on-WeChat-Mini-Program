@@ -45,8 +45,8 @@ Page({
             icon: "none"
           })
         } else {
-          wx.redirectTo({
-            url: '../pay/pay'
+          wx.navigateTo({
+            url: '../pay/pay',
           })
         }
       },
