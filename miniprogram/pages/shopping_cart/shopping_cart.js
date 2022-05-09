@@ -109,6 +109,7 @@ Page({
         icon: 'success'
       })
       that.onLoad()
+      that.onShow()
     }).catch(e => {
       console.log(e)
     })

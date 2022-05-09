@@ -2,6 +2,7 @@
 
 <!--pages/pay/pay.wxml-->
 <!-- 地址模块 -->
+
 <view  class="page__bd">
         <view class="section section_gap">
             <radio-group class="radio-group" bindchange="radioChange">
@@ -12,12 +13,14 @@
         </view>
     </view>
 <view wx:if="{{showView==2}}"class="address">
-  <button bindtap="address" style="width:300rpx" plain="true" type="primary">选择地址</button>
+  <!-- <button bindtap="address" style="width:300rpx" plain="true" type="primary">选择地址</button>
   <view class="address_1">
     <view>{{name}}</view>
     <view>{{phone_number}}</view>
   </view>
-  <view>{{address}}</view>
+  <view>{{address}}</view> -->
+  <button type="primary" size="default" bindtap='getLocation'>打开地图选择位置</button>
+  {{location==null?'':location}}
 </view>
 <!-- 时间选择模块 -->
 <view class="time">
