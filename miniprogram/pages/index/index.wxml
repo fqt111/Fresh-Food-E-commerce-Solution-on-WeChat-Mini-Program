@@ -1,69 +1,68 @@
 <!--index.wxml-->
 <!-- 不要class="fix-top" -->
-<navigation id='Navigation'  show-search='{{true}}' show-title='{{true}}' title="初处理生鲜" animation="{{fadeAni}}"></navigation>
+<navigation id='Navigation' show-search='{{true}}' show-title='{{true}}' title="初处理生鲜" animation="{{fadeAni}}"></navigation>
 
 
 <view class="container">
-<!-- 轮播图 -->
+	<!-- 轮播图 -->
 	<view class="swiper-container">
-		<swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true"
-		 circular="circular">
+		<swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" circular="circular">
 			<block wx:for="{{start_banner}}" wx:key="id">
 				<swiper-item>
-					<image  src="{{item}}" class="slide-image" />
+					<image src="{{item}}" class="slide-image" />
 				</swiper-item>
 			</block>
 		</swiper>
-		
+
 	</view>
+
 	<view class="index-menu-bg">
-	
-<!-- 分类菜单 -->
-		<view class="fenlei" >
-  <view class="fenlei_1" >
-    <navigator  url="../product_fenlei/product_fenlei?name=单品" class="fenlei_2">
-      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/danpin.png" style="width:80rpx;height:80rpx"></image>
-    <button size="mini"  type="default">
-      <text style="font-size:28rpx">单品</text>
-    </button>
-    </navigator>
-  </view>
+		<!-- 分类菜单 -->
+		<view class="fenlei">
+			<view class="fenlei_1">
+				<navigator url="../product_fenlei/product_fenlei?name=单品" class="fenlei_2">
+					<image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/danpin.png" style="width:80rpx;height:80rpx"></image>
+					<button size="mini" type="default">
+						<text style="font-size:28rpx">单品</text>
+					</button>
+				</navigator>
+			</view>
 
-  <view class="fenlei_1">
-    <navigator url="../product_fenlei/product_fenlei?name=套餐"  class="fenlei_2">
-      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/taocan.png" style="width:80rpx;height:80rpx"></image>
-    <button size="mini"  type="default">
-      <text style="font-size:28rpx">套餐</text>
-    </button>
-    </navigator>
-  </view>
-  
-  <view class="fenlei_1">
-    <view  class="fenlei_2">
-      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/kefu.png" style="width:80rpx;height:80rpx"></image>
-    <button open-type="contact" size="mini"  type="default">
-      <text style="font-size:28rpx">客服订制</text>
-    </button>
-    </view>
-  </view>
-</view>
+			<view class="fenlei_1">
+				<navigator url="../product_fenlei/product_fenlei?name=套餐" class="fenlei_2">
+					<image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/taocan.png" style="width:80rpx;height:80rpx"></image>
+					<button size="mini" type="default">
+						<text style="font-size:28rpx">套餐</text>
+					</button>
+				</navigator>
+			</view>
 
-<!-- 热销榜单 -->
-		<view class="goods-container">
-		<view class="goods-title"  >
-	    <view class="line"></view><view class="text">热销榜单</view><view class="line"></view>
+			<view class="fenlei_1">
+				<view class="fenlei_2">
+					<image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/kefu.png" style="width:80rpx;height:80rpx"></image>
+					<button open-type="contact" size="mini" type="default">
+						<text style="font-size:28rpx">客服订制</text>
+					</button>
+				</view>
+			</view>
 		</view>
-		<view class="index-hot flex">
-<!-- 商品罗列 -->
-	  </view>
-	  <navigator url="../product_detail/product_detail?id={{item._id}}" class="goods-list" wx:for="{{banner}}" wx:key="{{index}}">
-	    <image src="{{item.img[0]}}" />
-	    <view class="goods-list-title">{{item.name}}</view>
-	    <view class="goods-list-text">销售量{{item.sell}}</view>
-	    <view class="goods-list-money">Ұ{{item.price}}</view>
-	  </navigator>
+
+		<!-- 热销榜单 -->
+		<view class="goods-container">
+			<view class="goods-title">
+				<view class="line"></view>
+				<view class="text">热销榜单</view>
+				<view class="line"></view>
+			</view>
+			<view class="index-hot flex">
+				<!-- 商品罗列 -->
+			</view>
+			<navigator url="../product_detail/product_detail?id={{item._id}}" class="goods-list" wx:for="{{banner}}" wx:key="{{index}}">
+				<image src="{{item.img[0]}}" />
+				<view class="goods-list-title">{{item.name}}</view>
+				<view class="goods-list-text">销售量{{item.sell}}</view>
+				<view class="goods-list-money">Ұ{{item.price}}</view>
+			</navigator>
 		</view>
 	</view>
-</view> 
-
-
+</view>

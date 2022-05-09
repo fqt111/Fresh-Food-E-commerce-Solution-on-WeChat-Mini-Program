@@ -12,7 +12,7 @@
     <view class="text">还没有订单呢</view>
   </view>
   <!-- 订单栏 -->
-<block wx:for="{{order}}" wx:key="_id">
+<view class="order_container" wx:for="{{order}}" wx:key="_id">
   <navigator url="../my_record_detail/my_record_detail?id={{item._id}}" class="order">
     <view class="order_1">
       <view>{{item.time}}</view>
@@ -30,6 +30,6 @@
       <view class="order_4" wx:else="{{state =='待评价'}}">点击评价</view>
     </view>
   </navigator>
-</block>
+</view>
  
 </view>

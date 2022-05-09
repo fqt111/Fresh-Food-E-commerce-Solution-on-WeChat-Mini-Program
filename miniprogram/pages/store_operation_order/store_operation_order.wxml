@@ -18,7 +18,7 @@
   </view>
 
 <!-- 订单栏 -->
-<block wx:for="{{order}}" wx:key="_id">
+<block class="position_container" wx:for="{{order}}" wx:key="_id">
   <navigator url="../store_operation_order_detail/store_operation_order_detail?id={{item._id}}&currentType={{currentType}}&state={{state}}&shop_id={{shop_id}}" class="order">
     <view class="order_1">
       <view>{{item.time}}</view>

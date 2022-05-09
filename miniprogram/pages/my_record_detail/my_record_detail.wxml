@@ -1,5 +1,6 @@
 <navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="订单详情" animation="{{fadeAni}}"></navigation>
 
+<view class="position_container">
 <!-- 收货信息 -->
 <view class="order_deatail">
   <view class="order_deatail_1">
@@ -41,4 +42,5 @@
   <view wx:if="{{order.state}}">
     <button bindtap="comment_shop" plain="true" data-pass="{{order}}">评价该订单</button>
   </view>
+</view>
 </view>

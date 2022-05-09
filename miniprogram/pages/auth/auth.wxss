@@ -237,7 +237,7 @@ page {
   font-size: 28rpx;
   margin-top: 20rpx;
   box-sizing: border-box;
-  display: block;
+  display: flex;
   justify-content: center;
   align-content: center;
 

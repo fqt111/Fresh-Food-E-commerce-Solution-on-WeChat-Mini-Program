@@ -1,46 +1,48 @@
 <navigation id='Navigation' show-icon="{{true}}" show-title='{{true}}' title="管理订单" animation="{{fadeAni}}"></navigation>
 
-<!-- 收货信息 -->
-<view class="order_deatail">
-  <view class="order_deatail_1">
-  <image src="cloud://test-rvwwd.7465-test-rvwwd-1301656814/img/tubiao/order_address.png" style="width:80rpx;height:80rpx" ></image>
-  </view>
-
-  <view class="order_deatail_2">
-    <view class="order_deatail_3">
-      <view>{{order.name}}:</view>
-      <view>{{order.phone_number}}</view>
+<view class="position_container">
+  <!-- 收货信息 -->
+  <view class="order_deatail">
+    <view class="order_deatail_1">
+      <image src="cloud://cloud1-6gtiz48ybf23c5c5.636c-cloud1-6gtiz48ybf23c5c5-1306427100/小图标/essential-information.png" style="width:80rpx;height:80rpx"></image>
     </view>
-    <view>{{order.address}}</view>
-  </view>
-</view>
 
-<!-- 订单商品 -->
-<block wx:for="{{order.product}}" wx:key="_id">
-  <navigator url="../product_detail/product_detail?id={{item.product_id}}" class="order">
-    <view class="order_2">
-      <image src="{{item.product_src}}" style="width:150rpx;height:150rpx"></image>
-      <view class="order_3">
-        <view>{{item.product_name}}</view>
-        <view>商品:{{item.product_num}}件</view>
+    <view class="order_deatail_2">
+      <view class="order_deatail_3">
+        <view>{{order.name}}:</view>
+        <view>{{order.phone_number}}</view>
       </view>
+      <view>{{order.address}}</view>
     </view>
-  </navigator>
-</block>
+  </view>
+
+  <!-- 订单商品 -->
+  <block wx:for="{{order.product}}" wx:key="_id">
+    <navigator url="../product_detail/product_detail?id={{item.product_id}}" class="order">
+      <view class="order_2">
+        <image src="{{item.product_src}}" style="width:150rpx;height:150rpx"></image>
+        <view class="order_3">
+          <view>{{item.product_name}}</view>
+          <view>商品:{{item.product_num}}件</view>
+        </view>
+      </view>
+    </navigator>
+  </block>
 
 
-<!-- 订单信息 -->
-<view class="order_message">
-  <view>订单信息</view>
-  <view>订单时间：{{order.time}}</view>
-  <view>订单金额：{{order.money}}</view>
-  <view>备注：{{order.beizhu}}</view>
+  <!-- 订单信息 -->
+  <view class="order_message">
+    <view>订单信息</view>
+    <view>订单时间：{{order.time}}</view>
+    <view>订单金额：{{order.money}}</view>
+    <view>备注：{{order.beizhu}}</view>
+  </view>
+
+
+
+  <button bindtap="phone" type="primary" plain="true">拨打电话</button>
+
+  <button bindtap="songda" type="primary" wx:if="{{state=='等待中'}}">订单准备做</button>
+  <button bindtap="songda" type="primary" wx:elif="{{state=='处理中'}}">订单已配送</button>
+  <button bindtap="songda" type="primary" wx:elif="{{state=='待收货'}}">订单已送达</button>
 </view>
-
-
-
-<button bindtap="phone" type="primary" plain="true">拨打电话</button>
-
-<button bindtap="songda" type="primary" wx:if="{{state=='等待中'}}" >订单准备做</button>
-<button bindtap="songda" type="primary" wx:elif="{{state=='处理中'}}" >订单已配送</button>
-<button bindtap="songda" type="primary" wx:elif="{{state=='待收货'}}" >订单已送达</button>
