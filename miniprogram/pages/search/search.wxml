@@ -34,27 +34,20 @@
 	</view>
 </view>
 
-<view wx:key="id" wx:for="{{search2}}" class="search-box {{iponesc}}">
-	<!-- <view class="goods-box"bindtap="toDetailTap"
-	 data-id="{{item.id}}">
-		<view class="img-box">
-			<image src="{{item.img[0]}}" class="image" />
-		</view>
-		<view class="goods-title">{{item.name}}</view>
-		<view style='display:flex;'>
-			<view class="goods-price">Ұ{{item.price}}</view>
-			<view class="goods-price-naver">已售{{item.sell}}</view>
-		</view>
-	</view> -->
+<view class="search-box {{iponesc}}">
+
 
 	<view class="goods-container">
 				<!-- 商品罗列 -->
-			<navigator url="../product_detail/product_detail?id={{item._id}}" class="goods-list" wx:for="{{search2}}" wx:key="id">
+		<view wx:for="{{search2}}" wx:key="name" class="goods-list">
+			<navigator url="../product_detail/product_detail?id={{item._id}}">
 				<image src="{{item.img[0]}}" />
 				<view class="goods-list-title">{{item.name}}</view>
 				<view class="goods-list-text">销售量{{item.sell}}</view>
 				<view class="goods-list-money">Ұ{{item.price}}</view>
 			</navigator>
+		</view>
+
 		</view>
 
 

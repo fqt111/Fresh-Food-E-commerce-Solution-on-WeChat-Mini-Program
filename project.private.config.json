@@ -231,6 +231,13 @@
           "name": "",
           "pathName": "pages/product_detail_3/product_detail",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/search/search",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }
