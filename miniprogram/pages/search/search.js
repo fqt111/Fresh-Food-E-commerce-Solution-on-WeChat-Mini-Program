@@ -55,18 +55,18 @@ Page({
 	
 	search_1: function () {
 		var value=this.data.value
-		console.log('触发', value)
+		console.log('触发search_1', value)
 		wx.setStorage({
       key: "key",
       data: value,
       success:function(res){
-        console.log(res);
+        console.log('success',res);
       },
       fail:function(log){
         console.log(log);
       },
       complete:function(com){
-        console.log(com);
+        console.log('com',com);
       }
 		})
 		
