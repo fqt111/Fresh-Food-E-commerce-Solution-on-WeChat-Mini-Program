@@ -47,7 +47,7 @@
   font-size: 40rpx;
   position: relative;
   top: -50rpx;
-  left: 100rpx;
+  left: 50rpx;
 }
 
 .dis{
