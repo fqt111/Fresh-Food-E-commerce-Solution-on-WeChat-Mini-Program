@@ -1,130 +1,104 @@
 {
   "setting": {},
   "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
-          "id": -1,
           "name": "db guide",
           "pathName": "pages/databaseGuide/databaseGuide",
           "query": ""
         },
         {
-          "id": -1,
           "name": "pages/chucun/chucun",
           "pathName": "pages/chucun/chucun",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/product_detail/product_detail",
           "pathName": "pages/product_detail/product_detail",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/shopping_cart/shopping_cart",
           "pathName": "pages/shopping_cart/shopping_cart",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/product_fenlei/product_fenlei",
           "pathName": "pages/product_fenlei/product_fenlei",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/my/my",
           "pathName": "pages/my/my",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/store_login/store_login",
           "pathName": "pages/store_login/store_login",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/pay/pay",
           "pathName": "pages/pay/pay",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/store_operation/store_operation",
           "pathName": "pages/store_operation/store_operation",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/store_operation_up/store_operation_up",
           "pathName": "pages/store_operation_up/store_operation_up",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/store_operation_gl/store_operation_gl",
           "pathName": "pages/store_operation_gl/store_operation_gl",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/my_record/my_record",
           "pathName": "pages/my_record/my_record",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/my_record_detail/my_record_detail",
           "pathName": "pages/my_record_detail/my_record_detail",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/my_record/my_record",
           "pathName": "pages/my_record/my_record",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/my_record_detail/my_record_detail",
           "pathName": "pages/my_record_detail/my_record_detail",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/fenlei/fenlei",
           "pathName": "pages/fenlei/fenlei",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/store_operation_order/store_operation_order",
           "pathName": "pages/store_operation_order/store_operation_order",
           "query": "",
@@ -238,10 +212,11 @@
           "name": "",
           "pathName": "pages/search/search",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
-  }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
 }
