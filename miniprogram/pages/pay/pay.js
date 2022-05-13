@@ -60,12 +60,12 @@ Page({
   findXy() { //获取用户的经纬度与计算距离
     var _this = this
     var dis=[]
-    wx.getLocation({
-        type: 'wgs84',
+    wx.navigateTo({
+        url: '',
         success(res) {
-          _this.setData({
-            position:res
-          })
+          // _this.setData({
+          //   position:res
+          // })
           db.collection('shop').get({
             success:function(res){
               console.log('获取店铺成功',res)
@@ -154,8 +154,6 @@ getDistance: function(lat1, lng1, lat2, lng2) {
     let that = this
     console.log("结算")
     let DATE = new Date();
-    if(that.data.showView==1){
-      console.log(that.data.showView)
       if(that.data.showView==1){
         wx.showModal({
           title: '提示',
@@ -217,18 +215,20 @@ getDistance: function(lat1, lng1, lat2, lng2) {
           }
         })
       }else{
-        wx.showToast({
-          title: '距离您最近的店铺超过5公里，不提供外卖服务',
-          icon: 'none',
-          duration: 2000//持续的时间
-        })
-      }
-    }else{
-      wx.showToast({
-        title: '距离您最近的店铺超过5公里，不提供外卖服务',
-        icon: 'none',
-        duration: 2000//持续的时间
-      })
+        if(this.data.location==null){
+          wx.showToast({
+            title: '请先选择收货地址',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+        }else{
+          wx.showToast({
+            title: '距离您最近的店铺超过5公里，不提供外卖服务',
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+        }
+
     }
 
     
