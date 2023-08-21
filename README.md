@@ -25,7 +25,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -44,7 +43,8 @@
   </p>
 </div>
 
-
+> 📚 **Welcomes to provide your valuable comments or suggestions by 'Issues' or my [contact information](#contact)**    
+> ✨ 欢迎通过”issues“或我的[联系方式](#contact)，为我提供宝贵意见   
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -52,6 +52,11 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#aim">aim</a></li>
+        <li><a href="#Background">Background</a></li>
+        <li><a href="#category-page">Category page</a></li>
+      </ul>
     </li>
     <li>
       <a href="#system-architecture">System Architecture</a>
@@ -80,14 +85,14 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+### Aim
 The project is an innovative fresh food delivery platform that operates through a WeChat Mini Program mobile app. It aims to integrate resources from rural suppliers and cater to the convenient cooking demands of urban customers. The platform emphasizes the traceability of high-quality ingredients and offers fully-monitored initial food processing services. This initiative seeks to establish a pathway for delivering fresh and fast rural produce to urban dining tables, thereby engaging in differentiated competition with existing fresh food delivery platforms to capture the market.
 
+### Background
 In recent years, new business models represented by the digital economy and sharing economy have rapidly developed. Leveraging the vigorous growth of China's logistics and delivery service industries, the food delivery market has attracted significant attention from numerous companies. Simultaneously, urban residents' demands for food quality have been increasing daily, leading major supermarkets and food delivery giants to enter the fresh food delivery sector. With China's nearly 6 trillion RMB fresh retail market, the proportion of online sales has been steadily rising, reaching 14.6% in 2020 due to the impact of the pandemic. Coupled with recent pandemic influences, offline shopping has been hindered, intensifying the competition in the food delivery industry. Existing market leaders in fresh food delivery have attempted marketing strategies, delivery methods, and other innovations, yet there remains ample room for continuous innovation. "ChengNong FreshLife," the fresh food initial processing platform, plans to break the competitive pattern by focusing on product types and service quality.
 
+### Achievements
 "PureHarvest FreshLife" integrates various services such as online selection and offline reservation for self-pickup. The company's primary business includes three parts. Firstly, there's a fresh food Mini Program developed using WeChat's developer tools. This program serves as a hub for product purchases, allowing merchants to update product details through the Mini Program while customers can browse, order, and track order status. Secondly, there are offline self-pickup stores where customers can either pick ingredients in-store or place orders through the Mini Program, notifying the store to prepare the items. Equipped with compliant cameras, these self-pickup stores enable customers to witness the entire initial processing process, ensuring transparency, hygiene, and safety. Thirdly, there's the company's warehouse, which follows comprehensive storage rules to ensure freshness and timely delivery to self-pickup stores or customers.
-
-The FreshLife team has developed a detailed company development strategy aligned with the project's establishment needs. The initial strategy involves regional pilot programs, establishing offline delivery stations, and offering both in-store pickup and home delivery services. Starting from an improved community group-buying model, the team conducts pilot surveys in customer-concentrated areas. In the mid-term (development phase), the strategy involves introducing warehousing functions into offline stores, transforming some regional sites into large-scale fresh food shopping experience centers that integrate warehousing, initial processing, self-pickup, and delivery services, achieving decentralized fast delivery. In the later stages, the strategy focuses on enhancing the quantity and quality of stores and expanding to other cities, broadening the platform's business to cater to various levels of cities' sales demands for rural agricultural products and urban needs for purchasing fresh ingredients and quickly cooking dishes.
 
 ## System Architecture
 ![1692536310545](image/README/1692536310545.png)
